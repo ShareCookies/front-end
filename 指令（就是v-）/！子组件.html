@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<!-- saved from url=(0106)https://keepfool.github.io/vue-tutorials/02.Components/Part-1/local-registration-with-child-component.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<parent-component :test="11">
+			</parent-component>
+		</div>
+	
+	<script src="../Vue1.0.25.js"></script>
+	<script>
+		//定义一了个Child组件构造器。hcg：就是定义了一个组件，但是未注册，所以还无法使用
+		var Child = Vue.extend({
+			test:'',
+			template: '<p>This is a child component!</p>'
+		})
+		//定义一个Parent组件构造器
+		var Parent = Vue.extend({
+			// 在Parent组件内使用<child-component>标签。即：在Parent组件内以标签的形式使用Child组件。
+			template :'<p>This is a Parent component!</p><child-component></child-component>',
+			components: {
+				// 局部注册Child组件，并将Child组件的标签设置为<child-component>，Child组件只能在Parent组件内使用
+				//Child组件是在Parent组件中注册的，它只能在Parent组件中使用，确切地说：子组件只能在父组件的template中使用。
+				'child-component': Child
+			}
+			//总：以上操作为，将Child组件注册到Parent组件，并将Child组件的标签设置为child-component
+		})
+		
+		// 全局注册Parent组件
+		Vue.component('parent-component', Parent)
+		
+		
+		new Vue({
+			el: '#app'
+		})
+	</script>
+
+</body>
+</html>

@@ -1,0 +1,15 @@
+vue-cli 快速创建 Vue 项目：
+	https://www.jianshu.com/p/1ee1c410dc67
+vue项目的主要文件：
+	src/main.js vue项目的程序入口文件
+	config/index.js vue项目的配置文件
+	index.html 入口模版文件（就是vue的首个模板会挂载到该文件低下）
+	package.json vue项目信息（就是指定了一些vue的项目依赖，和一些项目信息）
+创建一个单页面应用的基本步骤：
+	1. 创建组件
+	2. 
+项目配置文件：
+	vue-cli 2搭建的项目，配置文件在config/index.js中
+	vue-cli3搭建的项目，配置文件在 Vue.config.js 
+		https://segmentfault.com/a/1190000016101954?utm_source=tag-newest
+		配置属性：https://cli.vuejs.org/zh/config/#devserver

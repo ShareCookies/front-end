@@ -1,0 +1,6 @@
+vue中父组件传值给子组件，父组件值改变，子组件不能重新渲染：
+	解决方案：
+	1.在子组件中用watch()监听值的改变，不同的类型的要用不同的监听方法：
+		https://blog.csdn.net/weixin_38098192/article/details/80447867
+	2.子组件上加一个v-if判断，数据变换的时候先重置为false，然后再this.$nexttick(重置为true);!
+

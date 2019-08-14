@@ -1,0 +1,176 @@
+组件化应用构建：*
+	组件系统是 Vue 的另一个重要概念，因为它是一种抽象，允许我们使用小型、独立和通常可复用的组件构建大型应用。
+	在 Vue 里，一个组件本质上是一个拥有预定义选项的一个 Vue 实例。
+	注：
+		组件类似一个自定义标签。
+vue常用创建组件几种方式：！！！
+	https://blog.csdn.net/WU5229485/article/details/82908068
+
+	hcg:
+		1.
+		new Vue({
+		  //el: '#app',
+		  //template: '<App/>',
+		  router,//路由
+		  store,//vuex的store实例，就是用来保存组件的公用属性!
+		  //components: { App }
+		  render: h => h(App)//要渲染的组件
+		}).$mount('#willReplacedRender')
+		//把指定元素替换渲染为指定组件
+		2.
+		<div id="components-demo">
+		  <button-counter></button-counter>
+		  hhh
+		</div>
+		Vue.component('button-counter', {
+		  name :'app',
+		  data: function () {
+			return {
+			  count: 0
+			}
+		  },
+		  template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+		})
+		new Vue({ el: '#components-demo' })
+		
+		实例化指定dom，渲染组件。（就是把指定元素加载到vue中，vue会把指定元素下的组件标签替换渲染）
+基本案例：
+	因为组件是可复用的 Vue 实例，
+	所以它们与 new Vue 接收相同的选项。
+		例如 data、computed、watch、methods 以及生命周期钩子等。仅有的例外是像 el 这样根实例特有的选项。
+	例：
+		// 1.定义一个名为 button-counter 的新组件
+		Vue.component('button-counter', {
+			// state，驱动应用的数据源；
+		  data: function () {
+			return {
+			  count: 0
+			}
+		  },
+		  // view，以声明方式将 state 映射到视图；
+		  template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+		   // actions，响应在 view 上的用户输入导致的状态变化。
+		})
+		//2.html中使用组件
+		组件是可复用的 Vue 实例，且带有一个名字：在这个例子中是 <button-counter>。
+		我们可以在一个通过 new Vue 创建的 Vue 根实例中，把这个组件作为自定义元素来使用：
+		<div id="components-demo">
+		  <button-counter></button-counter>
+		</div>
+		new Vue({ el: '#components-demo' })
+	注：
+		什么是vue实例：
+			通过Vue构造函数创建的实例。
+定义一个组件：
+	向Vue.component传递两个参数：
+		参1组件名，参2对象。
+	参2对象必须要有的属性：
+		1.data函数，且要返回一个对象，便于每个组件实例，可以维护一份被返回对象的独立的拷贝（就是vue要保证每个组件都是独立的，它们的数据不会冲突）。
+		该对象里头的属性可以传递给template。
+		2.template字符串，就是html字符串，自定义的html标签显示的样式，就是该组件中的template样式。
+组件特性：
+	组件的复用：
+		每个组件都会各自独立维护它的count（基本案例中例子）。
+		因为你每用一次组件，就会有一个它的新实例被创建。
+
+组件的组织：
+	组件可以包含组件。
+	而一个应用通常会以一棵嵌套的组件树的形式来组织。
+	模版中使用组件：
+		为了能在模板中使用，这些组件必须先注册以便 Vue 能够识别。
+		有两种组件的注册类型：全局注册和局部注册。
+		全局注册：
+			组件通过 Vue.component 进行全局注册。
+
+			全局注册的组件可以用在其被注册之后的任何 (通过 new Vue) 新创建的 Vue 根实例，！
+			也包括其组件树中的所有子组件的模板中。
+通过 Prop 向组件传递数据：
+	Prop 是你可以在组件上注册的一些自定义特性。
+	当一个值传递给一个 prop 特性的时候，它就变成了那个组件实例的一个属性。
+	例：
+		1.用一个 props 选项将其包含在该组件可接受的 prop 列表中：
+		Vue.component('blog-post', {
+		  props: ['title'],
+		  template: '<h3>{{ title }}</h3>'
+		})
+		注：
+			一个组件默认可以拥有任意数量的 prop，任何值都可以传递给任何 prop。
+			在上述模板中，你会发现我们能够在组件实例中访问这个值，就像访问 data 中的值一样。
+		2.应用：
+			然而在一个典型的应用中，你可能在 data 里有一个博文的数组：
+			new Vue({
+			  el: '#blog-post-demo',
+			  data: {
+				posts: [
+				  { id: 1, title: 'My journey with Vue' },
+				  { id: 2, title: 'Blogging with Vue' },
+				  { id: 3, title: 'Why Vue is so fun' }
+				]
+			  }
+			})
+			并想要为每篇博文渲染一个组件：
+			<blog-post
+			  v-for="post in posts"
+			  v-bind:key="post.id"
+			  v-bind:title="post.title"
+			></blog-post>
+			如上所示，你会发现我们可以使用 v-bind 来动态传递 prop。
+			这在你一开始不清楚要渲染的具体内容，比如从一个 API 获取博文列表的时候，是非常有用的。
+			总：通过bind把vue的data，传递到prop中。
+单个根元素：
+	每个组件必须只有一个根元素，要显示过个内容，可以将模板的内容包裹在一个父元素内。
+
+当组件复杂时，还要日期、评论等，为每个相关的信息定义一个 prop 会变得很麻烦。
+重构一下这个 <blog-post> 组件了，让它变成接受一个单独的 post prop：
+	<blog-post
+	  v-for="post in posts"
+	  v-bind:key="post.id"
+	  v-bind:post="post"
+	></blog-post>
+	Vue.component('blog-post', {
+	  props: ['post'],
+	  template: `
+		<div class="blog-post">
+		  <h3>{{ post.title }}</h3>
+		  <div v-html="post.content"></div>
+		</div>
+	})
+监听子组件事件：
+	自定义事件的系统:
+		父级组件可以像处理 native DOM 事件一样，
+		通过 v-on 监听子组件实例的任意事件：
+		<blog-post
+		  ...
+		  v-on:enlarge-text="postFontSize += 0.1"//在组件中设置一个事件。也可以说是监听器
+		></blog-post>
+		同时子组件可以通过调用内建的 $emit 方法 并传入事件名称来触发一个事件：
+		<button v-on:click="$emit('enlarge-text')">//调用组件的enlarge-text事件
+		  Enlarge text
+		</button>
+	注：
+		父级组件就是指组件父元素的Vue实例！
+	使用事件抛出一个值：
+		使用 $emit 的第二个参数来提供这个值。
+
+在组件上使用 v-model：
+	v-model？
+通过插槽分发内容：
+	<slot> 元素简称插槽，传递到组件的数据会放入到插槽中。
+动态组件
+	 通过is 特性，在不同组件之间进行动态切换。
+解析 DOM 模板时的注意事项：
+	一些html元素对可出现在其内部元素是有严格限制的。
+	例：
+		<table>
+		  <blog-post-row></blog-post-row>
+		</table>
+		这个自定义组件 <blog-post-row> 会被作为无效的内容提升到外部，并导致最终渲染结果出错。
+		幸好这个特殊的 is 特性给了我们一个变通的办法：
+		<table>
+		  <tr is="blog-post-row"></tr>
+		</table>
+	需要注意的：
+		如果我们从以下来源使用模板的话，这条限制是不存在的：
+		字符串 (例如：template: '...')
+		单文件组件 (.vue)
+		<script type="text/x-template">

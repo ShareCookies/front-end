@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"></meta>
+<title>待测</title>
+	<style type="text/css">
+		@import url();
+	</style>
+</head>
+<body>
+
+<div id="root">
+        <child>
+            <template slot-scope="props">
+			<!--
+			定义一个插槽作用域，
+			1.即template标签中的内容会作用在子组件的slot标签中，
+			2.插槽作用域的参数对应slot标签的属性，即props.value2会去读取slot标签的value2这个属性
+			注：
+				该插槽必须放在template标签内
+			-->
+                <li>{{props.value1}}</li><!--定义使用渲染方式-->
+            </template>
+        </child>
+        <child>
+            <template slot-scope="props">
+                <h1>{{props.value1}}</h1><!--定义不同的渲染方式-->
+            </template>
+        </child>
+</div>
+
+	<template id="sonComponentWithSlot">
+		<div>
+			<ul>
+				<slot v-for="value in list" :value1=value :value2=3>
+				</slot>
+			</ul>
+		</div>
+	</template>
+	
+	<!--<script  src="../Vue2.6.8.js"></script>如何换成最新版的语法了？ -->
+	<script src="../Vue2.6.8.js"></script><!-- 1.0版本中，注册组件，这种写法sonCon 写法会出错-->
+	<script > 
+		// 定义组件，并全局注册组件		
+		Vue.component('child',{
+            data: function(){
+                return {
+                    list:[1,2,3,4]
+                }
+            },
+			template: '#sonComponentWithSlot'
+        })
+		//渲染组件。简称启动vue
+        var vm=new Vue({
+            el: '#root'
+        })
+
+	</script>
+</body>
+
+</html>

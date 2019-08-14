@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"></meta>
+<title>待测</title>
+	<style type="text/css">
+		@import url();
+	</style>
+</head>
+<body>
+	<div id="watch-example">
+	  <p>
+		Ask a yes/no question:
+		<input v-model="question">
+	  </p>
+	  <p>{{ answer }}</p>
+	</div>
+	
+	<script src="https://cdn.jsdelivr.net/npm/axios@0.12.0/dist/axios.min.js"></script><!-- AJAX 库-->
+	<script src="https://cdn.jsdelivr.net/npm/lodash@4.13.1/lodash.min.js"></script>	<!-- **通用工具-->
+	<script  src="../Vue2.6.8.js"></script>
+	<script>
+	var watchExampleVM = new Vue({
+	  el: '#watch-example',
+	  data: {
+		question: '',
+		answer: '等待question属性的改变',
+		count:0
+	  },
+	  //watch 侦听器，当侦听器方法对应属性发生改变时，侦听器方法就会被调用
+	  watch: {
+		// 当question属性发送变化时，watch中的question函数就会被调用
+		//并且每输入一次（就是每输入一个字符）,question函数就会被调用一次。
+		question: function (newQuestion, oldQuestion) {
+		  this.answer = 'question函数会一直处于调用状态'+'并且当前输入为'+this.question;
+		  this.count=++this.count;
+		  console.log(this.count);
+		  console.log(newQuestion,oldQuestion);
+		 // this.debouncedGetAnswer()？
+		}
+	  },
+	  created: function () {
+		this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)// `_.debounce` 是一个通过 Lodash 限制操作频率的函数。请参考：https://lodash.com/docs#debounce
+	  },
+	  methods: {
+		getAnswer: function () {
+		  if (this.question.indexOf('?') === -1) {
+			this.answer = 'Questions usually contain a question mark. ;-)'
+			return
+		  }
+		  this.answer = 'Thinking...'
+		  var vm = this
+		  axios.get('https://yesno.wtf/api')
+			.then(function (response) {
+			  vm.answer = _.capitalize(response.data.answer)
+			})
+			.catch(function (error) {
+			  vm.answer = 'Error! Could not reach the API. ' + error
+			})
+		}
+	  }
+	})
+	/**
+		watch就是监听data的值，当data的指定属性改变时，就会调用watch对应的方法
+		例：test属性，则对应 watch中的test方法。
+	*/
+</script>
+</body>
+
+</html>

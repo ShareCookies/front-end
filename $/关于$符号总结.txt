@@ -1,0 +1,28 @@
+https://blog.csdn.net/m_oman/article/details/80412877
+
+介绍：
+	以下是js中$的含义介绍
+	
+vue实例的属性和方法：
+	使用$来访问vue实例的特定属性和方法。
+	Vue 实例暴露了一些有用的实例属性与方法，访问它们要使用前缀 $。
+	例：
+		vm.$data === data // => true
+	vue文档之暴露出来的实例属性和方法：
+		https://cn.vuejs.org/v2/api/#%E5%AE%9E%E4%BE%8B%E5%B1%9E%E6%80%A7
+变量修饰：
+	一些变量会加上$来进行修饰，如var $s='asdasd';
+es6模板字符串：
+	es6在模板字符串中，访问变量。
+	例：
+		var t=66;
+		console.log(`es模板字符串${t}`);
+Jquery：
+	jq中用$('')作为元素选择器，其实是jquery库对原生JavaScript选择元素的一种封装。
+devtool：
+	https://juejin.im/post/5c09a80151882521c81168a2?utm_source=gold_browser_extension
+	在devtool中，$在console中,是冗长的函数document.querySelector的一个别名。
+	
+ 
+
+	

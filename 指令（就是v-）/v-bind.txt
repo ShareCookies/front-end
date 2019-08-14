@@ -1,0 +1,11 @@
+https://cn.vuejs.org/v2/api/#v-bind
+v-bind 指令：
+	简写：
+		:
+	用	法：
+		hcg：
+			1.v-bind指令能为html标签绑定属性，即可在浏览器elements对应的html元素上看到绑定的属性。
+			2.v-bind指令能通过子组件标签,为子组件的props传值
+	例：
+		v-bind.html
+		

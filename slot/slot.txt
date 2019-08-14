@@ -1,0 +1,12 @@
+一言以蔽之：占坑用
+
+默认slot：
+	https://www.cnblogs.com/weichen913/p/9297399.html
+	例子：
+		slot.html
+具名slot：
+	一个组件可以有多个slot，这是给slot加上name，调用slot时，就可以决定把内容插入到那个slot位置上
+作用域插槽：
+	https://blog.csdn.net/willard_cui/article/details/82469114
+	例子：
+		slot-scop.html

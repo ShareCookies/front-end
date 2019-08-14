@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<!-- saved from url=(0077)https://keepfool.github.io/vue-tutorials/06.Router/basic/basic_02.html#!/home -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<title></title>
+		<link rel="stylesheet" href="./basic_02_files/bootstrap.css">
+		<link rel="stylesheet" href="./basic_02_files/custom.css">
+	</head>
+
+	<body>
+		<div id="app">
+			<div class="row">
+				<div class="col-xs-offset-2 col-xs-8">
+					<div class="page-header">
+						<h2>Router Basic - 02</h2>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="col-xs-2 col-xs-offset-2">
+					<div class="list-group">
+						<a class="list-group-item" v-link="{ path: '/home'}">Home</a>
+						<a class="list-group-item" v-link="{ path: '/about'}">About</a>
+					</div>
+				</div>
+				<div class="col-xs-6">
+					<div class="panel">
+						<div class="panel-body">
+							<router-view></router-view>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		
+		<template id="home">
+			<div>
+				<h1>Home</h1>
+				<p>{{msg}}</p>
+			</div>
+			<div>
+				<ul class="nav nav-tabs">
+					<li>
+						<a v-link="{ path: '/home/news'}">News</a>
+					</li>
+					<li>
+						<a v-link="{ path: '/home/message'}">Messages</a>
+					</li>
+				</ul>
+				<router-view></router-view>
+			</div>
+		</template>
+
+		<template id="news">
+			<ul>
+				<li>News 01</li>
+				<li>News 02</li>
+				<li>News 03</li>
+			</ul>
+		</template>
+		<template id="message">
+			<ul>
+				<li>Message 01</li>
+				<li>Message 02</li>
+				<li>Message 03</li>
+			</ul>
+		</template>
+
+		<template id="about">
+			<div>
+				<h1>About</h1>
+				<p>This is the tutorial about vue-router.</p>
+			</div>
+		</template>
+
+	<script src="./vue.js"></script>
+	<script src="./vue-router.js"></script>
+	<script>
+		//定义三个组件构造器
+		var Home = Vue.extend({
+			template: '#home',
+			data: function() {
+				return {
+					msg: 'Hello, vue router!'
+				}
+			}
+		})
+
+		var News = Vue.extend({
+			template: '#news'
+		})
+
+		var Message = Vue.extend({
+			template: '#message'
+		})
+
+		var About = Vue.extend({
+			template: '#about'
+		})
+
+		var router = new VueRouter()
+		router.redirect({
+			'/': '/home'
+		})
+		router.map({
+			'/home': {
+				component: Home,
+				// 定义子路由
+				subRoutes: {
+					'/news': {
+						component: News
+					},
+					'/message': {
+						component: Message
+					}
+				}
+			},
+			'/about': {
+				component: About
+			}
+		})
+
+		var App = Vue.extend({})
+		router.start(App, '#app')
+		/**
+		子路由使用思路：
+			1.模板中使用router-view标签
+			2.路由中映射中使用subRoutes定义子路由
+			点击链接，即可在router-view处渲染出子路由组件，且不会重新渲染父路由对应组件以至浪费资源
+		嵌套路由写法：
+			https://blog.csdn.net/zgpeterliu/article/details/80492805
+			1.0 中subRoutes:{ }  ， 2.0 中 children:[ ]
+		*/
+	</script>
+
+</body></html>

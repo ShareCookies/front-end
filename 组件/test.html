@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"></meta>
+<title>待测</title>
+	<style type="text/css">
+		@import url();
+	</style>
+	<script  src="../Vue2.6.8.js"></script>
+</head>
+<body>
+		<div id="components-demo">
+		  <button-counter></button-counter>
+		  hhh
+		</div>
+
+
+	<script type="text/javascript" > 
+		// 定义一个名为 button-counter 的新组件
+		Vue.component('button-counter', {
+		  name :'app',
+		  data: function () {
+			return {
+			  count: 0
+			}
+		  },
+		  template: '<button v-on:click="count++">You clicked me {{ count }} times.</button>'
+		})
+		new Vue({ el: '#components-demo' })
+
+	</script>
+</body>
+
+</html>

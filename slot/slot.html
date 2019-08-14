@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"></meta>
+<title>待测</title>
+	<style type="text/css">
+		@import url();
+	</style>
+</head>
+<body>
+	<div id="app">
+		<one-component>
+		</one-component>
+	</div>
+
+	<template id="sonComponentWithSlot">
+	  <div class="">
+			<h1>子组件中本身有的内容，如果没有显示这句话，则子组件注册失败</h1>
+			<slot></slot>
+			<slot  name=”mySlot”>这是拥有命名的slot，且拥有默认内容</slot>
+	  </div>
+	</template>
+	
+	<template id="oneComponent">
+		  <slot-child>
+			  <div class="no-name">在子组件中使用标签，如果子组件中没使用slot标签，则不能显示这段话</div>
+			  <div slot="mySlot">调用具名slot</div>
+		  </slot-child>
+	</template>
+	
+	<script src="../Vue2.6.8.js"></script><!-- 注册组件，这种sonCon 写法会出错-->
+	<script > 
+		//定义组件构造器
+		var  sonComponentWithSlot = Vue.extend({
+			template: '#sonComponentWithSlot',
+			data: function() {
+				return {
+				}
+			}
+		})
+
+		var  oneComponent = Vue.extend({
+			template: '#oneComponent',
+			components: {
+				// 局部注册组件
+				'slot-child': sonComponentWithSlot
+			}
+		})
+		
+		// 全局注册组件,并在id为app的html标签中使用组件
+		Vue.component('one-component', oneComponent)
+		//渲染主组件，并把渲染出来的视图挂载到html标签下显示。简称启动vue
+		var app = new Vue({
+		  el: '#app',
+		  data: {
+		  }
+		})
+	</script>
+</body>
+
+</html>

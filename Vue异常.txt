@@ -1,0 +1,6 @@
+TypeError: Cannot create property 'id' on string ''：
+	？
+[Vue warn]: Invalid prop: type check failed for prop "value". Expected String, Number, got Array:
+	https://www.cnblogs.com/sifo/p/9829662.html
+	解析：
+		我遇到的是el-input的报错了，就是input 的v-model绑定的值为array 能渲染结果，但是渲染会报这个异常。

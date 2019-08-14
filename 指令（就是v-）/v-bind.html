@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"></meta>
+	<script  src="../Vue2.6.8.js"></script>
+</head>
+<body>
+	<button  id="app"  v-bind="{ hhhh: `这个是直接以对象的形式绑定。后面的是先读取data属性，然后在绑定到对应属性。` }" v-bind:style="bg" @click="getData">v-bind是为html元素绑定属性</button>
+
+	<script type="text/javascript" > 
+		var test=new Vue({
+			el: "#app",
+			href:'',
+			data:{
+				h:'',
+				bg:'background-color:yellow'
+			},
+			methods:{
+				getData : function(){
+					//console.log("url:"+this.url);
+					console.log("href:"+this.h);
+					console.log(this);
+				}
+			}
+
+		})
+		console.log(test);
+
+	</script>
+</body>
+
+</html>

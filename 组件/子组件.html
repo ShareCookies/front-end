@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<!-- saved from url=(0106)https://keepfool.github.io/vue-tutorials/02.Components/Part-1/local-registration-with-child-component.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+		<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<parent-component>
+			</parent-component>
+		</div>
+	
+	<script src="./vue.js"></script>
+	<script>
+		//定义一了个Child组件构造器。hcg：就是定义了一个组件，但是未注册，所以还无法使用
+		var Child = Vue.extend({
+			template: '<p>This is a child component!</p>'
+		})
+		//定义一个Parent组件构造器
+		var Parent = Vue.extend({
+			// 在Parent组件内使用<child-component>标签。即：在Parent组件内以标签的形式使用Child组件。
+			template :'<p>This is a Parent component!</p><child-component></child-component>',
+			components: {
+				// 局部注册Child组件，并将Child组件的标签设置为<child-component>，Child组件只能在Parent组件内使用
+				//Child组件是在Parent组件中注册的，它只能在Parent组件中使用，确切地说：子组件只能在父组件的template中使用。
+				'child-component': Child
+			}
+			//总：以上操作为，将Child组件注册到Parent组件，并将Child组件的标签设置为child-component
+		})
+		
+		// 全局注册Parent组件
+		Vue.component('parent-component', Parent)
+		
+		
+		new Vue({
+			el: '#app'
+		})
+		/**
+		我们分几个步骤来理解这段代码：
+			var Child = Vue.extend(...)定义一了个Child组件构造器
+			var Parent = Vue.extend(...)定义一个Parent组件构造器
+			components: { 'child-component': Child }，将Child组件注册到Parent组件，并将Child组件的标签设置为child-component。
+			template :'<p>This is a Parent component</p><child-component></child-component>'，在Parent组件内以标签的形式使用Child组件。
+			Vue.component('parent-component', Parent) 全局注册Parent组件
+			在页面中使用<parent-component>标签渲染Parent组件的内容，同时Child组件的内容也被渲染出来
+		*/
+		/**
+		下面两种子组件的使用方式是错误的：
+			1. 以子标签的形式在父组件中使用
+			<div id="app">
+				<parent-component>
+					<child-component></child-component>
+				</parent-component>
+			</div>
+			为什么这种方式无效呢:
+				因为当子组件注册到父组件时，Vue.js会编译好父组件的模板，模板的内容已经决定了父组件将要渲染的HTML。
+				<parent-component>…</parent-component>相当于运行时，它的一些子标签只会被当作普通的HTML来执行，<child-component></child-component>不是标准的HTML标签，会被浏览器直接忽视掉。
+
+			2. 在父组件标签外使用子组件
+			<div id="app">
+				<parent-component>
+				</parent-component>
+				<child-component>
+				</child-component>
+			</div>
+			运行这段代码，浏览器会提示以下错误
+		components：
+			components:{
+				Child
+			}
+			会把Child的name拿过来使用，如果name:'ChildForm' ，则vue会注册为 'child-form':Child ，这里是vue自动把驼峰转换成-模式的。
+		*/
+	</script>
+
+</body>
+</html>

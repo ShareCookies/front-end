@@ -1,0 +1,4 @@
+单页Web应用（single page web application，SPA）：
+	https://blog.csdn.net/limm33/article/details/52618652
+	就是只有一张Web页面的应用，加载单个HTML 页面并在用户与应用程序交互时动态更新该页面的Web应用程序。
+	它们在使用期间不会重新加载页面。

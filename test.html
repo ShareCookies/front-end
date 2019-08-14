@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"></meta>
+<title>待测</title>
+	<style type="text/css">
+		@import url();
+	</style>
+	<script  src="./Vue2.6.8.js"></script>
+</head>
+<body>
+	<!--html标签存放地-->
+	<ul id="v-for-object" class="demo">
+  <li v-for="value in object">
+    {{ value }}
+  </li>
+</ul>
+
+
+	<script type="text/javascript" > 
+		/*内嵌js*/
+		new Vue({
+		  el: '#v-for-object',
+		  data: {
+			object: {
+			  firstName: 'John',
+			  lastName: 'Doe',
+			  age: 30,
+			  test2 : function(){
+			  console.log(22)
+			  }
+			}
+		  }
+		})
+	</script>
+</body>
+
+</html>

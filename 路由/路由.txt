@@ -1,0 +1,47 @@
+路由：
+	路由就是把你访问的地址，转换为具体地址，这样子你才能访问到内容。
+	例：
+		58xuejia  139.199...
+从零开始简单的路由：
+	如果只需要非常简单的路由而不需要引入整个路由库，可以动态渲染一个页面级的组件像这样：
+
+		const NotFound = { template: '<p>Page not found</p>' }
+		const Home = { template: '<p>home page</p>' }
+		const About = { template: '<p>about page</p>' }
+
+		const routes = {
+		  '/': Home,
+		  '/about': About
+		}
+
+		new Vue({
+		  el: '#app',
+		  data: {
+			currentRoute: window.location.pathname
+		  },
+		  computed: {
+			ViewComponent () {
+			  return routes[this.currentRoute] || NotFound
+			}
+		  },
+		  render (h) { return h(this.ViewComponent) }
+		})
+		结合 HTML5 History API，你可以建立一个非常基本但功能齐全的客户端路由器。
+官方路由:
+	vue-router 文档,https://router.vuejs.org/zh/。
+	使用 vue-router 的路由"
+	
+vue路由：
+	https://www.cnblogs.com/avon/p/5943008.html
+	vue-router是Vue.js官方的路由插件，它和vue.js是深度集成的。
+	vue的单页面应用是基于路由和组件的，路由用于设定访问路径，并将路径和组件映射起来。
+	路由的过程：
+		设置映射路由规则
+			即那个路由会对应那个组件。
+		创建路由实例
+			
+		路由实例与主组件相关联
+	注：
+		传统的页面应用，是用一些超链接来实现页面切换和跳转的。
+		单页面应用？
+	

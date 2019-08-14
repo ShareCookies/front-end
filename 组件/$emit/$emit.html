@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title></title>
+	</head>
+	<body>
+		<div id="app">
+			<parent-component>
+			</parent-component>
+		</div>
+	
+	<script src="./Vue2.6.8.js"></script>
+	<script>
+		var Child = Vue.extend({		
+			methods:{
+			  select(val) {
+				let data = {
+				  cityname: val
+				};				
+				this.$emit('showCityName',data);//触发父组件在子组件上使用的showCityName事件。注：事件就是！
+			  }
+			},
+			mounted:function() {
+			/*
+				//2.$emit 配合 $on 使用,一般用来调用组件自身的方法。
+				this.$on('showCityName',function (msg) {
+				  console.log('$on 监听当前实例事件');
+				  console.log(msg);
+				  console.log(this);
+				});
+			*/
+			},
+			template: '<button @click="select(`大连`)">点击此处，将使用点击事件调用组件方法</button>'
+		})
+		var Parent = Vue.extend({
+		    methods:{
+			  updateCity(data){
+				console.log(`父组件`);
+				console.log(data);
+				console.log(this);
+			  }
+			},
+			//template :'<child-component v-on:showCityName="updateCity"></child-component>',//@是 v-on:指令的简写
+			template :'<child-component  @showCityName="updateCity" ></child-component>', //1.$emit 配合 v-on 使用，一般用来子组件调用父组件的方法。//3. 	$emit 配合 v-on和 $on 使用，即调用自身又调用父组件。注：记得开启子组件的$on 实例方法
+			//template :'<child-component ></child-component>',//2.$emit 配合 $on 使用,一般用来调用组件自身的方法。
+			components: {
+				'child-component': Child
+			}
+		})
+		
+		Vue.component('parent-component', Parent)
+		new Vue({
+			el: '#app'
+		})
+
+
+
+//train-city？？？
+	</script>
+
+</body>
+</html>
+
+
+
+

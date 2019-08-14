@@ -1,0 +1,57 @@
+$emit实例方法：
+	https://cn.vuejs.org/v2/api/#vm-emit
+	触发当前实例上的事件,还可传值。
+$on实例方法:
+	https://cn.vuejs.org/v2/api/#vm-on
+	监听当前实例上被触发的事件。
+	注：
+		一般用在mounted中
+		
+v-on指令：
+	介绍：
+		用在普通元素上时，只能监听原生 DOM 事件。
+		用在自定义元素组件上时，也可以监听子组件触发的自定义事件。
+	例：
+		template :'<child-component  @showCityName="updateCity" ></child-component>',//用在自定义元素组件上
+
+注：
+	$emit 配合 v-on 使用，一般用来子组件调用父组件的方法。
+	$emit 配合 $on 使用,一般用来调用组件自身的方法。
+	$emit 配合 v-on和 $on 使用，即调用自身又调用父组件。
+
+注公司实例：
+    created () {
+        //更新主表单附件信息
+        this.bus.$on('UPDATE_DISPATCH_ATT_DESC', () => {
+            this.updateAttDesc();
+        });
+        //注册文件上传后的回调函数
+        this.bus.$on('DISPATCH_ATT_CHANGE_CALLBACK', () => {
+            this.onloadForm();
+        });
+    }
+	
+	        /**
+             * 调用父组件的方法
+             */
+            handleParentAttFile: function () {
+                // 子组件中触发父组件方法ee并传值cc12345
+                this.$emit('getAllAttFile');
+            },
+            /**
+             * 附件数据改变触发回调方法
+             */
+            attChangeCallback: function () {
+                if (this.moduleParam.attChangeCallback && this.moduleParam.attChangeCallback.length > 0) {
+                    this.moduleParam.attChangeCallback.forEach(value => {
+                        //console.log(value);
+                        this.bus.$emit(value);//这里为啥可以直接写this.bus
+                    });
+                }
+            }
+			
+	
+注：
+	移除事件监听：
+		通过.$off(‘i-got-clicked’)来移除特定事件上的所有监听。
+		也可以通过不带任何参数EventBus.$off()来移除事件总线上的所有监听。

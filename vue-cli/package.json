@@ -1,0 +1,39 @@
+https://blog.csdn.net/six_six_six_666/article/details/82633731
+
+Vue CLI 服务:
+	  "scripts": {
+		"dev": "node build/dev-server.js",
+		"start": "node build/dev-server.js",
+		"build": "node build/build.js"
+	  },
+	vue 学习 react-scripts 搞了一个vue-cli-service 。 
+	上面三个命令分别是启动开发服务，打包，和格式化代码. 
+	之前的config目录哪里去了,build 的目录哪里去了,webpack 的配置呢 .
+	可能这就是vue-cli3.0号称的0配置吧 
+	那么我们怎么配置呢,就要用vue.config.js
+	具体如何配置请移驾官方文档查看！ 
+	hcg：
+		vue CLI 就是一个脚手架，它能帮你搭建vue项目，并且还能做很多事情。
+		其实现就是依赖或者说基于webpack等实现的。
+vue.config.js：
+	官方配置参考：
+		https://cli.vuejs.org/zh/config/#%E5%85%A8%E5%B1%80-cli-%E9%85%8D%E7%BD%AE
+	介绍：
+		vue.config.js 是一个可选的配置文件，如果项目的（和package.json 平级）根目录中存在这样一个文件，
+		那么他会被 @vue/cli-service 自动加载，（并覆盖其内部的配置）。
+打包时，如何配置（测试、预发、生产）环境：
+	https://blog.csdn.net/zhumany_csdn/article/details/82910656
+webpack设置的路径别名：
+	https://blog.csdn.net/u014689760/article/details/84396520
+		vue-cli2.0 在\build\webpack.base.conf.js文件下设置。
+		vue-cli 3.0配置webpack目录别名alias，在根目录新建vue.config.js。
+	~：？
+		https://zhidao.baidu.com/question/525161368023005965.html
+vue-cli3的eslint配置：
+	https://www.jianshu.com/p/bfc7e7329cff
+	1.修改eslint的语法检测，文件为根目录下的 package.json。
+	"eslintConfig": {
+	     "rules": {//规则配置写在这里
+			"no-console": 0,//禁止使用console
+		 },
+	}

@@ -1,0 +1,14 @@
+使用axios跨域访问数据：
+	https://www.cnblogs.com/snowhite/p/7872503.html
+	https://blog.csdn.net/dadiyang/article/details/80289956
+	https://blog.csdn.net/xshsjl/article/details/82998470
+	https://blog.csdn.net/fdipzone/article/details/46390573/
+	不用设置前端吧！
+	
+跨域只需设置后端：！
+	设置后端header即可：
+		// 指定那些域名允许访问
+		Access-Control-Allow-Origin:*
+		// 允许的访问方法
+		Access-Control-Allow-Methods:"POST, GET, PUT, OPTIONS, DELETE, PATCH
+

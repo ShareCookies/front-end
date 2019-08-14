@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"></meta>
+<title>待测</title>
+	<style type="text/css">
+		@import url();
+	</style>
+	<script  src="./Vue2.6.8.js"></script>
+</head>
+<body>
+	<!--html标签存放地-->
+	<div id="app">
+	  {{ message }}
+	</div>
+	<script type="text/javascript" > 
+		/*内嵌js*/
+		var app = new Vue({
+		  el: '#app',
+		  data: {
+			message: 'Hello Vue!'
+		  }
+		})
+	</script>
+</body>
+
+</html>

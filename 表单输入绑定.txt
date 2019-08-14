@@ -1,0 +1,78 @@
+基础用法：
+	你可以用 v-model 指令在表单 <input>、<textarea> 及 <select> 元素上创建双向数据绑定。
+	v-model 本质上不过是语法糖。它负责监听用户的输入事件以更新数据，并对一些极端场景进行一些特殊处理。
+
+	
+	v-model 在内部使用不同的属性为不同的输入元素并抛出不同的事件：
+		text 和 textarea 元素使用 value 属性和 input 事件；
+		checkbox 和 radio 使用 checked 属性和 change 事件；
+		select 字段将 value 作为 prop 并将 change 作为事件。
+	注：
+		v-model 会忽略所有表单元素的 value、checked、selected 特性的初始值而总是将 Vue 实例的数据作为数据来源。你应该通过 JavaScript 在组件的 data 选项中声明初始值。
+
+	input文本：
+	textarea多行文本：
+	input复选框：
+		单个复选框，绑定到布尔值：
+
+		多个复选框，绑定到同一个数组：
+	input单选按钮：
+	select选择框：
+		单选时：
+			注：
+				推荐提供一个值为空的禁用选项。
+				因为ios...
+		多选时 (绑定到一个数组)：
+		用v-for 渲染动态选项：
+			例：
+				<select v-model="selected">
+				  <option v-for="option in options" v-bind:value="option.value">
+					{{ option.text }}
+				  </option>
+				</select>
+值绑定
+	介绍：
+		值绑定指单选按钮，复选框及选择框选中时，js能额外获取到的值，额外的而不是元素本身的value。
+	特性：
+		1.v-model 绑定的值通常是静态字符串 (对于复选框也可以是布尔值)：
+			...
+		2.把值绑定到 Vue 实例的一个动态属性上，这时可以用 v-bind 实现，并且这个属性的值可以不是字符串。
+	复选框：
+	例:
+		<input
+		  type="checkbox"
+		  v-model="toggle"
+		  true-value="yes"
+		  false-value="no"
+		>
+		// 当选中时
+		vm.toggle === 'yes'
+		// 当没有选中时
+		vm.toggle === 'no'
+		这里的 true-value 和 false-value 特性并不会影响输入控件的 value 特性，因为浏览器在提交表单时并不会包含未被选中的复选框。
+		如果要确保表单中这两个值中的一个能够被提交，(比如“yes”或“no”)，请换用单选按钮。
+	单选按钮：
+		<input type="radio" v-model="pick" v-bind:value="a">
+		// 当选中时
+		vm.pick === vm.a
+	选择框的选项：
+		...
+		<select v-model="selected">
+			<!-- 内联对象字面量 -->
+		  <option v-bind:value="{ number: 123 }">123</option>
+		</select>
+		// 当选中时
+		typeof vm.selected // => 'object'
+		vm.selected.number // => 123
+修饰符:
+	.lazy:
+		添加 lazy 修饰符，从而转变为使用 change 事件进行同步。即值change时更新。
+	.number：
+		自动将用户的输入值转为数值类型
+	.trim
+		自动过滤用户输入的首尾空白字符
+在组件上使用 v-model
+	Vue 的组件系统允许你创建具有完全自定义行为且可复用的输入组件。
+	这些输入组件甚至可以和 v-model 一起使用。
+	...
+		

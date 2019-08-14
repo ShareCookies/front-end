@@ -1,0 +1,13 @@
+＂Uncaught SyntaxError: Unexpected token <＂：
+	解决方案：
+		我的情况就是代码有误，可能js，css，vue等。
+		划分为一块块，慢慢切，找出问题区域。
+Vue Cannot read property 'xxx' of undefined：
+	https://blog.csdn.net/jiangshanwe/article/details/86499898
+	原因：
+		就是属性未定义，注意不是未赋值，而是根本就没声明。
+	出现情况:
+		1.属性未声明，就使用了。
+		2.异步加载的对象，未加载完成就使用了对象的属性，但此时对象为undefined
+		
+		

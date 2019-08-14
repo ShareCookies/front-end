@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"></meta>
+<title>待测</title>
+	<style type="text/css">
+		@import url();
+	</style>
+</head>
+<body>
+	<div id="example">
+	  <p>Original message: "{{ message }}"</p>
+	  <p>Original message2: "{{ message2 }}"</p>
+	  <p>Computed reversed message: "{{ reversedMessage }}"</p>
+	</div>
+	
+	<script  src="../Vue2.6.8.js"></script>
+	<script type="text/javascript" > 
+		var vm = new Vue({
+		  el: '#example',
+		  data: {
+			message: 'Hello',
+			message2: '222',
+			//reversedMessage:'test' 
+		  },
+		  //computed计算属性，就是一种属性。
+		  //但他有一下特点：1.要用一个方法来定义一个计算属性2.计算属性的调用跟普通属性一样（就是跟data属性一样）3.当计算属性中使用的普通属性值改变时，计算属性就会被调用以便重新计算，计算属性的值
+		  //注：当计算属性与属性冲突时，属性优先
+		  computed: {
+			// 仅读取
+			reversedMessage: function () {
+			  // `this` 指向 vm 实例
+			  return this.message.split('').reverse().join('')+this.message2;
+			}
+		  }
+		})
+		/**
+		控制台调用vue实例的属性：
+			例：
+				console.log(vm.reversedMessage) // => 'olleH'
+				vm.message = 'Goodbye'
+				console.log(vm.reversedMessage) // => 'eybdooG'
+		1.Vue 知道 vm.reversedMessage 依赖于 vm.message，因此当 vm.message 发生改变时，所有依赖 vm.reversedMessage 的绑定也会更新。		！
+		*/
+	</script>
+</body>
+
+</html>
+
+
+
+
+？？？
+	Computed property "route" was assigned to but it has no setter
+	一个计算属性，如果没有设置 setter,也就是传入的是一个函数，或者传入的对象里没有 set 属性，当你尝试直接该改变这个这个计算属性的值，都会报这个错误。
+
+	isUpdate () {
+		return !!this.form.id;
+    },
+			
+	tabs:  {
+	  get: function () {
+		return this.$store.state.tabList.tabs
+	  },
+	  set: function (newValue) {
+		this.$store.state.tabList.tabs = newValue
+	  }
+	},

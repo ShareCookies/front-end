@@ -1,0 +1,4 @@
+https://blog.csdn.net/qq_36838191/article/details/80934948
+
+vue文档的API中查看完整的实例属性和方法：
+	https://cn.vuejs.org/v2/api/#%E5%AE%9E%E4%BE%8B%E5%B1%9E%E6%80%A7

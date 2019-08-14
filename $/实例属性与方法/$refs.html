@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"></meta>
+<title></title>
+	<script  src="./Vue2.6.8.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text" ref="input1"/>
+	</div>
+	<script type="text/javascript" > 
+		new Vue({
+			el: "#app",
+			data :{
+				href : "href中的href",
+				url : "data中的url"
+			},
+			mounted: function () {
+				console.log(this.$refs.input1);//组件中访问子元素实例
+			}
+		})
+	</script>
+</body>
+
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"></meta>
+<title>vue实例methods测试。$refs简易运用。指令缩写。</title>
+	<style type="text/css">
+		@import url();
+	</style>
+	<script  src="../Vue2.6.8.js"></script>
+</head>
+<body>
+	<div id="app">
+		<input type="text" ref="input1"/>
+		<button @click="add">添加</button>
+		<br/>
+		<a v-bind:href="url" >...</a>
+		<button @click="getData">读取vue实例的url值</button>
+		<!--
+			指令 (Directives) 是带有 v- 前缀的特殊特性。
+			v-bind 指令：
+				简写：
+					:href="url" 
+				用法：
+					1.可以用于响应式地更新 HTML 特性。
+					2.一些指令能够接收一个“参数”，在指令名称之后以冒号表示。
+					<a v-bind:href="url">...</a>
+					在这里 href 是参数，告知 v-bind 指令将该元素的 href 特性与vue实例 url 的值绑定。
+					hcg：
+						即把a标签的href属性赋值为，指定vue实例的url值
+			v-on 指令：
+				简写：
+					@click="doSomething"
+				标准：
+					v-on:click="doSomething"
+				用法：
+					v-on指令,用来绑定事件的.
+					hcg：即把button标签的点击事件绑定到，指定vue实例方法属性的指定方法。			
+		-->
+	</div>
+
+
+	<script type="text/javascript" > 
+		
+		new Vue({
+			el: "#app",
+			data :{
+				href : "href中的href",
+				url : "data中的url"
+			},
+			methods:{
+				add:function(){
+						this.$refs.input1.value ="22"; //this.$refs.input1  减少获取dom节点的消耗
+				},
+				getData : function(){
+					console.log("url:"+this.url);
+					console.log("href:"+this.href);
+				}
+			}
+
+		})
+		/**
+			$refs简易运用：
+			https://www.cnblogs.com/xueweijie/p/6907676.html
+			一般来讲，获取DOM元素，需document.querySelector（".input1"）获取这个dom节点，然后在获取input1的值。
+			但是用ref绑定之后，我们就不需要在获取dom节点了，直接在上面的input上绑定input1，然后$refs里面调用就行。
+			然后在javascript里面这样调用：this.$refs.input1  这样就可以减少获取dom节点的消耗了
+		
+			注：
+				$refs包含了vue绑定的dom。this.$refs就是获得当前dom
+		*/
+	</script>
+</body>
+
+</html>
