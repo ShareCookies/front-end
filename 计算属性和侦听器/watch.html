@@ -39,6 +39,18 @@
 		 // this.debouncedGetAnswer()？
 		}
 	  },
+	  /*
+	    watch: {
+			docId: {
+				handler (value) {
+					this.docId = value;
+					console.log(value);
+					console.log(this.docId);
+				},
+				immediate: true
+			}
+        },
+		*/
 	  created: function () {
 		this.debouncedGetAnswer = _.debounce(this.getAnswer, 500)// `_.debounce` 是一个通过 Lodash 限制操作频率的函数。请参考：https://lodash.com/docs#debounce
 	  },
