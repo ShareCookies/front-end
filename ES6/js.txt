@@ -1,0 +1,16 @@
+						函数参数赋值访问到了全局变量：
+							var x = 1;
+							function f(y = x) {
+							  var x = 2;
+							  console.log(y);
+							}
+							f();
+						函数内部能访问到全局变量：
+							var d = 1;
+							function f(x, y) {
+							  console.log(d);
+							}
+							f();
+							//注：如果案例中d全改为x，那么输出undefined。因为函数内x替换掉了全局变量x
+						类,中能访问到全局变量：
+							var para=222;var entity={p:para};console.log(entity);

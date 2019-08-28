@@ -1,0 +1,35 @@
+前景：
+	ES5 的对象属性名都是字符串，这容易造成属性名的冲突。
+	如果为这个对象添加新的方法（mixin 模式），可能造成属性名的冲突。
+	
+介绍：
+	ES6 引入了一种新的原始数据类型Symbol，表示独一无二的值。
+	它是 JavaScript 语言的第七种数据类型。
+	前六种是：undefined、null、布尔值（Boolean）、字符串（String）、数值（Number）、对象（Object）。
+例：
+	1.Symbol 值通过Symbol函数生成。
+	let s = Symbol();
+	typeof s
+	// "symbol"
+	2.表示独一无二的值
+	var t1=Symbol('1');var t2=Symbol('1');
+	let a = {a:1,a:2};a[t1]=1;a[t2]=2;//注***：a.t1=1;a.t2=2; 这种写法会把t1当作字符串 { a: 2, t1: 1, t2: 2 } 
+	// { a: 2, Symbol(1): 1, Symbol(1): 2 }
+	解析：
+		属性名为a的重叠了，而symbol不会
+	
+特性：
+	symbol参数：
+		
+		字符串
+				Symbol函数可以接受一个字符串作为参数，表示对 Symbol 实例的描述。
+				主要是为了在控制台显示，或者转为字符串时，比较容易区分。
+		对象
+symbol属性名的遍历：
+	Symbol 作为属性名，该属性不会出现在for...in、for...of循环中，也不会被Object.keys()、Object.getOwnPropertyNames()、JSON.stringify()返回。
+	但是，它也不是私有属性，有一个Object.getOwnPropertySymbols方法，可以获取指定对象的所有 Symbol 属性名。
+	例：
+		const objectSymbols = Object.getOwnPropertySymbols(obj);
+		// [Symbol(a), Symbol(b)]
+Symbol.for()，Symbol.keyFor():
+	

@@ -1,0 +1,7 @@
+http://www.runoob.com/nodejs/nodejs-install-setup.html
+windows安装：
+	64 位安装包下载地址 : https://nodejs.org/dist/v10.15.3/node-v10.15.3-x64.msi
+	验证是否安装成功:
+		cmd中输入node --version
+	注:
+		windows安装包一般会自己就配置系统环境变量

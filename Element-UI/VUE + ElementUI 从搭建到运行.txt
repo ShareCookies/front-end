@@ -1,0 +1,76 @@
+https://www.cnblogs.com/wenjunwei/p/9684706.html
+
+1.安装nodejs。
+	注：安装nodejs是为了使用，nodejs的npm包管理工具。
+2.更改npm镜像：
+	国内太慢
+	
+	例：
+		更该镜像，以后用cnpm这个命令就会从指定镜像中下载依赖。（cnpm等价于npm）
+		npm install -g cnpm --registry=https://registry.npm.taobao.org 
+		
+3.安装vue脚手架
+	npm install vue-cli -g
+	
+4.创建vue项目：
+		
+		vue create hello-world	
+		或!
+			vue init webpack-simple demo1 //创建一个简单的项目
+5.vue结合element-ui：
+	https://www.cnblogs.com/oukele/p/9997525.html
+	使用npm安装element-ui：
+		npm i element-ui -S
+		导入的是包还是什么！
+	在vue项目的main.js中导入element-ui：
+		...
+	注：
+		1.可在项目/package.json文件中，查看vue是否结合element-ui成功。
+		2.项目\public\下，可进行页面的编辑。
+		
+		
+		
+
+		
+vue是什么：
+	https://segmentfault.com/q/1010000006170385
+运行vuejs为啥要用到以下命令：
+	cnpm install //引入项目依赖
+	npm run serve //运行
+		或npm run dev 它们的区别？
+		
+		dev缺失解决方案：
+			报错原因 
+				package.json 里面没有 “scripts”: {“dev”: “xxx”} 这段了。
+			方式1.：
+				cnpm install webpack -g 然后再 vue init webpack 项目名
+				再cnpm intall 安装依赖，最后 cnpm run dev即可
+			方式2.
+				https://blog.csdn.net/dt1991524/article/details/82985570
+				package.json 加上  "scripts": {"dev": "..."｝
+				再cnpm intall 安装依赖，最后 cnpm run dev即可
+
+为啥 element-ui 要运行在nodejs：
+	首先vuejs可以不运行在nodejs上，可以只运行在浏览器上。
+	接着Element UI的运行要依赖vuejs，但是它们结合后我暂时又只能运行在nodejs上。
+	但我觉得它们是不依赖与nodejs的，因为：
+			只在浏览器上单独使用Element UI的Tree树形控件：https://blog.csdn.net/x_lord/article/details/70161195
+			这篇文章就可以单独把和tree组件相关的内容，从element-ui..css和element-ui..js中剥离出来，
+			然后tree组件就可以配合vue使用了。
+	注：
+		但是现在的前后端分离一般都是，以nodejs作为前端服务器，
+		通过vue在与后端交互传输数据，在跟客户端进行交互。
+		
+	待定：
+		要用端口地址才能访问到，是不是因为用了webpack。
+		（但我没安装啊，是不是因为nodejs自带了webpack打包功能。）
+		为啥有些项目 提示缺失dev 有些不会？
+前端服务器如何与后端交互：
+	...?
+npm安装webpack ：
+	全局安装：npm install webpack -g
+	本地安装：？
+	卸载：
+		在全局下删除    npm  uninstall  webpack  -g
+         注：
+			最好将项目目录下的node-modules一起删除，否则会有残留文件影响下一次的结果。

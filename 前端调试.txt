@@ -1,0 +1,5 @@
+js:
+	debugger;
+vs code集成的调试：
+	https://cn.vuejs.org/v2/cookbook/debugging-in-vscode.html
+	https://www.cnblogs.com/xifengxiaoma/p/9530737.html

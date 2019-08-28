@@ -1,0 +1,39 @@
+介绍：
+	ES2017 标准引入了 async 函数，使得异步操作变得更加方便。
+	async 函数是 Generator 函数的语法糖。
+
+async特性：
+	1.async函数返回的 Promise 对象，必须等到内部所有await命令后面的 Promise 对象执行完，才会发生状态改变，除非遇到return语句或者抛出错误。
+	也就是说，只有async函数内部的异步操作执行完，才会执行then方法指定的回调函数。
+例：
+	const asyncReadFile = async function () {
+		await readFile('/etc/fstab');
+	};
+	
+await 命令：
+	命令后的异步操作：
+		await命令后面是一个 Promise 对象，返回该对象的结果。
+			任何一个await语句后面的 Promise 对象变为reject状态，那么整个async函数都会中断执行。
+			希望不中断后面的异步操作。可以将await放在try...catch结构里面
+		await命令后面是原始类型的值，就直接返回对应的值。?
+			例：
+				async function test() {
+					await 111;//要加return 才会接收到值
+					//await 222;
+					//多个await的话会返回那个await的值；
+				};
+				test().then(v=>{console.log(v)});
+		await命令后面是一个thenable对象（即定义then方法的对象），那么await会将其等同于 Promise 对象。
+	注意事项：
+		await命令只能用在async函数之中。
+		多个await命令后面的异步操作，如果不存在继发关系，最好让它们同时触发。
+			let foo = await getFoo();
+			let bar = await getBar();
+			上面代码中，getFoo和getBar是两个独立的异步操作（即互不依赖），被写成继发关系。
+async函数对 Generator 函数的改进，体现在以下四点：
+	1.内置执行器。
+	2.更好的语义。
+	3.更广的适用性。
+		async函数的await命令后面，可以是 Promise 对象和原始类型的值（数值、字符串和布尔值，但这时会自动转成立即 resolved 的 Promise 对象）。
+	4.返回值是 Promise。
+错误处理开始........

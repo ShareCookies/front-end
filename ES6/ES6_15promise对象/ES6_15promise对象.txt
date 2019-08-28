@@ -1,0 +1,104 @@
+http://es6.ruanyifeng.com/#docs/promise
+介绍：
+	Promise 是异步编程的一种解决方案。ES6 将其写进了语言标准，提供了Promise对象。
+	所谓Promise，简单说就是一个容器，里面保存着某个未来才会结束的事件的结果。
+	从语法上说，Promise 是一个对象，从它可以获取异步操作的消息。
+作用：
+	1.有了Promise对象，就可以将异步操作以同步操作的流程表达出来，避免了层层嵌套的回调函数。
+	2.Promise对象提供统一的接口，异步操作都可以用同样的方法进行处理，使得控制异步操作更加容易。
+
+
+特点：
+	Promise对象，代表一个异步操作，有三种状态：pending（进行中）、fulfilled（已成功）和rejected（已失败）。
+	对象的状态不受外界影响，只有异步操作的结果，可以决定当前是哪一种状态，任何其他操作都无法改变这个状态。
+	Promise对象的两种状态改变情况：从pending变为fulfilled和从pending变为rejected。
+	
+基本用法：
+	介绍：
+		Promise构造函数接受一个函数作为参数，该函数的两个参数分别是resolve和reject。
+		它们是两个函数，由 JavaScript 引擎提供，不用自己部署。？js是如何为函数参数，提供参数的
+	Promise对象的状态：
+		Promise对象有三个状态，使用resolve和reject函数改变Promise对象状态。
+		未完成 pending 
+		成功 resolved
+		失败 rejected
+	resolve函数：
+		resolve函数的作用是，将Promise对象的状态从“未完成”变为“成功”，并可返回一值。
+		通常在异步操作成功时调用该函数，并将异步操作的结果，作为参数传递出去。
+	reject函数：
+		reject函数的作用是，将Promise对象的状态从“未完成”变为“失败”，并可返回一值。
+		通常在异步操作失败时调用该函数，并将异步操作报出的错误，作为参数传递出去。
+		注：
+			1.调用resolve或reject并不会终结 Promise 的参数函数的执行。
+			例：
+				let p=new Promise((resolve, reject) => {
+					let valid = true;
+					if (valid) {
+						let fv=1;
+						resolve(fv);//调用完这个后面的还会继续执行
+						fv=6;
+						console.log(66);//66会比Contents: 1先出来，因为立即 resolved 的 Promise 是在本轮事件循环的末尾执行，总是晚于本轮循环的同步任务！。
+					} else {
+						reject(22);
+					}
+                });
+				p.then(function(json) {
+				  console.log('Contents: ' + json);
+				}, function(message) {
+				  console.log(message);
+				});
+	then函数：
+		then方法作用是为 Promise 实例添加状态改变时的回调函数。
+		then方法的第一个参数是resolved状态的回调函数，第二个参数（可选）是rejected状态的回调函数。
+		当promise的状态改变后，then方法对应的参数形函数就会被触发。
+		注：
+			1.then方法可只传一个参数，即：只为promise设置异步成功后的回调函数。
+			2.如果未设置promise对象的回调函数，谷歌console会进行提示。
+	例：
+		Promise实例：
+			let p=new Promise((resolve, reject) => {
+				let valid = false;
+				if (valid) {
+					resolve(11);
+				} else {
+					reject(22);
+				}
+			});
+			p.then(function(json) {
+			  console.log('Contents: ' + json);
+			}, function(message) {
+			  console.log(message);
+			});
+			for(var i=0;i<10;i++){
+				console.log(111111);
+			}
+		注：
+			1.promise对象的执行是放到最后的。
+	
+		Promise对象实现的 Ajax 操作的例子：
+			const getJSON = function(url) {
+			  const promise = new Promise(function(resolve, reject){
+				const handler = function() {
+				  if (this.readyState !== 4) {
+					return;
+				  }
+				  if (this.status === 200) {
+					resolve(this.response);
+				  } else {
+					reject(new Error(this.statusText));
+				  }
+				};
+				const client = new XMLHttpRequest();
+				client.open("GET", url);
+				client.onreadystatechange = handler;
+				client.responseType = "json";
+				client.setRequestHeader("Accept", "application/json");
+				client.send();
+			  });
+			  return promise;
+			};
+			getJSON("/posts.json").then(function(json) {
+			  console.log('Contents: ' + json);
+			}, function(error) {
+			  console.error('出错了', error);
+			});
