@@ -1,0 +1,8 @@
+element验证：       
+	:rules="rules"
+	rules: {
+		subject: [
+			{ type: 'string', required: true, message: '请填写该字段' },
+			{ type: 'string', max: 128, message: '长度不能超过128个字符' }
+		],
+	}

@@ -61,3 +61,8 @@
 		watch.html
 、	注：
 		除了 watch 选项之外，您还可以使用命令式的 vm.$watch API。！
+		
+	watch实战：
+		1.关于 vue 不能 watch 数组变化 和 对象变化的解决方案
+			https://www.cnblogs.com/ainyi/p/9722961.html
+			https://blog.csdn.net/qq_17757973/article/details/78721553
