@@ -67,6 +67,7 @@ vue是什么：
 		为啥有些项目 提示缺失dev 有些不会？
 前端服务器如何与后端交互：
 	...?
+	axios
 npm安装webpack ：
 	全局安装：npm install webpack -g
 	本地安装：？

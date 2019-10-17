@@ -34,7 +34,16 @@ yarn ：
 	https://blog.csdn.net/yw00yw/article/details/81354533
 	
 	yarn config set registry  http://192.168.210.139:8081/repository/npm-public/
-	yarn config set sass_binary_site http://npm.taobao.org/mirrors/node-sass
+	yarn config set sass_binary_site http://npm.taobao.org/mirrors/node-sass  //配置 node-sass 的二进制包镜像地址,便于node-sass的下载
 	yarn 首次发布无权限：
 		yarn run login
 		npm npm
+	yarn设置镜像源：
+		镜像源：
+			yarn的下载依赖包的仓库地址
+		1、查看一下当前源
+		yarn config get registry
+		2、切换为淘宝源
+		yarn config set registry https://registry.npm.taobao.org
+		3、或者切换为自带的
+		yarn config set registry https://registry.yarnpkg.com
