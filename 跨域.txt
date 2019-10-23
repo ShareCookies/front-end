@@ -1,0 +1,20 @@
+跨域：
+	同源策略（Sameoriginpolicy）浏览器最基本的安全功能。
+	同源策略会阻止一个域的javascript脚本和另外一个域的内容进行交互。
+	注：
+		同源:具有相同的协议（protocol），主机（host）和端口号（port）
+解决方案：
+	1，2：
+		https://blog.csdn.net/qq_38128179/article/details/84956552
+	jsonnp：
+		https://blog.csdn.net/hansexploration/article/details/80314948
+	CORS：
+		https://segmentfault.com/a/1190000017149446
+		CORS是一个W3C标准，全称是"跨域资源共享"（Cross-origin resource sharing）。
+		它允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。
+		hcg：
+			前端还是正常的ajax请求，只是后端设置为允许任何域名跨域访问。
+	
+	Nginx代理：
+		hcg：
+			访问代理，然后由代理再去请求数据

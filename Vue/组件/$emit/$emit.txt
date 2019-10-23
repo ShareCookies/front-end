@@ -8,13 +8,16 @@ $on实例方法:
 		一般用在mounted中
 		
 v-on指令：
+	https://cn.vuejs.org/v2/api/#v-on
 	介绍：
 		用在普通元素上时，只能监听原生 DOM 事件。
 		用在自定义元素组件上时，也可以监听子组件触发的自定义事件。
 	例：
 		template :'<child-component  @showCityName="updateCity" ></child-component>',//用在自定义元素组件上
+		子组件可以通过调用内建的 $emit 方法 并传入事件名称来触发一个事件：this.$emit('updateCity',true);
 
 注：
+	https://cn.vuejs.org/v2/guide/components.html#%E7%9B%91%E5%90%AC%E5%AD%90%E7%BB%84%E4%BB%B6%E4%BA%8B%E4%BB%B6
 	$emit 配合 v-on 使用，一般用来子组件调用父组件的方法。
 	$emit 配合 $on 使用,一般用来调用组件自身的方法。
 	$emit 配合 v-on和 $on 使用，即调用自身又调用父组件。
@@ -31,24 +34,24 @@ v-on指令：
         });
     }
 	
-	        /**
-             * 调用父组件的方法
-             */
-            handleParentAttFile: function () {
-                // 子组件中触发父组件方法ee并传值cc12345
-                this.$emit('getAllAttFile');
-            },
-            /**
-             * 附件数据改变触发回调方法
-             */
-            attChangeCallback: function () {
-                if (this.moduleParam.attChangeCallback && this.moduleParam.attChangeCallback.length > 0) {
-                    this.moduleParam.attChangeCallback.forEach(value => {
-                        //console.log(value);
-                        this.bus.$emit(value);//这里为啥可以直接写this.bus
-                    });
-                }
-            }
+	/**
+	 * 调用父组件的方法
+	 */
+	handleParentAttFile: function () {
+		// 子组件中触发父组件方法ee并传值cc12345
+		this.$emit('getAllAttFile');
+	},
+	/**
+	 * 附件数据改变触发回调方法
+	 */
+	attChangeCallback: function () {
+		if (this.moduleParam.attChangeCallback && this.moduleParam.attChangeCallback.length > 0) {
+			this.moduleParam.attChangeCallback.forEach(value => {
+				//console.log(value);
+				this.bus.$emit(value);//这里为啥可以直接写this.bus
+			});
+		}
+	}
 			
 	
 注：
