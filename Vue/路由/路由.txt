@@ -3,34 +3,15 @@
 	例：
 		58xuejia  139.199...
 从零开始简单的路由：
-	如果只需要非常简单的路由而不需要引入整个路由库，可以动态渲染一个页面级的组件像这样：
+	https://cn.vuejs.org/v2/guide/routing.html
+vue-router官方路由:
+	https://router.vuejs.org/zh/。
+	使用Vue Router 让构建单页面应用变得易如反掌。
+	hcg:
+		在一个单页面中进行多个页面的反复切换加载，不用重新发起请求，只是路由把当前页面加载为另一个组件。
+	例子：
+		./VueStart.html
 
-		const NotFound = { template: '<p>Page not found</p>' }
-		const Home = { template: '<p>home page</p>' }
-		const About = { template: '<p>about page</p>' }
-
-		const routes = {
-		  '/': Home,
-		  '/about': About
-		}
-
-		new Vue({
-		  el: '#app',
-		  data: {
-			currentRoute: window.location.pathname
-		  },
-		  computed: {
-			ViewComponent () {
-			  return routes[this.currentRoute] || NotFound
-			}
-		  },
-		  render (h) { return h(this.ViewComponent) }
-		})
-		结合 HTML5 History API，你可以建立一个非常基本但功能齐全的客户端路由器。
-官方路由:
-	vue-router 文档,https://router.vuejs.org/zh/。
-	使用 vue-router 的路由"
-	
 vue路由：
 	https://www.cnblogs.com/avon/p/5943008.html
 	vue-router是Vue.js官方的路由插件，它和vue.js是深度集成的。

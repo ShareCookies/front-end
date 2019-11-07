@@ -7,3 +7,20 @@ vue中父组件传值给子组件，父组件值改变，子组件不能重新�
 子组件修改prop值与父组件同步：
 	.sync
 	https://www.jianshu.com/p/6b062af8cf01
+	
+	prop的type值：
+		https://cn.vuejs.org/v2/guide/components-props.html#%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5
+组件重新渲染：
+	https://blog.csdn.net/lpw_cn/article/details/90404117
+	
+	v-if重新渲染：
+		https://blog.csdn.net/Vivi900911/article/details/84529007
+		例：
+			this.notRefreshComponent = false;
+			this.$nextTick(() => {
+				this.notRefreshComponent = true;
+			});
+                           
+	key重新渲染：
+		
+	
