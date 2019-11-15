@@ -1,35 +1,54 @@
-执行 GET 请求时
-	// 为给定 ID 的 user 创建请求
-	axios.get('/user?ID=12345')
-	  .then(function (response) {
-		console.log(response);
-	  })
-	  .catch(function (error) {
-		console.log(error);
-	  });
+axios中文网：http://www.axios-js.com/
+前言：
+	因为 AJAX 库和通用工具的生态已经相当丰富，Vue 核心代码没有重复 
+	ajax库推荐：axios.js
+	通用工具推荐：lodash
+		Lodash：一个意在提高开发者效率,提高JS原生方法性能的JS原生库，使用Lodash不需要引入其他第三方依赖。
+安装方式之一：
+	npm install --save axios 
 
-	// 可选地，上面的请求可以这样做
-	axios.get('/user', {
-		params: {
-		  ID: 12345
-		}
-	  })
-	  .then(function (response) {
-		console.log(response);
-	  })
-	  .catch(function (error) {
-		console.log(error);
-	  });
-执行 POST 请求：
-	axios.post('/user', {
-		firstName: 'Fred',
-		lastName: 'Flintstone'
-	  })
-	  .then(function (response) {
-		console.log(response);
-	  })
-	  .catch(function (error) {
-		console.log(error);
-	  });
-执行多个并发请求
+	全局引用：
+	import Axios from 'axios'
+	Vue.prototype.$axios=Axios //将axios全局挂载到VUE原型上。2.Vue.use(VueAxios,axios);
+
+axios案例：
+		this.$axios.get('/user', {
+			params: {
+			  ID: 12345
+			}
+		}).then((response)=>{
+			console.log(response);
+		}).catch((error)=>{
+			console.log(error);
+		});
+
+		this.$axios.post('/user', {
+			firstName: 'Fred',
+			lastName: 'Flintstone'
+		}).then((response)=>{
+			console.log(response);
+		}).catch((error)=>{
+			console.log(error);
+		});
+		
+		this.$axios({
+		  method: 'post',
+		  url: '/user/12345',
+		  data: {
+			firstName: 'Fred',
+			lastName: 'Flintstone'
+		  }
+		});
+	...
+axios跨域：
+	https://blog.csdn.net/dadiyang/article/details/80289956
+		cors解决跨域，只需设置后端不用设置前端吧！
+	
+	使用axios跨域访问数据：
+	https://www.cnblogs.com/snowhite/p/7872503.html
+	https://blog.csdn.net/dadiyang/article/details/80289956
+	https://blog.csdn.net/xshsjl/article/details/82998470
+	https://blog.csdn.net/fdipzone/article/details/46390573/
+
+
 

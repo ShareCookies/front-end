@@ -2,7 +2,8 @@
 	同源策略（Sameoriginpolicy）浏览器最基本的安全功能。
 	同源策略会阻止一个域的javascript脚本和另外一个域的内容进行交互。
 	注：
-		同源:具有相同的协议（protocol），主机（host）和端口号（port）
+		1.如何算同源:具有相同的协议（protocol），主机（host）和端口号（port）
+		2.非同源的请求后端是能接收到了请求并返回响应，但浏览器对会因为同源策略，而对非同源请求返回的结果进行拦截。
 解决方案：
 	1，2：
 		https://blog.csdn.net/qq_38128179/article/details/84956552
@@ -12,8 +13,8 @@
 		https://segmentfault.com/a/1190000017149446
 		CORS是一个W3C标准，全称是"跨域资源共享"（Cross-origin resource sharing）。
 		它允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。
-		hcg：
-			前端还是正常的ajax请求，只是后端设置为允许任何域名跨域访问。
+		注：
+			前端无需任何修改，只要后端设置一下即可。
 	
 	Nginx代理：
 		hcg：

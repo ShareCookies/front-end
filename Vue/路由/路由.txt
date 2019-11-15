@@ -4,14 +4,6 @@
 		58xuejia  139.199...
 从零开始简单的路由：
 	https://cn.vuejs.org/v2/guide/routing.html
-vue-router官方路由:
-	https://router.vuejs.org/zh/。
-	使用Vue Router 让构建单页面应用变得易如反掌。
-	hcg:
-		在一个单页面中进行多个页面的反复切换加载，不用重新发起请求，只是路由把当前页面加载为另一个组件。
-	例子：
-		./VueStart.html
-
 vue路由：
 	https://www.cnblogs.com/avon/p/5943008.html
 	vue-router是Vue.js官方的路由插件，它和vue.js是深度集成的。
@@ -25,4 +17,40 @@ vue路由：
 	注：
 		传统的页面应用，是用一些超链接来实现页面切换和跳转的。
 		单页面应用？
-	
+vue-router官方路由:
+	https://router.vuejs.org/zh/。
+	使用Vue Router 让构建单页面应用变得易如反掌。
+	hcg:
+		在一个单页面中进行多个页面的反复切换加载，不用重新发起请求，只是路由把当前页面加载为另一个组件。
+	例子：
+		./VueStart.html
+vue-router的使用：
+	I. 
+		1.导入并安装vue-router
+			import VueRouter from 'vue-router'
+			Vue.use(VueRouter)
+			注：
+				vue-router与vue深度集成所以无需进行npm安装。
+		2.导入并应用路由映射规则
+			路由映射规则：
+				
+			应用路由映射规则：
+				import routes from './routes';//导入路由映射规则。
+				const router = new VueRouter({
+				  routes
+				})
+				new Vue({
+				  router,
+				  render: h => h(App),
+				})
+		3.路由的使用：
+			1.使用路由标签来规定路由对应组件的渲染位置。
+				<router-view></router-view>
+			2.跳转
+				1.通过标签：
+					<!-- 使用 router-link 组件来导航. -->
+					<!-- 通过传入 `to` 属性指定链接. -->
+					<!-- <router-link> 默认会被渲染成一个 `<a>` 标签 -->
+					<router-link to="/foo">Go to Foo</router-link>
+				2.通过路由实例：
+					this.$router.push('/login');

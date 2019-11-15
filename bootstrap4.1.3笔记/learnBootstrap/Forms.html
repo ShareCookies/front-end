@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bootstrap Forms</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">
+  </head>
+  <body>
+
+<div class="container">
+  <h2>Vertical (basic) form</h2>
+	<p>
+	Form controls automatically receive some global styling with Bootstrap:
+	All textual <\input>, <\textarea>, and <\select> elements with class .form-control have a width of 100%.
+	</p>
+	<p>
+	Standard rules for all three form layouts:
+	Always use <\form role="form"> (helps improve accessibility for people using screen readers)
+	Wrap labels and form controls in <\div class="form-group"> (needed for optimum spacing 需要最佳间距)
+	Add class .form-control to all textual <\input>, <\textarea>, and <\select> elements
+	</p>
+  <form role="form">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox"> Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+
+<div class="container">
+  <h2>Inline form</h2>
+	<p>Note: This only applies to forms within viewports that are at least 768px wide!
+	这仅适用于至少76px宽的视口内的表单！
+	Additional rule for an inline form:
+	Add class .form-inline to the <\form> element
+	</p>
+  <p>Make the viewport larger than 768px wide to see that all of the form elements are inline, left aligned, and the labels are alongside.</p>  
+  <form class="form-inline" role="form">
+    <div class="form-group">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox"> Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+
+<div class="container">
+  <h2>Inline form with .sr-only class</h2>
+  <p>Tip: If you don't include a label for every input, screen readers will have trouble with your forms. 
+  You can hide the labels for all devices, except screen readers, by using the .sr-only class:</p>
+  <form class="form-inline" role="form">
+    <div class="form-group">
+      <label class="sr-only" for="email">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Enter email">
+    </div>
+    <div class="form-group">
+      <label class="sr-only" for="pwd">Password:</label>
+      <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+    </div>
+    <div class="checkbox">
+      <label><input type="checkbox"> Remember me</label>
+    </div>
+    <button type="submit" class="btn btn-default">Submit</button>
+  </form>
+</div>
+
+
+<div class="container">
+  <h2>Horizontal form!!!</h2>
+  <p>
+	A horizontal form stands apart from the other forms both in the amount of markup, and in the presentation of the form.
+	水平形式与其他形式在标记的数量和表单的呈现上都是分开的。
+	Additional rules for a horizontal form:
+	Add class .form-horizontal to the <\form> element
+	Add class .control-label to all <\label> elements
+	Tip: Use Bootstrap's predefined grid classes to align labels and groups of form controls in a horizontal layout.
+  </p>
+  <form class="form-horizontal" role="form">
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="email">Email:</label>
+      <div class="col-sm-10">
+        <input type="email" class="form-control" id="email" placeholder="Enter email">
+      </div>
+    </div>
+    <div class="form-group">
+      <label class="control-label col-sm-2" for="pwd">Password:</label>
+      <div class="col-sm-10">          
+        <input type="password" class="form-control" id="pwd" placeholder="Enter password">
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <div class="checkbox">
+          <label><input type="checkbox"> Remember me</label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">        
+      <div class="col-sm-offset-2 col-sm-10">
+        <button type="submit" class="btn btn-default">Submit</button>
+      </div>
+    </div>
+  </form>
+</div>
+
+    <script src="../jquery-3.3.1.min.js"></script>
+    <script src="../js/bootstrap.min.js"></script>
+ </body>
+</html>

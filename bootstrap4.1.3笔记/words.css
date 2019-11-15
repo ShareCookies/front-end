@@ -1,0 +1,48 @@
+.title-info{
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+/* 单词*/
+	.english-word{
+		border-top-right-radius: 0;
+		border-bottom-right-radius: 0;
+	}
+
+	.chinese-word{
+		border-top-left-radius: 0;
+		border-bottom-left-radius: 0;
+	}
+	.input-group-append>span{/*class选择器+子选择器+标签选择器*/
+		color: red;
+		/*background-color: #FFFFFF;*/
+		padding: 0;
+	}
+	span{
+		overflow: hidden;
+	}
+/* 单词*/
+
+/*圆形提交按钮*/
+	.fixed-btn{
+		cursor: pointer;
+		position:fixed;
+		right:80px;
+		bottom:80px;
+		width:80px;
+		height:80px;
+	}
+	.circleDiv{
+		background-color:#e9ecef;
+		border-radius:50%;
+		height:inherit;
+	}
+
+	.circleDiv span{
+		padding:0;
+		margin-top:25%;
+		margin-left: 5px;
+		font-size:40px;
+		color:rgb(67, 132, 245);
+	}
+/*圆形提交按钮*/

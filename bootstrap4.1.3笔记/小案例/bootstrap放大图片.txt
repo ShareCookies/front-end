@@ -1,0 +1,39 @@
+<div id="imgModal" class="modal fade bs-example-modal-lg "  tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" >
+  <div class="modal-dialog modal-lg" style="display: inline-block; width: auto;">
+    <div class="modal-content">
+     <img  id="imgInModalID" src="./test.jpg" >
+    </div>
+  </div>
+</div>
+
+
+<script>
+	$(function(){
+		  　　$('.img-thumbnail').on('click', function (e) {
+			document.getElementById('imgModal').style.textAlign='center'
+				//console.log($('#imgInModalID')[0].src);
+				$('#imgInModalID')[0].src=this.src;
+				
+				//当图太大时，重设modal样式
+				var img = new Image();
+			  img.src = this.src;
+			  var imgWidth = img.width;//真实的宽度
+			  var imgHeight = img.height;//真实的高度
+			  var ww = $(window).width();//当前浏览器可视宽度
+			  var wh = $(window).height();//当前浏览器可视宽度
+			  if(imgWidth>800){
+				$('#imgInModalID')[0].width=ww;
+				$('#imgInModalID')[0].height=imgHeight;
+				document.getElementById('imgModal').style.textAlign='';
+			  }
+			  
+			  $('#imgModal').modal('show');
+			  e.stopPropagation();
+		  　　});
+		  //关闭放大的图片
+		  $("#imgInModalID").click(function(){
+			  $('#imgModal').modal("hide");
+		  });
+		
+		});
+</script>

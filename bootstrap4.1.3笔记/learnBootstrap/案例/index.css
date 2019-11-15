@@ -1,0 +1,76 @@
+html, body{
+	width:100%;
+	height:100%;
+}
+body{
+	background-color:#77a42f;
+}
+nav{
+	background:#689600;
+}
+.navbar-nav *{
+	color:#b4cb67;
+}
+.navbar-nav a:hover{
+/* 	color:rgba(255, 255, 255, 0.75);
+ */
+	color: #ffffff; 
+}
+.navbar-dark .navbar-nav .nav-link:hover{
+    color: #ffffff; 
+}
+
+.full-screen-height{
+	/* height:100%; */
+}
+.english-subject-div{
+	margin-top:100px;
+}
+.subject-div{
+	margin-top:10px;
+}
+
+.row{
+	width:500px;
+}
+.row>div{
+	width:80px;
+	height:80px;
+	margin-right:5px;
+}
+.subject-fuction{
+	 cursor: pointer;
+	 background-color:#689600;
+	 text-align:center;
+}
+.subject-fuction:hover{
+	 background-color:#3e5900;
+}
+span{
+	padding: 9px 0 0 10px;
+	font-size: 15px;
+   text-align: left;
+   /* color: #ffffff; */
+}
+.icon span{
+	font-size: 32px;
+	color:#333;
+	padding-left:0px;
+	 /* color: #ffffff; */
+}
+.label span{
+	padding-left:0px;
+	color: #ffffff;
+}
+.fixed-btn{
+	position:fixed;
+	left:100px;
+	bottom:100px;
+	width:100px;
+	height:100px;
+}
+.circleDiv{
+	background-color:#ffffff;
+	border-radius:50%;
+	height:inherit;
+}

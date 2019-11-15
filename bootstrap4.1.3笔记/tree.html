@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Bootstrap 101 Template</title>
+	 <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet" media="screen">
+	<!-- 引入Bootstrap3的字体 -->
+	 <link href="./css/bootstrap3-font.css" rel="stylesheet">
+	 <!-- 引入依赖jquery的提示框 -->
+	 <link href="./jquery-confirm-master/css/jquery-confirm.css" rel="stylesheet">
+	<script src="jquery-3.3.1.min.js"></script><!--bootstrap的js依赖jQuery和Popper.js-->
+	<!--poper.js用于bootstrap的弹窗，提示，下拉框-->
+	<script src="popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+	<!--注：加入两个bootstrap文件, 你就可以开始用Bootstrap开发网站和应用程序了。-->
+	<!-- 引入依赖jquery的提示框 -->
+	<script src="./jquery-confirm-master/js/jquery-confirm.js"></script>
+
+
+<link rel="stylesheet" type="text/css" href="./style.css" />
+    <script type="text/javascript">
+　　$(function(){
+    　　$('.tree li:has(ul)').addClass('parent_li').find(' > span').attr('title', 'Collapse this branch');
+    　　$('.tree li.parent_li > span').on('click', function (e) {
+				console.log(e);console.log(this);
+       　　 var children = $(this).parent('li.parent_li').find(' > ul > li');
+        　　if (children.is(":visible")) {
+            　　children.hide('fast');
+            　　$(this).attr('title', 'Expand this branch').find(' > i').addClass(' glyphicon-plus-sign').removeClass(' glyphicon-minus-sign');
+        　　} else {
+            　　children.show('fast');
+            　　$(this).attr('title', 'Collapse this branch').find(' > i').addClass(' glyphicon-minus-sign').removeClass(' glyphicon-plus-sign');
+        　　}
+        　　e.stopPropagation();
+    　　});
+　　});
+    </script>
+  </head>
+  <body>
+
+<div class="tree">
+<div class=""  style="padding-left:40px;">
+
+  <button class="btn btn-primary" >新建</button>
+<!--   <button class="btn btn-primary" >修改</button>-->
+  <button class="btn btn-primary" >删除</button>
+  <button class="btn btn-primary" >查询</button>
+</div>
+        <ul>
+            <li>
+                <span><i class="glyphicon glyphicon-folder-open"></i> 顶级节点1</span> 
+				  <input class="position-static" type="radio" name="blankRadio" value="option1" >
+                <ul>
+                    <li>
+                        <span><i class="glyphicon glyphglyphicon glyphicon-minus-sign"></i> 一级节点1</span>
+							<input class="position-static" type="radio" name="blankRadio" value="option1" >
+                        <ul>
+                            <li>
+                                <span><i class="glyphicon glyphglyphicon glyphicon-leaf"></i> 二级节点1_1</span> 
+									<input class="position-static" type="radio" name="blankRadio" value="option1" >
+								</li>
+                        </ul>
+                    </li>
+                    <li>
+                        <span><i class="glyphicon glyphicon-minus-sign"></i> 一级节点2</span> <a href=""></a>
+                        <ul>
+                            <li>
+                                <span><i class="glyphicon glyphicon-leaf"></i>二级节点2_1</span> <a href=""></a>
+                            </li>
+                            <li>
+                                <span><i class="glyphicon glyphicon-minus-sign"></i> 二级节点2_2</span> <a href=""></a>
+                                <ul>
+                                    <li>
+                                        <span><i class="glyphicon glyphicon-minus-sign"></i>三级节点2_1</span> <a href=""></a>
+                                        <ul>
+                                            <li>
+                                                <span><i class="glyphicon glyphicon-leaf"></i>四级节点2_1</span> <a href=""></a>
+                                            </li>
+                                            <li>
+                                                <span><i class="glyphicon glyphicon-leaf"></i> 四级节点2_2</span> <a href=""></a>
+                                            </li>
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <span><i class="glyphicon glyphicon-leaf"></i>三级节点2_2</span> <a href=""></a>
+                                    </li>
+                                    <li>
+                                        <span><i class="glyphicon glyphicon-leaf"></i> 三级节点2_3</span> <a href=""></a>
+                                    </li>
+                                </ul>
+                            </li>
+                            <li>
+                                <span><i class="glyphicon glyphicon-leaf"></i>二级节点2_3</span> <a href=""></a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <span><i class="glyphicon glyphicon-folder-open"></i> 顶级节点2</span> <a href=""></a>
+                <ul>
+                    <li>
+                        <span><i class="glyphicon glyphicon-leaf"></i> 一级节点2_1</span> <a href=""></a>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+
+    <script type="text/javascript">
+        function test(){
+            var  radios = document.getElementsByName("blankRadio");
+            var  value = 0;
+            for(var i=0;i<radios.length;i++){
+                if(radios[i].checked == true){
+                    value = radios[i].value;
+                }
+            }
+            alert(value);
+        }
+
+  </body>
+</html>

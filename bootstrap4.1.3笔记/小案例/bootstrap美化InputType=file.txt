@@ -1,0 +1,16 @@
+例：
+	<div class="custom-file">
+	  <input id="file" type="file" class="custom-file-input"  lang="es">
+	  <label id="fileLabel" class="custom-file-label" for="file">选择文件</label>
+	</div>
+	<script>
+		var file=document.getElementById("file");
+		var fileLabel=document.getElementById("fileLabel");
+		file.onchange=function(){
+			console.log(this);
+			console.log(this.value);
+			console.log(this.files[0]);
+			console.log(this.files[0].name);
+			fileLabel.innerText=this.files[0].name;
+		}
+	</script>
