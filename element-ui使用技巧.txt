@@ -1,3 +1,43 @@
 表单的rules验证：
-	https://segmentfault.com/a/1190000012551362?utm_source=tag-newest
-	https://www.jianshu.com/p/d71dc34193b4
+	https://element.eleme.cn/#/zh-CN/component/form
+	表单验证步骤：
+		1.form表单绑定验证规则
+		2.
+			1.form表单绑定一个对象
+			2.子组件el-form-item的prop属性，要与验证规则对应上。
+		3.提交时调用表单组件的验方法
+			this.$refs.form.validate((valid) => {
+				if (valid) {
+					验证通过调用的方法。
+				}
+			});
+	验证规则：
+		常见验证：
+			https://www.jianshu.com/p/d71dc34193b4
+		正则：
+			https://segmentfault.com/a/1190000012551362?utm_source=tag-newest
+		自定义验证方法：
+			data () {
+				const checkPhone = (rule, value, callback) => {
+					const fixedPhone = /\d{3}-\d{8}|\d{4}-\d{7}/;
+					const mobilePhone = /^1[3|4|5|7|8][0-9]{9}$/;
+					if (!value || fixedPhone.test(value) || mobilePhone.test(value)) {
+						callback();
+					} else {
+						callback(new Error('请输入正确的号码'));
+					}
+				};
+				return {
+					rules: {
+						contactNum: [
+							{ validator: checkPhone, trigger: 'blur' }
+						]
+					}
+				};
+			},
+	附：
+		1.表单验证报错: [Element Warn][Form]model is required for validat
+		解决方案：
+			这是因为表单需要一个绑定一个对象
+			例子
+				:model="editform"
