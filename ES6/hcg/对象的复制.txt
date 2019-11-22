@@ -1,17 +1,19 @@
 引用传递：
+	传递的是变量的内存地址。
 	let obj1 = { a: 1, b: 2};
 	let b = obj1;
 	b.a=222222;
 	console.log(obj1);//{a: 222222, b: 2}
 	console.log(b);//{a: 222222, b: 2}
 值传递：
+	传递的是变量的拷贝。
 	let obj1 = 111;
 	let b = obj1;
 	b=222222;
 	console.log(obj1);//111
 	console.log(b);//222222
 浅拷贝：
-	浅拷贝即拷贝对象的属性是对象的话，那么对子对象的属性进行修改的话，会影响到原来的对象。
+	浅拷贝即拷贝变量的属性是对象的话，那么对子对象的属性进行修改的话，会影响到原来的变量。
 	1. 扩展运算符
 		https://blog.csdn.net/astonishqft/article/details/82899965
 		let source = { a: 1, b: {c1:2} ,c:{c1:666}};
@@ -22,7 +24,37 @@
 		target.c.c1 = 't3';//子对象的修改影响到源对像值
 		console.log(target);
 深拷贝：
-	即使拷贝对象的属性是对象，对子对象的属性进行修改的话，不会影响到原来的对象。
+	即使拷贝变量的属性是对象，对子对象的属性进行修改的话，不会影响到原来的变量。
+	https://www.cnblogs.com/tracyjfly/p/10794240.html
+	//值复制（深拷贝）
+	function clone(obj) {
+		//判断是对象，就进行循环复制
+		if (typeof obj === 'object' && obj!=null) {
+			// 区分是数组还是对象，创建空的数组或对象
+			var o = Object.prototype.toString.call(obj).slice(8, -1) === "Array" ? [] : {};
+			for (var k in obj) {
+				// 如果属性对应的值为对象，则递归复制
+				if(typeof obj[k] === 'object' && obj[k]!=null){
+					o[k] = clone(obj[k])
+				}else{
+					o[k] = obj[k];
+				}
+			}
+		}else{ //不为对象，直接把值返回
+			return obj;
+		}
+		return o;
+	}
+	例：
+		var a={
+			b:"b",
+			t:[1,2]
+		};
+		var c=clone(a);
+		c.b="c";
+		c.t=[];
+		console.log(a);
+		console.log(c);
 	
 附：
 	1. 对象的合并
