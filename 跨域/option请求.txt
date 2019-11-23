@@ -1,0 +1,18 @@
+https://blog.csdn.net/xiaoxiong_jiaxin/article/details/88060663
+跨域请求分为简单跨域请求和复杂跨域请求：
+	options请求是由浏览器自主发起的，那为什么会自主发起了。
+	1.对于简单跨域请求，
+	浏览器是不会发送options请求的。 
+	2.对于复杂跨域请求，
+		1.浏览器会自主发送一个options预检请求。
+		2.只有options预检请求通过了，你真正的请求才会被正式的发起。
+		注：
+			那怎样options预检请求算通过了，
+			1.返回200
+			2.你的请求规范符合后端的要求。
+			如你的请求头要包含在Access-Control-Allow-Headers:中。 
+		
+	复杂跨域请求要满足以下：
+		1、请求方法不是GET/HEAD/POST
+		2、POST请求的Content-Type并非application/x-www-form-urlencoded, multipart/form-data, 或text/plain
+		3、请求设置了自定义的header字段
