@@ -1,4 +1,3 @@
-http://www.ruanyifeng.com/blog/2016/04/cors.html
 跨域：
 	同源策略（Sameoriginpolicy）浏览器最基本的安全功能。
 	同源策略会阻止一个域的javascript脚本和另外一个域的内容进行交互。
@@ -11,7 +10,7 @@ http://www.ruanyifeng.com/blog/2016/04/cors.html
 	jsonnp：
 		https://blog.csdn.net/hansexploration/article/details/80314948
 	CORS：
-		https://segmentfault.com/a/1190000017149446
+		http://www.ruanyifeng.com/blog/2016/04/cors.html
 		CORS是一个W3C标准，全称是"跨域资源共享"（Cross-origin resource sharing）。
 		它允许浏览器向跨源服务器，发出XMLHttpRequest请求，从而克服了AJAX只能同源使用的限制。
 		解决方案：
