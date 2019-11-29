@@ -38,12 +38,12 @@
 					注：
 						此时cookie属于的是服务器域名的，而不是请求端域名的。
 						解决方案：
-							1.
+							I.
 								域名为：a.abc.com b.abc.com
 								那么cookie.setDomain("abc.com");即可。
-							2.
+							II.
 								域名为：a.com b.com
-								那么把cookie值通过header等传回前端，然后前端设置cookie。
+								该情况应该是没法携带cookie，把值放header或请求参数中吧。
 				2.（目的为，为跨域的请求带上本域的cookie）
 					前端跨域请求设置withCredentials：
 						axios：
