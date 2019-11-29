@@ -1,0 +1,33 @@
+axios常见使用：
+	https://www.cnblogs.com/liuyunjiademengxi/p/8085781.html
+
+配置config文件（请求配置）：
+	
+	baseurl：
+		设置了baseURL后， 将自动在请求前面加上baseurl，除非请求是一个绝对 URL。
+		vue中设置：
+			axios.defaults.baseURL='http://localhost:6051/';
+axios跨域：
+	/front-end/跨域/跨域.txt
+axios请求拦截器:
+	例：
+		 // 添加一个请求拦截器
+		axios.interceptors.request.use(function (config) {
+			// 在发送请求之前做些什么
+			return config;
+		  }, function (error) {
+			// 对请求错误做些什么
+			return Promise.reject(error);
+		  });
+
+		// 添加响应拦截器
+		axios.interceptors.response.use(function (response) {
+			// 对响应数据做点什么
+			return response;
+		  }, function (error) {
+			// 对响应错误做点什么
+			return Promise.reject(error);
+		  });
+	附：
+		axios设置token到请求头:	
+			https://blog.csdn.net/qq_41846861/article/details/88853217

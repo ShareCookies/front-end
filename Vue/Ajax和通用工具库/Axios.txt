@@ -40,15 +40,8 @@ axios案例：
 		  }
 		});
 	...
-axios跨域：
-	https://blog.csdn.net/dadiyang/article/details/80289956
-		cors解决跨域，只需设置后端不用设置前端吧！
-	
-	使用axios跨域访问数据：
-	https://www.cnblogs.com/snowhite/p/7872503.html
-	https://blog.csdn.net/dadiyang/article/details/80289956
-	https://blog.csdn.net/xshsjl/article/details/82998470
-	https://blog.csdn.net/fdipzone/article/details/46390573/
+
+
 
 
 

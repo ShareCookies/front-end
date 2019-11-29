@@ -1,1 +1,25 @@
 https://www.cnblogs.com/minigrasshopper/p/8064367.html
+
+cookie：
+	介绍：
+		1.Cookie保存在客户端本地的一个文件中，一般是由服务器生成。
+		2.与服务器端通信时，如果携带cookie的话，cookie是放在HTTP头中，所以使用cookie保存过多数据会带来性能问题。
+		注：
+			一般每个请求都会自动带上cookie。
+			但前端使用了框架的话，可能就要进行配置。
+		3.存放数据大小：4K左右
+	cookie的设置：
+		后端在response响应头设置一个Set-Cookie字段，即算生成一条cookie。
+		浏览器收到响应，会把这个字段的值追加到cookie文件中。
+		后端：
+			方式1：	
+				https://blog.csdn.net/weixin_43417960/article/details/84001290
+				Cookie cookie = new Cookie("name", "aotori");       //(key,value)
+			    cookie.setPath("/");// 这个要设置
+			    // cookie.setDomain(".aotori.com");//这样设置，能实现两个网站共用
+			    cookie.setMaxAge(365 * 24 * 60 * 60);// 不设置的话，则cookies不写入硬盘,而是写在内存,只在当前页面有用,以秒为单位
+			    response.addCookie(cookie);         //添加第一个Cookie
+			方式2：
+				response.setHeader('Set-Cookie','token=cowshield');
+		浏览器操作cookie：
+			https://www.cnblogs.com/xielong/p/9996503.html
