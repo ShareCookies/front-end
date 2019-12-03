@@ -1,15 +1,38 @@
-vue中父组件传值给子组件，父组件值改变，子组件不能重新渲染：
-	解决方案：
-	1.在子组件中用watch()监听值的改变，不同的类型的要用不同的监听方法：
-		https://blog.csdn.net/weixin_38098192/article/details/80447867
-	2.子组件上加一个v-if判断，数据变换的时候先重置为false，然后再this.$nexttick(重置为true);!
-
-子组件修改prop值与父组件同步：
-	.sync
-	https://www.jianshu.com/p/6b062af8cf01
+子组件调用父组件方法：
+	1.v-on定义事件，与$emit调用事件结合使用。
+		例：
+			./$emit/
+		注：
+			$emit也能向父组件方法传值
+	2.
+		通过$parent操作父组件的参数或者方法
+		例：
+			./$parent.txt
+父组件调用子组件方法：
+	1.ref="form"注册子组件引用信息，使用父组件的$refs对象调用组件方法this.$refs.form.snapshot();
 	
-	prop的type值：
-		https://cn.vuejs.org/v2/guide/components-props.html#%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5
+父组件向子组件传值：
+	1.使用指令v-bind向子组件传值，子组件使用props: {}接收
+	例：
+		./props.html
+	注：
+		1.prop的类型检查：
+			https://cn.vuejs.org/v2/guide/components-props.html#%E7%B1%BB%E5%9E%8B%E6%A3%80%E6%9F%A5	
+		2.子组件修改的值同步到父组件：
+			.sync https://cn.vuejs.org/v2/guide/components-custom-events.html#sync-%E4%BF%AE%E9%A5%B0%E7%AC%A6
+			注：
+				https://www.jianshu.com/p/6b062af8cf01
+				.sync 修饰符只是一个语法糖,它会被扩展为一个自动更新父组件属性的 v-on 监听器。
+				所以子组件还应使用this.$emit('update:属性', 新值);来调用父组件的监听器（或叫事件）。
+		3.父组件修改的值同步到子组件：
+			vue中父组件传值给子组件，父组件值改变，子组件不能重新渲染。
+			解决方案：
+			1.在子组件中用watch()监听值的改变，不同的类型的要用不同的监听方法：
+				https://blog.csdn.net/weixin_38098192/article/details/80447867
+			2.子组件上加一个v-if判断，数据变换的时候先重置为false，然后再this.$nexttick(重置为true);!
+子组件向父组件传值：
+	1.goto:子组件调用父组件方法
+
 组件重新渲染：
 	https://blog.csdn.net/lpw_cn/article/details/90404117
 	
@@ -21,6 +44,6 @@ vue中父组件传值给子组件，父组件值改变，子组件不能重新�
 				this.notRefreshComponent = true;
 			});
                            
-	key重新渲染：
-		
+	key重新渲染：推荐
+		改变组件key值来达到重新渲染组件。
 	

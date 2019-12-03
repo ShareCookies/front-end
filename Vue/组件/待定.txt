@@ -1,0 +1,15 @@
+vue中props数据是单向流，所以不能在子组件改变父组件传过来的prop值。
+但以下形式好像是行的：（通过v-model好像可以改变prop）
+	<basic-info ref="basicInfo"
+	:form="form"
+	:isShowOper="isShowOper" />
+
+	子组件：
+		props: {
+			form: Object
+		},
+		<el-input v-model="form.contentAbstract"
+					type="textarea"
+					:rows="2"></el-input>
+					
+	https://blog.csdn.net/u011486491/article/details/90232280

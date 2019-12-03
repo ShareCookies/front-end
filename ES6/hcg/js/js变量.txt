@@ -138,7 +138,20 @@ js数组：
 		1.结尾添加
 			数组.push(元素)
 		2.头部添加unshift() 
-		3.splice() ！
+		3.splice() 
+			向数组中添加/删除项目。
+			splice() 方法会直接对数组进行修改。
+			删除：
+				let buttonsArray = [1,2];
+				buttonsArray.splice(i, 1);
+			注：
+				1.forEach时使用splice容易出现问题:
+					https://www.cnblogs.com/this-xiaoming/p/9488504.html
+				2.跳出循环：
+					forEach无法跳出循环，除非直接抛异常，
+					所以建议使用for和break，
+					或filter。
+
 		4.array[5]='a';
 		注：
 			concat() 方法用于连接两个或多个数组。
@@ -208,6 +221,9 @@ HTMLCollection 集合对象：
                 } catch (e) {
                     console.log(e);
                 }
+			5.foreach this指向问题：
+				../this指向.txt
+				
 注：
 	if 为false的情况:
 		undefined,null,"",0,false

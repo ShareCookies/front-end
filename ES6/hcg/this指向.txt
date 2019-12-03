@@ -1,0 +1,11 @@
+函数中的this：
+	https://www.cnblogs.com/agen-su/p/9772080.html
+	每一个用function声明的函数在调用时都会在函数内创建自己的this。
+	对于普通函数（包括匿名函数），this指的是直接的调用者。
+	在非严格模式下，如果没有直接调用者，this指的是window。
+	在严格模式下,如果函数没有直接调者，this为undefined
+	注：
+		1.箭头函数是没有自己的this，在它内部使用的this是由它定义的宿主对象决定。
+		2.使用call,apply,bind绑定this，此时函数内this指的是绑定的对象
+		3.foreach中this一般会指向遍历的对象
+			https://blog.csdn.net/weixin_42481234/article/details/89306962
