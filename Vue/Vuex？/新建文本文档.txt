@@ -1,2 +1,0 @@
-vuex里面的四大金刚：State， Mutations，Actions，Getters：
-	http://www.php.cn/js-tutorial-394694.html

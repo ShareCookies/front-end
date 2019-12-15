@@ -23,3 +23,12 @@ cookie：
 				response.setHeader('Set-Cookie','token=cowshield');
 		浏览器操作cookie：
 			https://www.cnblogs.com/xielong/p/9996503.html
+	注：
+		带有特殊字符的cookie项后端获取失败：
+			https://blog.csdn.net/hl_java/article/details/78908423
+			例:
+				Cookie   token=1111;t=33;auth={"token":"teacher","expires":1575084568609};kk=55555;
+				auth后端无法读取到
+			注：
+				如果cookie要存对象，可以对对象进行序列化，或编码转换等方式。
+				对象直接存session，但适合所有客户端吗！
