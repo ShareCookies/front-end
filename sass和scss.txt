@@ -1,8 +1,27 @@
 https://segmentfault.com/a/1190000003742313
-<style lang="scss" scoped>
-</style>
+
 
 
 sass-loader
 	https://www.webpackjs.com/loaders/sass-loader/
 	安装：npm install sass-loader node-sass webpack --save-dev
+
+
+
+不影响全局样式：
+	写样式之前考虑下会不会影响全局的样式，首选scoped。
+	<style lang="scss" scoped>
+	</style>
+如果要覆盖组件内的样式， 使用/deep/ ：
+	例：
+		<template>
+			<el-scrollbar class="login">
+			</el-scrollbar>
+		</template>
+		<style lang="scss" scoped>
+			.login {
+				/deep/ .el-form-item.is-required .el-form-item__label:before {
+					color: transparent;
+				}
+			}
+		</style>

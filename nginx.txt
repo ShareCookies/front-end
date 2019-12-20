@@ -1,0 +1,6 @@
+官网：
+	https://www.nginx.com/
+nginx简易介绍：
+	https://www.cnblogs.com/aeolian/p/9002084.html
+nginx简易教材：	
+	https://www.runoob.com/linux/nginx-install-setup.html
