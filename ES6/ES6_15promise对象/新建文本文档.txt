@@ -7,3 +7,17 @@ Promise也有一些缺点。
 首先，无法取消Promise，一旦新建它就会立即执行，无法中途取消。
 其次，如果不设置回调函数，Promise内部抛出的错误，不会反应到外部。
 第三，当处于pending状态时，无法得知目前进展到哪一个阶段（刚刚开始还是即将完成）。
+
+如何取到promise的值：
+	https://www.jianshu.com/p/3c00970841c5
+	promise的[[PromiseValue]]是个内部变量，外部无法得到，只能在then中获取。
+	例：
+		let ret = this.$refs.form.validate().then((res) => {
+			console.log(res);
+		  ...
+		}, (res) => {
+			console.log(res);
+			return Promise.reject(new Error('fail'));
+		});
+		return ret;
+	

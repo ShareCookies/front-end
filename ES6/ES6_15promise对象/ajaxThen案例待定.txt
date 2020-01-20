@@ -1,0 +1,156 @@
+        返回ajax：
+		submitOpinion () { //发布意见
+            return this.$utils.ajax.post('/opinion/submitOpinion', {
+                opinionUserNo: this.setting.originUserNo, //原办理人
+                flowSlab: this.setting.stateLabel,
+                docId: this.setting.docId
+            }).then(response => {
+                //更新发文主表签发
+                if (this.setting.module === 'DISPATCH') {
+                    //签发意见
+                    this.updateDispatchBySign();
+                }
+                if (this.setting.module === 'MEETING') {
+                    //签发意见
+                    this.updateMeetingBySign();
+                }
+                return Promise.resolve(response);
+            }).catch(function (error) {
+                console && console.error(error);
+
+                return Promise.reject(error);//return Promise.reject(new Error('fail'));
+            });
+			
+			
+			_this.submitOpinion().then(response => {
+			 }).catch(function (error) {
+                    console && console.error(error);
+                    console && console.error('意见发布失败');
+           });
+		
+		
+		ajax 嵌套；（同步）
+		this.$utils.ajax.get('/docCate/getDocCateList', {
+                params: {
+                    cateNo: this.form.docCate
+                }
+            }).then((response) => {
+                const flowLabel = response[0].flowLabel;
+                if (!flowLabel || flowLabel.length == 0) {
+                    this.$message.error('此类型未绑定流程');
+                    return;
+                } else if (flowLabel.length == 1) {
+                    //如果流程只有一个则直接启用不用选择
+                    return this.$utils.ajax.get('/flow/flowInfo/listLatestEnabledFlowInfoByLabels', {
+                        params: {
+                            labels: flowLabel
+                        }
+                    }).then((res) => {
+                        const arry = [{
+                            nodeInfo: {
+                                flowLabel: res[0].flowLabel,
+                                flowVersion: res[0].flowVersion
+                            }
+                        }];
+                        return Promise.resolve(arry);
+                    });
+                } else {
+                    return this.$tree({
+                        request: {
+                            url:
+                                '/flow/flowInfo/listLatestEnabledFlowInfoByLabels',
+                            method: 'get',
+                            param: {
+                                labels: flowLabel
+                            }
+                        },
+                        tree: {
+                            treeField: {
+                                treeId: 'flowLabel',
+                                treeName: 'flowName'
+                            },
+                            title: '选择流程'
+                        }
+                    });
+                }
+
+            }).then((res) => {
+                console.log('选择的流程：');
+                console.log(res);
+                if (
+                    !Array.isArray(res) ||
+                        (Array.isArray(res) && res.length <= 0)
+                ) {
+                    return Promise.reject(new Error('未选择任何流程'));
+                } else {
+                    const label = res[0].nodeInfo.flowLabel;
+                    const version = res[0].nodeInfo.flowVersion;
+                    return this.$utils.ajax.get(
+                        '/receival/wflow/initProcess',
+                        {
+                            params: {
+                                label: label,
+                                version: version,
+                                docId: this.form.id
+                            },
+                            selfHandleError: true,
+                            triggerLoading: true
+                        }
+                    );
+                }
+            }).then((response) => {
+                if (!response) {
+                    return Promise.reject(new Error('流程启用失败'));
+                }
+                this.updated = true;
+                this.receivalAid = response;
+
+                this.onloadForm().then(this.getAllOpinion);
+
+                this.$message({
+                    type: 'success',
+                    message: '流程启用成功!',
+                    showClose: true,
+                    duration: 1000
+                });
+            }).catch((res) => {
+                this.$message.error(res.message);
+            });
+			
+		promise
+		
+		const promise = this.$utils.ajax({
+            url: '/receival/sequence/getCascadDataToDealForm',
+            method: 'get',
+            data: {
+                docId: this.docId ? this.docId : ''
+            }
+        }).then((res) => {
+            if (!res[0]) {
+                const msg = '请配置正确的文件类型、流水号';
+                this.$message.error(msg);
+                return Promise.reject(new Error(msg));
+            } else {
+                this.cascadeOptions = res;
+                return Promise.resolve(res);
+            }
+        }); 
+		if (this.form.id) {
+            this.onloadForm().then(this.getAllOpinion);
+        } else {
+            promise.then((res) => {
+                //设置阅办单选项
+                this.cascadeOptionValue = [res[0].value];
+                //保存类型
+                this.form.docCate = this.cascadeOptionValue[0];
+                this.$nextTick(() => {
+                    this.$refs.transactForm.snapshot(); //为当前数据记录快照
+                });
+
+                //起草时
+                if (this.regType) {
+                    return this.fileToReceival();
+                }
+
+            });
+        }

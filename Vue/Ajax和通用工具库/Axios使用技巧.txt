@@ -1,6 +1,21 @@
 axios常见使用：
 	https://www.cnblogs.com/liuyunjiademengxi/p/8085781.html
-
+get传数组：
+	https://www.zhihu.com/question/272032105
+	https://segmentfault.com/q/1010000010323643
+	        this.$utils.ajax({
+				url: '?' + this.arrayFormat('userNos', userNos),
+				method: 'get'
+            }).then((res) => {
+            
+			});
+			arrayFormat(key, arr) {
+                let urlParams = '';
+                arr.forEach(k => {
+                    urlParams += `${key}=${k}&`;
+                });
+                return urlParams.substring(0, urlParams.length - 1);
+            },
 配置config文件（请求配置）：
 	
 	baseurl：

@@ -24,15 +24,19 @@
 				https://www.jianshu.com/p/6b062af8cf01
 				.sync 修饰符只是一个语法糖,它会被扩展为一个自动更新父组件属性的 v-on 监听器。
 				所以子组件还应使用this.$emit('update:属性', 新值);来调用父组件的监听器（或叫事件）。
+				
+				?:
+					v-model 可以修改prop中的值？
 		3.父组件修改的值同步到子组件：
 			vue中父组件传值给子组件，父组件值改变，子组件不能重新渲染。
 			解决方案：
 			1.在子组件中用watch()监听值的改变，不同的类型的要用不同的监听方法：
 				https://blog.csdn.net/weixin_38098192/article/details/80447867
 			2.子组件上加一个v-if判断，数据变换的时候先重置为false，然后再this.$nexttick(重置为true);!
+		
 子组件向父组件传值：
 	1.goto:子组件调用父组件方法
-
+	
 组件重新渲染：
 	https://blog.csdn.net/lpw_cn/article/details/90404117
 	

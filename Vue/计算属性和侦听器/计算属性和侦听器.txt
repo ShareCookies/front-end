@@ -66,3 +66,5 @@
 		1.关于 vue 不能 watch 数组变化 和 对象变化的解决方案
 			https://www.cnblogs.com/ainyi/p/9722961.html
 			https://blog.csdn.net/qq_17757973/article/details/78721553
+	附：
+		使用@change="方法"可以在输入完后调用一个方法。直接用watch监听，快速输入会导致不断调用的异常。

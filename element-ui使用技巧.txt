@@ -35,6 +35,18 @@
 					}
 				};
 			},
+			附：
+				:rules="[{validator: beginDateValidator, trigger: 'blur'}]"
+				methods:{
+					beginDateValidator (rule, value, callback) {
+						if (value && this.where.endDate && value > this.where.endDate) {
+							callback(new Error('开始日期必须小于结束日期'));
+						} else {
+							callback();
+
+						}
+					}				
+				}
 	附：
 		1.表单验证报错: [Element Warn][Form]model is required for validat
 		解决方案：

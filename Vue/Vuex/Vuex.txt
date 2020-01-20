@@ -7,7 +7,7 @@ Vuex 是什么：
 	hcg：
 		把一些数据交给vuex管理。
 		进行数据获取
-		进行数据修改，   在修改之后，vue会为你的整个项目做更新 ...
+		进行数据修改，在修改之后，vue会为你的整个项目做更新 ...
 		
 	注：
 		什么情况下应该使用 Vuex：
@@ -19,14 +19,87 @@ Vuex 是什么：
 状态管理核心:
 	状态管理有5个核心，分别是state、getter、mutation、action以及module。
 	state:
-		状态，就是存在vuex的数据。
+		状态，就是储存在vuex的数据。
 		获得状态：
-			1.使用Vue.use(Vuex)，在根实例中注册 store 选项，该 store 实例会注入到根组件下的所有子组件中。获得状态：在子组件能直接通过 this.$store 访问到。
+			1.使用Vue.use(Vuex)，即在根实例中注册 store 选项，该 store 实例会注入到根组件下的所有子组件中。获得状态：在子组件能直接通过 this.$store.state 访问到state。
 			2.在需要使用state的组件中导入store。获得状态：在子组件能直接通过 store.state.count 访问;
 			注：
 				在计算属性中使用状态，每当 store.state.count 变化的时候, 都会重新求取计算属性，并且触发更新相关联的 DOM。
-				
-开始
+			例：
+				访问user ：
+				this.$store.state.user
+
+	
+	getter：
+		在 store 中定义“getter”：
+			可以认为是 store 的计算属性。
+			就像计算属性一样，getter 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。
+			例：
+				const store = new Vuex.Store({
+				  state: {
+					todos: [
+					  { id: 1, text: '...', done: true },
+					  { id: 2, text: '...', done: false }
+					]
+				  },
+				  //Getter 接受 state 作为其第一个参数：
+				  getters: {
+					doneTodos: state => {
+					  return state.todos.filter(todo => todo.done)
+					}
+				  }
+				})
+			注：
+				Getter 也可以接受其他 getter 作为第二个参数：
+		访问getter：
+			Getter 会暴露为 store.getters 对象，你可以以属性的形式访问这些值：
+				store.getters.doneTodos 
+			注：
+				通过方法访问：
+					你也可以通过让 getter 返回一个函数，来实现给 getter 传参。
+				mapGetters 辅助函数：
+					mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性
+	mutations：
+		更改 Vuex 的 store 中的状态的唯一方法是提交 mutation。
+		例：
+			const store = new Vuex.Store({
+			  state: {
+				count: 1
+			  },
+			  mutations: {
+				//回调函数中进行状态的更改，并且它会接受 state 作为第一个参数。
+				increment (state,n) {
+				  // 变更状态
+				  state.count += n;
+				}
+			  }
+			})
+			//通过commit提交事件类型，会触发mutation对应的 回调函数。
+			//向 store.commit 传入额外的参数，即提交载荷.大多数情况载荷应该是一个对象
+			store.commit('increment', 10)
+		注：
+			Mutation 需遵守 Vue 的响应规则
+				既然 Vuex 的 store 中的状态是响应式的，那么当我们变更状态时，监视状态的 Vue 组件也会自动更新。这也意味着 Vuex 中的 mutation 也需要与使用 Vue 一样遵守一些注意事项：
+
+				1.最好提前在你的 store 中初始化好所有所需属性。
+
+				2.当需要在对象上添加新属性时，你应该
+
+					使用 Vue.set(obj, 'newProp', 123), 
+					或者以新对象替换老对象。例如，利用对象展开运算符我们可以这样写：
+					state.obj = { ...state.obj, newProp: 123 }
+	Action 
+		Action类似于 mutation，不同在于：
+			Action 提交的是 mutation，而不是直接变更状态。
+			Action 可以包含任意异步操作。
+
+	Module
+		Vuex 允许我们将 store 分割成模块（module）。
+		每个模块拥有自己的 state、mutation、action、getter、甚至是嵌套子模块——从上至下进行同样方式的分割。
+
+
+
+开始	
 
 	每一个 Vuex 应用的核心就是 store（仓库）。
 	“store”基本上就是一个容器，它包含着你的应用中大部分的状态 (state)。
