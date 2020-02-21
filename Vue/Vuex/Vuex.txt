@@ -19,12 +19,24 @@ Vuex 是什么：
 状态管理核心:
 	状态管理有5个核心，分别是state、getter、mutation、action以及module。
 	state:
+		https://vuex.vuejs.org/zh/guide/state.html
 		状态，就是储存在vuex的数据。
 		获得状态：
 			1.使用Vue.use(Vuex)，即在根实例中注册 store 选项，该 store 实例会注入到根组件下的所有子组件中。获得状态：在子组件能直接通过 this.$store.state 访问到state。
 			2.在需要使用state的组件中导入store。获得状态：在子组件能直接通过 store.state.count 访问;
 			注：
-				在计算属性中使用状态，每当 store.state.count 变化的时候, 都会重新求取计算属性，并且触发更新相关联的 DOM。
+			1.在计算属性中使用状态，每当 store.state.count 变化的时候, 都会重新求取计算属性，并且触发更新相关联的 DOM。
+	                2.使用 mapState 辅助函数帮助我们生成计算属性：
+	                    mapState 函数返回的是一个对象。
+	                    例：
+	                        computed: {
+	                          localComputed () { /* ... */ },
+	                          // 使用对象展开运算符将此对象混入到外部对象中
+	                          ...mapState([// 映射 this.count 为 store.state.count
+	                              'count'
+	                            ])
+	                        }
+
 			例：
 				访问user ：
 				this.$store.state.user

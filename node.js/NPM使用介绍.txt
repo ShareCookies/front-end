@@ -33,9 +33,7 @@ yarn ：
 	安裝
 	https://blog.csdn.net/yw00yw/article/details/81354533
 	
-	yarn config set registry  http://192.168.210.139:8081/repository/npm-public/
-	yarn config set sass_binary_site http://npm.taobao.org/mirrors/node-sass  //配置 node-sass 的二进制包镜像地址,便于node-sass的下载
-	yarn 首次发布无权限：
+   	yarn 首次发布无权限：
 		yarn run login
 		npm npm
 	yarn设置镜像源：
@@ -47,3 +45,9 @@ yarn ：
 		yarn config set registry https://registry.npm.taobao.org
 		3、或者切换为自带的
 		yarn config set registry https://registry.yarnpkg.com
+		注：
+			yarn config set registry  公司镜像地址 //
+			yarn config set sass_binary_site http://npm.taobao.org/mirrors/node-sass  //配置 node-sass 的二进制包镜像地址,便于node-sass的下载
+
+	yarn 使用：
+		https://blog.csdn.net/mjzhang1993/article/details/70092902/
