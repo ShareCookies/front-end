@@ -66,7 +66,8 @@
 		1.关于 vue 不能 watch 数组变化 和 对象变化的解决方案
 			https://www.cnblogs.com/ainyi/p/9722961.html
 			*https://blog.csdn.net/qq_17757973/article/details/78721553
-			    watch: {
+			    watch: { //'setting.showAdditionTabForFreedomSend' 监听对象的属性
+
 					//深度监听能捕捉对象、数组发生的变化。但无法获取到对象变化前的值，配合计算属性可以。
 					taskform: {
 						handler(val, oldVal) {

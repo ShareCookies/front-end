@@ -8,4 +8,17 @@ v-bind 指令：
 			2.v-bind指令能通过子组件标签,为子组件的props传值
 	例：
 		v-bind.html
-		
+	附：
+		操作html：
+		v-bind:title  鼠标移上的显示
+		v-bind:src  绑定图片路径
+	    v-bind:html 绑定HTML文本和标签
+	    v-bind:text 绑定文本
+	    v-bind:class 绑定类样式
+	    v-bind:style  动态绑定样式
+	附：
+		文本绑定：
+			https://blog.csdn.net/qq_42506869/article/details/90726367
+			1.<div>{{text}}</div>
+			2.<div v-text="test"></div>
+			

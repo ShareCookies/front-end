@@ -1,0 +1,16 @@
+模块：
+	介绍：
+		一个模块就是一个独立的文件。（文件可以是js或vue等）
+		该文件内部的所有变量，外部无法获取。
+		模块功能主要由两个命令构成，export命令用于规定模块的对外接口，import命令用于输入其他模块提供的功能。
+	附：
+		ES6 的模块自动采用严格模式:
+			https://es6.ruanyifeng.com/#docs/module#%E4%B8%A5%E6%A0%BC%E6%A8%A1%E5%BC%8F
+	例：
+		导出变量：
+			// profile.js
+			var year = 1958;
+			export {year};
+			导入变量:
+				// test.js
+				import {year} from 'profile.js';
