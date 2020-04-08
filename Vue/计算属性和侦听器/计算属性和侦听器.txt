@@ -50,6 +50,11 @@
 		  }
 		}
 		现在再运行 vm.fullName = 'John Doe' 时，setter 会被调用，vm.firstName 和 vm.lastName 也会相应地被更新。
+	注：
+		计算属性不能实时计算：
+			https://segmentfault.com/a/1190000021920427
+			https://segmentfault.com/q/1010000017573432
+
 侦听器：
 	介绍：
 		Vue 通过 watch 选项提供了一个更通用的方法，来响应数据的变化。
@@ -63,6 +68,7 @@
 		除了 watch 选项之外，您还可以使用命令式的 vm.$watch API。！
 		
 	watch实战：
+		https://blog.csdn.net/u014298440/article/details/82942680
 		1.关于 vue 不能 watch 数组变化 和 对象变化的解决方案
 			https://www.cnblogs.com/ainyi/p/9722961.html
 			*https://blog.csdn.net/qq_17757973/article/details/78721553

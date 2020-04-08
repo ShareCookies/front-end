@@ -1,5 +1,6 @@
-https://vuex.vuejs.org/zh/
-https://github.com/vuejs/vuex
+vuex官网文档：
+	https://vuex.vuejs.org/zh/guide/getters.html
+	https://github.com/vuejs/vuex
 案例：
 	* https://blog.csdn.net/jingtian678/article/details/81481075
 Vuex 是什么：
@@ -16,14 +17,20 @@ Vuex 是什么：
 				大中型项目中，很多时候都需要在不相关的平行组件之间传递数据.
 				并且很多数据需要多个组件循环使用.
 				这时就要使用vuex.
-状态管理核心:
+store（状态管理）:
 	状态管理有5个核心，分别是state、getter、mutation、action以及module。
 	state:
 		https://vuex.vuejs.org/zh/guide/state.html
-		状态，就是储存在vuex的数据。
-		获得状态：
-			1.使用Vue.use(Vuex)，即在根实例中注册 store 选项，该 store 实例会注入到根组件下的所有子组件中。获得状态：在子组件能直接通过 this.$store.state 访问到state。
-			2.在需要使用state的组件中导入store。获得状态：在子组件能直接通过 store.state.count 访问;
+		state称为状态，即储存在store中的数据。
+		获得state（状态）的两种方式：
+			1.使用Vue.use(Vuex)，即在根实例中注册 store 选项，该 store 实例会注入到根组件下的所有子组件中。
+			该方式下获得状态：
+				在子组件能直接通过 this.$store.state 访问到state。
+			例：
+				访问user ：this.$store.state.user
+			2.在需要使用state的组件中导入store。
+			该方式下获得状态：
+				在子组件能直接通过 store.state.count 访问;
 			注：
 			1.在计算属性中使用状态，每当 store.state.count 变化的时候, 都会重新求取计算属性，并且触发更新相关联的 DOM。
 	                2.使用 mapState 辅助函数帮助我们生成计算属性：
@@ -37,15 +44,14 @@ Vuex 是什么：
 	                            ])
 	                        }
 
-			例：
-				访问user ：
-				this.$store.state.user
+
 
 	
 	getter：
-		在 store 中定义“getter”：
-			可以认为是 store 的计算属性。
-			就像计算属性一样，getter 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。
+		getter可以认为是 store 的计算属性。
+		就像计算属性一样，getter 的返回值会根据它的依赖被缓存起来，且只有当它的依赖值发生了改变才会被重新计算。
+
+		在 store 中定义getter：
 			例：
 				const store = new Vuex.Store({
 				  state: {
@@ -70,7 +76,19 @@ Vuex 是什么：
 				通过方法访问：
 					你也可以通过让 getter 返回一个函数，来实现给 getter 传参。
 				mapGetters 辅助函数：
-					mapGetters 辅助函数仅仅是将 store 中的 getter 映射到局部计算属性
+					使用mapGetters 辅助函数将对应state值 映射到局部计算属性中。
+					对象展开运算符：
+						mapState 函数返回的是一个对象。
+						对象展开运算符将它与局部计算属性混合使用。
+						computed: {
+						  localComputed () { /* ... */ },
+						  // 使用对象展开运算符将此对象混入到外部对象中
+						  ...mapState({
+							// ...
+						  })
+						}
+
+
 	mutations：
 		更改 Vuex 的 store 中的状态的唯一方法是提交 mutation。
 		例：
@@ -87,7 +105,8 @@ Vuex 是什么：
 			  }
 			})
 			//通过commit提交事件类型，会触发mutation对应的 回调函数。
-			//向 store.commit 传入额外的参数，即提交载荷.大多数情况载荷应该是一个对象
+			//向 store.commit 传入额外的参数，即提交载荷。
+			附：只能传一个参，所以大多数情况载荷应该是一个对象
 			store.commit('increment', 10)
 		注：
 			Mutation 需遵守 Vue 的响应规则
@@ -129,3 +148,6 @@ vuex如何管理状态：
 vuex优势：
 	任何组件都能获取状态或者触发行为。
 	另外，通过定义和隔离状态管理中的各种概念并强制遵守一定的规则，我们的代码将会变得更结构化且易维护。
+	
+vuex 分多个文件:
+	

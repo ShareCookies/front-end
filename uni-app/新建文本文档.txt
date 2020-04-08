@@ -1,0 +1,86 @@
+框架介绍：https://uniapp.dcloud.io/collocation/pages
+组件文档：https://uniapp.dcloud.io/component/view
+API:https://uniapp.dcloud.io/api/README
+
+框架内容：
+配置:
+	pages.json 
+		pages.json文件用来对uni-app进行全局配置，决定页面文件的路径、窗口样式、原生的导航栏、底部的原生tabbar 等。
+			项目的全局配置
+		各属性介绍：
+			"pages": [{}，{}]
+				uni-app 通过 pages 节点配置应用由哪些页面组成。
+					注册你写的page页面，这样子便于使用导航跳转。
+				注：
+					pages节点的第一项为应用入口页（即首页）
+					应用中新增/减少页面，都需要对 pages 数组进行修改
+					文件名不需要写后缀，框架会自动寻找路径下的页面资源
+				"style": {}
+					用于设置每个页面的状态栏、导航条、标题、窗口背景色等。
+					页面中配置项会覆盖 globalStyle 中相同的配置项
+			"globalStyle": {}
+				用于设置应用的状态栏、导航条、标题、窗口背景色等。
+			"tabBar": {}
+				如果应用是一个多 tab 应用，可以通过 tabBar 配置项指定 tab 栏的表现，以及 tab 切换时显示的对应页。
+					就是底部导航条
+	manifest.json：
+		manifest.json 文件是应用的配置文件，用于指定应用的名称、图标、权限等。
+	App.vue：
+		页面入口文件。
+		是uni-app的主组件，所有页面都是在App.vue下进行切换的。但App.vue本身不是页面，这里不能编写视图元素。
+		这个文件的作用包括：
+			调用应用生命周期函数、
+			配置全局样式、
+			配置全局的存储globalData
+	main.js
+		是uni-app的入口文件，
+		主要作用是初始化vue实例、定义全局组件、
+		使用需要的插件如vuex。
+			
+API内容：
+请求：
+	https://uniapp.dcloud.io/api/request/request
+	https://uniapp.dcloud.io/api/README?id=promise-%e5%b0%81%e8%a3%85
+	uni.request({
+		url: 'https://www.example.com/request', //仅为示例，并非真实接口地址。
+		data: {
+			text: 'uni.request'
+		},
+		success: (res) => {
+			console.log(res.data);
+			this.text = 'request success';
+		}
+	});
+
+	uni.request({
+        url: 'https://www.example.com/request',
+		method:GET,	
+		data: {
+			text: 'uni.request'
+		},
+    }).then(data => {
+		//data为一个数组，数组第一项为错误信息，第二项为返回数据
+        var [error, res]  = data;
+        console.log(res.data);
+    })
+	写个小封装
+	//请求的 header 中 content-type 默认为 application/json。
+
+路由：
+	https://uniapp.dcloud.io/api/router?id=navigateto
+	https://uniapp.dcloud.io/component/navigator
+生命周期：
+	uni有两种生命周期.
+	应用生命周期:
+		应用生命周期仅可在App.vue中监听，在其它页面监听无效。
+	页面生命周期:
+		https://uniapp.dcloud.io/api/lifecycle?id=%e9%a1%b5%e9%9d%a2%e7%94%9f%e5%91%bd%e5%91%a8%e6%9c%9f
+		onLoad	监听页面加载，其参数为上个页面传递的数据，参数类型为Object（用于页面传参），参考示例
+		onShow	监听页面显示。页面每次出现在屏幕上都触发，包括从下级页面点返回露出当前页面		
+		onReady	监听页面初次渲染完成。注意如果渲染速度快，会在页面进入动画完成前触发
+导航：
+	https://ask.dcloud.net.cn/article/34921
+
+
+
+

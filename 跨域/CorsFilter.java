@@ -54,6 +54,7 @@ public class CorsFilter implements Filter {
 
             // 跨域预检请求，直接返回
             if (REQUEST_OPTIONS.equalsIgnoreCase(request.getMethod())) {
+				response.setStatus(HttpStatus.OK.value());
                 return;
             }
         //   }

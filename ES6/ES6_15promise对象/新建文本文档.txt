@@ -20,4 +20,4 @@ Promise也有一些缺点。
 			return Promise.reject(new Error('fail'));
 		});
 		return ret;
-	
+https://www.jianshu.com/p/7911324c6039	

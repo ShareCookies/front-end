@@ -28,10 +28,6 @@ v-on指令：
         this.bus.$on('UPDATE_DISPATCH_ATT_DESC', () => {
             this.updateAttDesc();
         });
-        //注册文件上传后的回调函数
-        this.bus.$on('DISPATCH_ATT_CHANGE_CALLBACK', () => {
-            this.onloadForm();
-        });
     }
 	
 	/**
@@ -48,7 +44,7 @@ v-on指令：
 		if (this.moduleParam.attChangeCallback && this.moduleParam.attChangeCallback.length > 0) {
 			this.moduleParam.attChangeCallback.forEach(value => {
 				//console.log(value);
-				this.bus.$emit(value);//这里为啥可以直接写this.bus
+				this.bus.$emit(value); 
 			});
 		}
 	}

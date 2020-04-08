@@ -1,0 +1,96 @@
+CSS层叠样式表 (Cascading Style Sheets)
+CSS三大特征：
+	css继承：
+	css层叠：
+	css优先级:
+		样式优先级:
+		注:
+		css属性后封号前加!important，可提高属性优先级。
+引用CSS的四种方式：
+	行内式：
+		直接在html标签元素内嵌入css样式.
+		如<div style="font-size:14px; color:#FF0000;">我是div css测试内容-www.divcss5.com支持</div>
+	内嵌式：
+		在html，head头部部分内以style声明插入代码，如下：
+		<style type="text/css"> 
+		<!-- 
+		.ceshi {font-size:14px; color:#FF0000;}/*这里是设置CSS的样式内容*/ 
+		--> 
+		</style> 
+	导入式：
+		在css中使用@import，引用外部CSS文件。
+		<head> 
+		<style type="text/css"> 
+			@import url(wcss.css);/*这里是通过@import引用CSS的样式内容*/ 
+		</style> 
+		</head> 
+	链接式：
+		1.一般推荐使用link来引用外部的css样式方法。
+		2.使用方法：
+			在head头部标签使用<link rel="stylesheet" href="wcss.css" type="text/css" />来调用外部的wcss.css文件来实现html引用css文件
+		3.使用link来引用外部的css的优势：
+			1、有利于SEO，使用此方法引用外部css文件，将使得html页面的源代码少很多比起直接加入css样式，因为搜索引擎蜘蛛爬行网页的时候是不爬行css文件的，这样使得html源代码很少，使得蜘蛛爬行更快，处理更少，增大了此网页的权重，有利于排名。
+			2、节约html使得浏览器下载网页时候分开线程了，就像加载一个页面同时有两条线在打开一个页面道理，使得网页打开格外快。（用户浏览此网页的时候html源代码和css文件同时下载，使得更加快速）
+			3、修改网页的样式方便，只需修改css样式即可修改网页的美工样式，如果在网站项目中此方法，因整站应用了共用的css基本样式，这样修改整站风格样式根据快捷方便。
+	注：
+		@import先加载HTML，后加载CSS。
+		link先加载CSS，后加载HTML。
+		所以前者加载网页会出现令浏览者以外的格式，后者则是带格式的加载网页。
+选择器:
+	http://www.w3school.com.cn/cssref/css_selectors.asp
+	id选择器
+		#id{}
+	class选择器
+		.class{}
+	标签选择器（或元素选择器）
+		div{}
+	层次选择器(子代选择器)：
+		div>p{}/*div中儿子部分p元素，不包括孙子等*/
+	(长子选择器)：
+		p:first-child{}/*父元素的首个子元素*/
+	后代选择器 ： 
+		div p{} /*div中所有p元素*/
+	(css事件选择器)：
+		:link 选择器设置指向未被访问页面的链接的样式
+		:visited 选择器用于设置指向已被访问的页面的链接
+		:active 选择器用于活动链接。
+		:hover 选择鼠标指针浮动在其上的元素，并设置其样式
+	注：*{}所有元素选择器
+	例：
+		.test,#test,div{}//三个平级
+CSS常用布局方式：
+	float（浮动），position（定位），文档流。
+	浮动：
+		1.：全部向左浮动会自动排成一行在换行	https://www.w3cschool.cn/tryrun/showhtml/trycss_float_elements
+溢出：
+	1：规定了外围div大小可能会造成内容溢出
+	2：overflow:hidden	如果元素中的内容超出了给定的宽度和高度属性，overflow 属性可以确定是否显示滚动条或隐藏等行为。
+margin(盒模型之外边距 ):
+	例:
+		margin:10px 5px 15px 20px;
+			上外边距是 10px
+			右外边距是 5px
+			下外边距是 15px
+			左外边距是 20px
+	margin:10px 5px 15px;
+		上外边距是 10px
+		右外边距和左外边距是 5px
+		下外边距是 15px
+	margin:10px 5px;
+		上外边距和下外边距是 10px
+		右外边距和左外边距是 5px
+	margin:10px;
+		所有 4 个外边距都是 10px
+line-height:
+	设置元素的行高
+	例：
+		.test {line-height:20px;}，
+		那么test元素的实际高度将取决于其中内容的多少，
+		假如文字部分在浏览器里面显示为一行，那么这个div的实际高度就是20px，
+		如果文字显示为两行，那么div的实际高度就是40px，而且文字的行高是20px的；
+vertical-align：?
+	设置元素的垂直对齐方式。
+？：
+	https://www.zhangxinxu.com/wordpress/2015/08/css-deep-understand-vertical-align-and-line-height/
+CSS常见简写规则整理
+	https://www.cnblogs.com/dear_diary/p/5885961.html
