@@ -50,4 +50,6 @@
                            
 	key重新渲染：推荐
 		改变组件key值来达到重新渲染组件。
-	
+附：
+	组件的自调用：
+		https://blog.csdn.net/u013299635/article/details/91475272

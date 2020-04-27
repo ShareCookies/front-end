@@ -81,6 +81,7 @@ API内容：
 导航：
 	https://ask.dcloud.net.cn/article/34921
 
-
-
-
+跨端兼容：
+	https://uniapp.dcloud.io/platform?id=%e8%b7%a8%e7%ab%af%e5%85%bc%e5%ae%b9
+	#ifdef：if defined 仅在某平台存在
+	#ifndef：if not defined 除了某平台均存在

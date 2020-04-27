@@ -1,0 +1,8 @@
+js原生和vue的自动触发事件：
+	https://blog.csdn.net/weixin_45613604/article/details/102819128?depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-4&utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromBaidu-4
+	
+vue组件样式：
+	https://www.cnblogs.com/songForU/p/11176696.html
+	
+VUE组件中重置body样式
+		https://www.jianshu.com/p/b3d2f36828c8

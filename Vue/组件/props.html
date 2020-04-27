@@ -44,6 +44,18 @@
 
 		*/
 	</script>
-
+<!--
+	附：
+	数组／对象的默认值应当由一个工厂函数返回。
+	https://segmentfault.com/q/1010000009467326
+		props: {
+			test: {
+			  type: Object,
+			  default: function () {
+				return { message: 'hello' }
+			  }
+			}
+		}
+-->
 </body>
 </html>

@@ -1,0 +1,51 @@
+async function task () {
+    for (let val of [1, 2, 3, 4]) {
+        // await 是要等待响应的
+        let result = await send(val);
+        if (!result) {
+            break;
+        }
+    }
+}
+从字面上看，就是本次循环，等有了结果，再进行下一次循环。因此，循环每执行一次就会被暂停（“卡住”）一次，直到循环结束。这种编码实现，很好的消除了层层嵌套的 “回调地狱” 问题，降低了认知难度。
+
+
+
+https://www.jianshu.com/p/631f9406c4e0：
+	
+	
+        async check () {
+            let ret = true;
+            ret = await this.$refs.form.check();
+            console.log(ret);
+            if (this.form.splitStatus == '0') {
+                if (this.$refs.basicInfoTask) {
+                    ret = ret && await this.$refs.basicInfoTask.check();
+                }
+            } else if (this.form.splitStatus == '1') {
+                this.form.urgerTasks.forEach(async (item, index) => {
+                    if (this.$refs['basicInfoTask'] && this.$refs['basicInfoTask'].length > 0) {
+                        ret = ret && (await this.$refs['basicInfoTask'][index].check());
+                    }
+                });
+            }
+            return ret ? Promise.resolve() : Promise.reject(new Error('')); 
+        },
+		this.$refs.form.check().then(() => {
+			this.$confirm('您有修改的数据未保存,请确认是否关闭!', '提示', {
+				confirmButtonText: '确定',
+				cancelButtonText: '取消',
+				type: 'warning'
+			}).then((res) => {
+				if (res) {
+					this.$message.closeAll();
+					this.$emit('popBoxCloseEvent'); // 触发关闭弹窗
+					return;
+				}
+			}).catch(() => {
+				return;
+			});
+		}).catch(() => { // 数据未修改
+			this.$message.closeAll();
+			this.$emit('popBoxCloseEvent'); // 触发关闭弹窗
+		});

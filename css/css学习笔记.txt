@@ -94,3 +94,7 @@ vertical-align：?
 	https://www.zhangxinxu.com/wordpress/2015/08/css-deep-understand-vertical-align-and-line-height/
 CSS常见简写规则整理
 	https://www.cnblogs.com/dear_diary/p/5885961.html
+字体：
+	font-family
+	字体图标：
+		https://uniapp.dcloud.io/frame?id=%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87

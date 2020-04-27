@@ -1,0 +1,109 @@
+webStorm：https://blog.csdn.net/vchen_hao/article/details/77248053 [HYPERLINK: ]
+常用标签属性：
+  隐藏标签：
+    介绍：style="display:none";
+    注：
+     js实现
+       DOM.style.display='none';
+       DOM.style.display=''; //不隐藏
+  标签不可修改：
+    介绍：标签不可修改，标签加上该属性即可。readonly;
+    例：<input type="text" value="" readonly>
+  标签的通用属性:
+  class属性可以设置多个class值，每个
+  class值直接空格间隔即可。
+  注:用dom获取的class值应该是对象数组
+  id属性只能设置一个id值。
+标签:
+  <!DOCTYPE> :
+  声明不是 HTML 标签；它是指示浏览器关于页面使用哪个 HTML 版本进行编写的指令。声明没有结束标签。
+    HTML5声明:<!DOCTYPE html>
+  span:（应该是会被认为是先前元素的一部分，会紧跟在先前元素后面而不是换行等）
+    span本身是不能设置宽高的要转换成块级元素才行。
+    span是一个in-line元素，翻译为内联元素。它的特点是不会独占一行。它和块（block）级元素是相对的，块级元素是独占一行的。
+  <a>:(内联元素inline)
+    src="＃class|id"
+    页面内跳转(根据类名或id来定位各部分)?
+  p:
+    行级元素
+  
+  label:
+  如果用户点击 label 元素内的文本，则会
+  切换到控件本身。
+  for:规定 label 绑定到哪个表单元素
+  input:
+  name
+  type:
+    介绍:设置输入框类型
+    属性:
+     hidden 该输入框隐藏
+     button 该输入框为按钮
+     text 该输入框为文本
+     ...
+  placeholder设置输入框提示信息
+  表格：
+    <tr> - table row 
+<td> - table data
+<th> - table head
+注：
+    th与td同样是标示一个储存格,唯一不同的是th所标示的储存格中的文字是以粗体出现,
+    td与td标签放在tr标签内。
+  空格：
+  &nbsp; - non-breaking space(不间断空格）
+
+  自定义属性:
+  https://blog.csdn.net/qq_31851435/article/details/53100691 [HYPERLINK: ]
+  介绍:
+    即可在标签中自定义属性，用来存
+    放一些值
+  写法:
+    1.attribute="value"
+    2.data-前缀="value"，H5为我们提供
+    的一个data属性，可以让所有的
+    HTML元素支持自定义属性。
+  语义化标签:
+  <nav>，<header>，
+  注:
+    1.html5提供了很多语义化标签，规范
+    了一些重要部件名字，有利于SEO。
+    2.语义化标签渲染结果与div没有差
+    异，无需当心其外观。
+    
+       CSS
+
+媒体查询:
+  响应式时用到，当屏幕尺寸符合你要求时调用{}内css样式。
+  @media(条件){css样式}
+  条件:
+    max-width:
+     
+动画：
+   @keyframes 规则：
+    使您能够创建动画。
+    创建动画的原理是，将一套 CSS 样式逐渐变化为另一套样式。
+盒子模型:
+  margin，padding:
+  背景颜色填充时会填到padding部分但不会填到margin部分。
+
+
+边距:
+  margin:
+  外边距，设置两个标签的间隔，也就是距离；
+  padding:
+  标签的内边距
+  border:
+  设置边框
+效果，方案：
+	当div子元素全部浮动时，高度塌陷(高度为零)，如何解决:3种。
+	1.:最后多加一个div 设置style为clear。
+
+	2.:父元素设置overflow:hidden。
+	3.:父元素设置高宽
+	高宽:
+	min-height:最低高度。
+	背景:
+	background
+	background-size:cover;
+	鼠标:
+	cursor:
+	可把光标变为别的图标，如小手。
