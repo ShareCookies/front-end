@@ -1,0 +1,5 @@
+解决IE下URL传参中文乱码的问题	
+	https://www.cnblogs.com/lxboy2009/p/6557049.html1
+	encodeURI() 函数，只需在带有中文的链接用该函数即可，其他地址无需解码即可使用：
+	注：
+		encodeURI() 函数和encodeURIComponent()函数的区别：前者只对中文部分转码，后者对特殊字符也会转码。
