@@ -5,7 +5,7 @@ CSS三大特征：
 	css优先级:
 		样式优先级:
 		注:
-		css属性后封号前加!important，可提高属性优先级。
+			css属性后封号前加!important，可提高属性优先级。
 引用CSS的四种方式：
 	行内式：
 		直接在html标签元素内嵌入css样式.
@@ -58,10 +58,7 @@ CSS三大特征：
 	注：*{}所有元素选择器
 	例：
 		.test,#test,div{}//三个平级
-CSS常用布局方式：
-	float（浮动），position（定位），文档流。
-	浮动：
-		1.：全部向左浮动会自动排成一行在换行	https://www.w3cschool.cn/tryrun/showhtml/trycss_float_elements
+
 溢出：
 	1：规定了外围div大小可能会造成内容溢出
 	2：overflow:hidden	如果元素中的内容超出了给定的宽度和高度属性，overflow 属性可以确定是否显示滚动条或隐藏等行为。

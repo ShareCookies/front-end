@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+/*
+	这些特殊选择器不只适用于a标签
+	具体：https://www.quanzhanketang.com/cssref/css_selectors.html
+
+*/
+/* unvisited link 未访问过的标签*/
+a:link {
+    color: red;
+}
+
+/* visited link 访问过的标签*/
+a:visited {
+    color: green;
+}
+
+/* mouse over link */
+li:hover,a:hover {
+    color: hotpink;
+}
+
+/* selected link */
+a:active {
+    color: blue;
+}
+/* 
+	点击后,鼠标移开保持鼠标点击时的状态
+	（只有在<a href="#"></a>时标签中有效)
+	a:focus{color: yellow}
+*/
+
+</style>
+
+</head>
+<body>
+
+<p><b><a href="test.html" target="_blank">This is a link</a></b></p>
+<p><b>Note:</b> a:hover MUST come after a:link and a:visited in the CSS definition in order to be effective.</p>
+<p><b>Note:</b> a:active MUST come after a:hover in the CSS definition in order to be effective.</p>
+<ul>
+	<li>li</li>
+	<li>li</li>
+</ul>
+</body>
+</html>

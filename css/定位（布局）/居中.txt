@@ -1,0 +1,61 @@
+居中：
+	绝对定位居中：
+		position:absolute;left:0;  right:0; top:0; bottom:0;margin:auto;    width:一定要限制死; height: 一定要限制死;
+		祖辈要求：要有高宽；要有定位;
+			原因：
+				当绝对定位时,为了满足l,r,b,t都为0，margin被拉伸而且上下左右相等所以居中。
+				绝对定位的布局取决于三个因素，一个是元素的位置，一个是元素的尺寸，一个是元素的margin值。
+				而没有设置尺寸和 margin 的元素会自适应剩余空间，位置固定则分配尺寸，尺寸固定边会分配 margin，都是自适应的。
+			我的理解：
+				即为了满足4元素的定位margin就会自动去拉伸，满足不了就直接坍塌不设置。父元素为absolute才有用吗！应该是当前元素为absolute就行。
+			参考自：
+				https://www.barretlee.com/blog/2014/08/07/position-and-margin
+	绝对或相对定位居中：	
+		position:absolute或relative;top:50%; left:50%;margin-top:元素高度的一半;margin-left:元素宽度的一半;
+		relative祖辈要求：要有高宽；
+		absolute祖辈要求：要有高宽；要有定位;
+			介绍：
+居中:
+	https://www.cnblogs.com/thislbq/p/5902356.html
+	表格居中:
+		align="center" 以及 valign="middle
+	水平居中：
+		1.子元素为行内元素居中:
+			写法：
+			text-align:center;
+			前提:
+			1.：只能对图片，按钮，文字等行内元素(display为inline或inline-block等)进行水平居中。
+			2.：首要条件是子元素必须没有被float影响
+		2.块状元素居中:
+			定宽块状元素居中：
+				写法：
+				margin：0 auto；
+				前提：
+				定宽（块状元素的宽度width为固定值）和块状两个条件的元素可以通过设置“左右margin”值为“auto”来实现居中。
+			不定宽块状元素居中：
+				思路：3种
+				1.:将要显示的元素加入到 table 标签当中，然后为 table 标签设置“左右margin”值为“auto”来实现居中；
+				或使用 display : table；然后设该元素“左右margin”值为“auto”来实现面的display:table; 方法会更简洁。
+				2.:改变块级元素的 display 为 inline 类型（设置为 行内元素 显示），然后使用 text-align:center 来实现居中效果。
+				3.: 通过给父元素设置 float，然后给父元素设置 position:relative 和 left:50%，子元素设置 position:relative 和 left: -50% 来实现水平居中。
+		3.margin设为auto:
+			其实就是把要居中的元素的margin-left和margin-right设为auto，此方法只能进行水平的居中!，且对浮动元素或绝对定位元素无效。
+		4.居中元素前头放一个元素display: block;width: 50%;float: left;
+	纵向居中:
+		前提:
+			父元素高度确定
+			{？
+			display:inline-block;
+			vertical-align:middle;
+			}
+		父元素高度确定的单行文本：
+			设置父元素的 height 和 line-height 高度一致来实现的。(height: 该元素的高度，line-height: 顾名思义，行高，指在文本中，行与行之间的 基线间的距离 )。
+		父元素高度确定的多行文本：
+			1.：vertical-align：middle
+			2.：设置块级元素的 display 为 table-cell；vertical-align:middle;
+		图片垂直居中：
+			行高解决垂直居中：
+				父div高与行高相同。height: 300px;line-height:300px;
+		vertical-align：
+			vertical-align 只对行内元素有效，对块级元素无效。
+			设了middle还不能居中？

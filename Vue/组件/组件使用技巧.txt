@@ -50,6 +50,8 @@
                            
 	key重新渲染：推荐
 		改变组件key值来达到重新渲染组件。
+	简单理解Vue中的nextTick
+		https://www.jianshu.com/p/a7550c0e164f
 附：
 	组件的自调用：
 		https://blog.csdn.net/u013299635/article/details/91475272

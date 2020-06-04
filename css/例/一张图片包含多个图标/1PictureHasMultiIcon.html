@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+       <meta charset="utf-8">
+		<title>一张图片包含多个图标</title>
+       <style>
+			.tree-default{
+				//定义一个均有的默认样式，来规定元素的大小;
+				width:32px;
+				height:32px;
+			}
+			.tree-folder{
+				//定义背景，并移动其位置，来显示指定图标;
+              //background: url("images/tree_icons_32px.png") -260px -4px no-repeat;
+				background:  -260px -4px no-repeat;
+          }
+			.tree-file{
+              //background: url("images/tree_icons_32px.png") -100px -68px no-repeat;
+				background: url("tree_icons_32px.png") -100px -68px no-repeat;
+          }
+
+				
+	   </style>
+    </head>
+    <body>
+		<div class="tree-default tree-file"></div>
+       <div class="tree-default tree-folder"></div>
+		<p>
+			为什么要一张图片包含多个图标：
+				如果网站大量使用图标的情况下，由于浏览器和服务器的并发连接数是受限的，通常是4~8个，那么图标显示过慢或者超时的情况就会发生。
+				注：总之1张50k的文件比起50张1k文件下载起来还是很有优势的。
+		</p>
+    </body>
+	<script>
+		//用js设置div背景图片
+		document.getElementsByClassName('tree-folder')[0].style.backgroundImage='url("tree_icons_32px.png")';
+		console.log(document.getElementsByClassName('tree-folder')[0].style.backgroundImage);
+	</script>
+</html>

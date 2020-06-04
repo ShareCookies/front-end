@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>防止table变形 td固定宽度</title>
+        <style type="text/css">
+          table {
+				border: 1px solid #ddd;
+              border-collapse: collapse;//为表格设置合并边框
+              /*
+					固定列框，列宽由表格宽度或列宽度决定,优先适配表格宽度
+					即表格列宽固定死。
+				*/
+              table-layout: fixed;	
+				//width:100%;
+            }
+            th{
+					border: 1px solid #ddd;
+				}
+            td {
+                border: 1px solid #ddd;
+                /*允许在表格内换行。*/
+                word-break: break-all;
+                width: 100px;
+            }
+
+        </style>
+    </head>
+
+    <body>
+        <table>   
+			<tr>
+                <th>1</th>
+                <th >开始时间</th>
+                <th>结束时间</th>
+                <th>值班单位1</th>
+                <th>值班单位2</th>
+                <th>周数</th>
+                <th>备注</th>
+            </tr>
+            <tr>
+                <td ><input type="checkbox" name="checkBox" value="1"></td>
+                <td  >Data</td>
+                <td  >Data</td>
+                <td  >Data</td>
+                <td  >Data</td>
+                <td >Data</td>
+					<td>DataDataDataDataDataDataDataDataDataDataDataData123</td>
+            </tr>
+            <tr>
+               
+                <td ><input type="checkbox" name="checkBox" value="2"/></td>
+                <td  >Data</td>
+                <td  >Data</td>
+                <td  >Data</td>
+                <td  >Data</td>
+                <td  >Data</td>
+					<td>Data</td>
+            </tr>
+        </table>
+   </body>
+	
+</html>

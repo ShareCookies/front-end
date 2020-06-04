@@ -1,0 +1,85 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <style>
+        /* entire container, keeps perspective */
+        .flip-container {
+            /*border: 1px solid black; 纯属为了方便查看效果而定义*/
+             -webkit-perspective: 600px;/*加上这个属性，盒子的子元素旋转起来时看起来就能有3D效果了，不然只能是一个被压扁的盒子*/
+            -moz-perspective: 600px;	/*Firefox*/
+			/*
+				perspective 属性定义 3D 元素距视图的距离，以像素计。
+				当为元素定义 perspective 属性时，其子元素会获得透视效果，而不是元素本身。
+				注释：perspective 属性只影响 3D 转换元素。
+			*/
+        }
+        /* flip the pane when hovered */
+        .flip-container:hover .flipper {
+            transform: rotateY(180deg);			/*定义沿着 Y 轴的 3D 旋转。*/
+            -moz-transform:rotateY(180deg);     /* Firefox */
+        }
+
+        .flip-container, .front, .back {
+            width: 320px;
+            height: 320px;
+        }
+
+        /* flip speed goes here */
+        .flipper {
+			position: relative;
+            transition: 0.6s;/*transition: 0.6s;图形翻转过度要经历的时间。transition-delay在过渡效果开始前等待 秒。*/
+			
+            transform-style: preserve-3d;/*指定嵌套元素是怎样在三维空间中呈现。*/ 		/* Chrome 和 Safari */
+            -moz-transform-style: preserve-3d;	/* Firefox */
+           
+        }
+
+        /* hide back of pane during swap */
+        .front, .back {
+            line-height:320px;
+            color:#ffffff;
+            text-align: center;
+            font-size: 24px;
+
+			position: absolute;
+			
+            backface-visibility:hidden;/*隐藏被旋转的 div 元素的背面，只对转到背面的div有效，且对子孙div无效只对当前div有效，且只是隐藏并没有浮出当前空间即它还占着位置*/
+            -webkit-backface-visibility:hidden;    /* Chrome 和 Safari */
+            -moz-backface-visibility:hidden;     /* Firefox */
+			
+			
+			/*
+            top: 0;
+            left: 0;
+			*/
+        }
+
+        /* front pane, placed above back */
+        .front {
+            background-color: #4cae4c;
+        }
+
+        /* back, initially hidden pane */
+        .back {
+            background-color: #5bc0de;
+            transform: rotateY(180deg);
+            -moz-transform:rotateY(180deg);     /* Firefox */
+        }
+    </style>
+
+</head>
+<body>
+<!-- https://www.cnblogs.com/moicechul/p/6733996.html -->
+<div class="flip-container">
+    <div class="flipper">
+        <div class="front">
+            front
+        </div>
+        <div class="back">
+            back
+        </div>
+    </div>
+</div>
+</body>
+</html>
