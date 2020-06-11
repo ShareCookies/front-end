@@ -3,24 +3,39 @@ js:
 vs code集成的调试：
 	https://cn.vuejs.org/v2/cookbook/debugging-in-vscode.html
 	https://www.cnblogs.com/xifengxiaoma/p/9530737.html
-
-	Network底部参数：
-		32.9KB/128KB transferred 这是通过网络总共传送了128KB的数据。
-		575KB/2.7MB resources 
-			这是当前网页所调用的资源总5261数为2.7MB。注意，这个数字包括了网络实时传送的数据以4102及从缓存中直接提取的数据，所以它的值是比上一个值大的。
-		
-		传输资源压缩：
-			GZIP压缩：
-				https://juejin.im/post/5af003286fb9a07aac24611b
-				GZIP GUN ZIP，
-				是HTTP1.1协议定义的两种压缩方法中最常用的一种压缩方法，客户端浏览器大都支持这种压缩格式。
-				nginx 如何开启GZIP压缩的方法：
-					server {  
-						...  
-						gzip on;  
-						gzip_min_length 1k;  
-						gzip_buffers 4 16k;  
-						gzip_comp_level 4;  
-						gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;  
-						...  
-					}  
+谷歌调试界面
+	Network
+		底部参数：
+			32.9KB/128KB transferred 这是通过网络总共传送了128KB的数据。
+			575KB/2.7MB resources 
+				这是当前网页所调用的资源总5261数为2.7MB。注意，这个数字包括了网络实时传送的数据以4102及从缓存中直接提取的数据，所以它的值是比上一个值大的。
+			
+			附：
+				压缩传输资源：
+					GZIP压缩：
+						https://juejin.im/post/5af003286fb9a07aac24611b
+						GZIP GUN ZIP，
+						是HTTP1.1协议定义的两种压缩方法中最常用的一种压缩方法，客户端浏览器大都支持这种压缩格式。
+						nginx 如何开启GZIP压缩的方法：
+							server {  
+								...  
+								gzip on;  
+								gzip_min_length 1k;  
+								gzip_buffers 4 16k;  
+								gzip_comp_level 4;  
+								gzip_types text/plain application/javascript application/x-javascript text/css application/xml text/javascript application/x-httpd-php image/jpeg image/gif image/png;  
+								...  
+							}
+		header：
+			https://blog.csdn.net/qq_42553082/article/details/84072301
+			Query String Parameters：
+				url参数
+			Form Data：
+				当发起一次POST请求时，若未指定content-type，则默认content-type为application/x-www-form-urlencoded。即参数会以Form Data的形式进行传递，不会显式出现在请求url中。
+			Request Payload：
+				content-type为application/json
+					当发起一次POST请求时，若content-type为application/json，则参数会以Request Payload的形式进行传递（显然的，数据格式为JSON），不会显式出现在请求url中。
+				
+				content-type需要设置为multipart/form-data
+					如果希望通过Form Data的方式来传递数据，则可以通过原生方法formData()来进行数据组装，且content-type需要设置为multipart/form-data。
+					....

@@ -3,6 +3,7 @@
 	encodeURI() 函数，只需在带有中文的链接用该函数即可，其他地址无需解码即可使用：
 	注：
 		encodeURI() 函数和encodeURIComponent()函数的区别：前者只对中文部分转码，后者对特殊字符也会转码。
+		解码：decodeURIComponent
 
 vue首页压缩
 	https://blog.csdn.net/weixin_43850586/article/details/103915473
