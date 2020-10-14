@@ -62,22 +62,7 @@ CSS三大特征：
 溢出：
 	1：规定了外围div大小可能会造成内容溢出
 	2：overflow:hidden	如果元素中的内容超出了给定的宽度和高度属性，overflow 属性可以确定是否显示滚动条或隐藏等行为。
-margin(盒模型之外边距 ):
-	例:
-		margin:10px 5px 15px 20px;
-			上外边距是 10px
-			右外边距是 5px
-			下外边距是 15px
-			左外边距是 20px
-	margin:10px 5px 15px;
-		上外边距是 10px
-		右外边距和左外边距是 5px
-		下外边距是 15px
-	margin:10px 5px;
-		上外边距和下外边距是 10px
-		右外边距和左外边距是 5px
-	margin:10px;
-		所有 4 个外边距都是 10px
+
 line-height:
 	设置元素的行高
 	例：

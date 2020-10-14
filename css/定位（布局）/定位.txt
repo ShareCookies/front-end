@@ -1,8 +1,8 @@
 ﻿https://www.cnblogs.com/tim-li/archive/2012/07/09/2582618.html
 
-CSS常用布局方式：
+CSS中的布局方式有以下几种：
 	文档流(静态定位)，相对定位，绝对定位，固定，浮动，流式布局
-文档流(静态定位)：
+文档流(静态定位)：（默认）
 	介绍：
 		html默认的布局机制就是用文档流模型的，即块元素（block）独占一行，内联元素（inline）不独占一行。
 			附：内联元素后跟内联元素不会另起一行。
@@ -96,3 +96,24 @@ CSS常用布局方式：
 		文档流是相对于盒子模型讲的
 		文本流是相对于文子段落讲的
 
+	盒子模型：
+		https://blog.csdn.net/qq_27127385/article/details/106185712?utm_medium=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.nonecase&depth_1-utm_source=distribute.pc_relevant.none-task-blog-BlogCommendFromMachineLearnPai2-3.nonecase
+		介绍：
+			在HTML文档中，每个元素都有盒子模型。
+			由外到内分别为最外边距区域(margin area)，边框区域(border area)，内边距区域(padding area)和内容区域(content area)。
+		margin(外边距):
+			例:
+			margin:10px 5px 15px 20px;
+				上外边距是 10px
+				右外边距是 5px
+				下外边距是 15px
+				左外边距是 20px
+			margin:10px 5px 15px;
+				上外边距是 10px
+				右外边距和左外边距是 5px
+				下外边距是 15px
+			margin:10px 5px;
+				上外边距和下外边距是 10px
+				右外边距和左外边距是 5px
+			margin:10px;
+				所有 4 个外边距都是 10px
