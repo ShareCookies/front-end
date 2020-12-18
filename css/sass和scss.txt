@@ -25,3 +25,8 @@ sass-loader
 				}
 			}
 		</style>
+待：
+CSS中的&代表的什么
+	就是把上面的扣到下面，少写点代码。
+	https://blog.csdn.net/weixin_42861240/article/details/82383709
+	& 表示嵌套的上一级，这是sass的语法，代表上一级选择器，解释成CSS代码如下。

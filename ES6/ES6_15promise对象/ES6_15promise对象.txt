@@ -22,31 +22,31 @@ http://es6.ruanyifeng.com/#docs/promise
 		未完成 pending 
 		成功 resolved
 		失败 rejected
-	resolve函数：
-		resolve函数的作用是，将Promise对象的状态从“未完成”变为“成功”，并可返回一值。
-		通常在异步操作成功时调用该函数，并将异步操作的结果，作为参数传递出去。
-	reject函数：
-		reject函数的作用是，将Promise对象的状态从“未完成”变为“失败”，并可返回一值。
-		通常在异步操作失败时调用该函数，并将异步操作报出的错误，作为参数传递出去。
-		注：
-			1.调用resolve或reject并不会终结 Promise 的参数函数的执行。
-			例：
-				let p=new Promise((resolve, reject) => {
-					let valid = true;
-					if (valid) {
-						let fv=1;
-						resolve(fv);//调用完这个后面的还会继续执行
-						fv=6;
-						console.log(66);//66会比Contents: 1先出来，因为立即 resolved 的 Promise 是在本轮事件循环的末尾执行，总是晚于本轮循环的同步任务！。
-					} else {
-						reject(22);
-					}
-                });
-				p.then(function(json) {
-				  console.log('Contents: ' + json);
-				}, function(message) {
-				  console.log(message);
-				});
+		resolve函数：
+			resolve函数的作用是，将Promise对象的状态从“未完成”变为“成功”，并可返回一值。
+			通常在异步操作成功时调用该函数，并将异步操作的结果，作为参数传递出去。
+		reject函数：
+			reject函数的作用是，将Promise对象的状态从“未完成”变为“失败”，并可返回一值。
+			通常在异步操作失败时调用该函数，并将异步操作报出的错误，作为参数传递出去。
+			注：
+				1.调用resolve或reject并不会终结 Promise 的参数函数的执行。
+				例：
+					let p=new Promise((resolve, reject) => {
+						let valid = true;
+						if (valid) {
+							let fv=1;
+							resolve(fv);//调用完这个后面的还会继续执行
+							fv=6;
+							console.log(66);//66会比Contents: 1先出来，因为立即 resolved 的 Promise 是在本轮事件循环的末尾执行，总是晚于本轮循环的同步任务！。
+						} else {
+							reject(22);
+						}
+					});
+					p.then(function(json) {
+					  console.log('Contents: ' + json);
+					}, function(message) {
+					  console.log(message);
+					});
 	then函数：
 		then方法作用是为 Promise 实例添加状态改变时的回调函数。
 		then方法的第一个参数是resolved状态的回调函数，第二个参数（可选）是rejected状态的回调函数。
