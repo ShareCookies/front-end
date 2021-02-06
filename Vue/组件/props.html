@@ -57,5 +57,26 @@
 			}
 		}
 -->
+<!-- 
+监听props：
+	1. 对象
+		监听是一个对象的话，需要监听这个对象属性的值变化才可以。
+		比如pageNo下面有一个属性叫flag,则可以这样监听：
+		watch: {
+			'pageNo.flag'(){
+			  console.log(new Date());
+			}
+		}
+	注：
+		1. pageNo的指针不能变，不然生效不了。
+			this.form = res;//指针变
+			this.form = {...res}//指针变
+			Object.assign(this.form, res);//指针没变
+		2. 指针变了，也可以使用重新监听的方式
+			this.$watch('editable', (newVal) => {
+				vm.editable = newVal;
+			});
+-->
+
 </body>
 </html>

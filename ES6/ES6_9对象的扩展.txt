@@ -102,4 +102,22 @@ super 关键字：
 			目前，只有对象方法的简写法可以让 JavaScript 引擎确认，定义的是对象的方法。
 对象的扩展运算符：
 	ES2018 将这个运算符引入了对象。
-
+	... 为扩展运算符 
+	
+	例：
+		let bar = { a: 1, b: 2 }; let baz = { ...bar }; // { a: 1, b: 2 } 
+		上述方法实际上等价于： let bar = { a: 1, b: 2 }; let baz = Object.assign({}, bar); // { a: 1, b: 2 }
+	注：
+		源对象指针是被改变了
+		！校验案例后续再看
+	附：//源对象有的值会没掉
+		let t = {a:1} ;let t2 = {b:3};
+		t = {...t2}
+		
+	不想改变指针要以下方式：
+		let t = {a:1} ;let t2 = {b:3};
+		Object.assign(t, t2);
+	
+	附：
+		https://www.jianshu.com/p/d5f572dd3776
+		Object.assign方法用于对象的合并，将源对象（source）的所有可枚举属性，复制到目标对象（target）。
