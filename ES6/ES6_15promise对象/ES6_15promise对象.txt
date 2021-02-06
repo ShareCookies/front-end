@@ -48,9 +48,17 @@ http://es6.ruanyifeng.com/#docs/promise
 					  console.log(message);
 					});
 	then函数：
-		then方法作用是为 Promise 实例添加状态改变时的回调函数。
-		then方法的第一个参数是resolved状态的回调函数，第二个参数（可选）是rejected状态的回调函数。
+		
+
+
+		1. then方法作用是为 Promise 实例添加状态改变时的回调函数。
+		2. then方法的第一个参数是resolved状态的回调函数，第二个参数（可选）是rejected状态的回调函数。
 		当promise的状态改变后，then方法对应的参数形函数就会被触发。
+		
+		
+		3. Promise 实例具有then方法，也就是说，then方法是定义在原型对象Promise.prototype上的。
+		then方法返回的是一个新的Promise实例（注意，不是原来那个Promise实例）。因此可以采用链式写法，即then方法后面再调用另一个then方法。
+			return then链 返回的应该是最后一个then的promise
 		注：
 			1.then方法可只传一个参数，即：只为promise设置异步成功后的回调函数。
 			2.如果未设置promise对象的回调函数，谷歌console会进行提示。
