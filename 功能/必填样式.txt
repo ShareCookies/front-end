@@ -1,0 +1,15 @@
+	<div class="el-form-item__error--inline" v-show="mainHandleObjectNo ? false : true">
+		请选择责任处室
+	</div>
+.el-form-item__error--inline{
+	padding-top: 2px;	
+	position: relative;
+    top: auto;
+    left: auto;
+    display: inline-block;
+    margin-left: 10px;
+	color: #F56C6C;
+    font-size: 12px;
+    line-height: 1;
+}		
+

@@ -1,0 +1,12 @@
+星号样式
+	通过选择器实现星号样式
+	<span class="starStyle">任务名称</span>
+    .starStyle::before{
+        content: '*';
+        color: #F56C6C;
+        margin-right: 4px;
+    }
+CSS :before 选择器
+	https://www.w3school.com.cn/cssref/selector_before.asp
+	:before 选择器在被选元素的内容前面插入内容。
+	要插入的内容用 content 属性来指定。
