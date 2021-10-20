@@ -1,0 +1,11 @@
+https://blog.csdn.net/weixin_33908217/article/details/86025085
+自定义属性msg：
+	html：
+		<button  data-msg="Hello" >say hello</button>
+		
+		jquery中，如果要获取 data-*** 的值可以通过 $('目标元素').data('属性名') 来获取。
+	vue：		
+		<button @click="sayBye($event)" data-msg="Bye">say bye</button>
+		或<button @click="sayBye($event)" :data-msg="Bye">say bye</button>
+		
+		let msg=e.target.dataset.msg;

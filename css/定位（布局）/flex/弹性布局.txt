@@ -12,13 +12,17 @@ http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
 			.box{
 			  display: flex;
 			}
+			//行内元素也可以使用 Flex 布局。？
 			.box{
 			  display: inline-flex;
 			}
+		？
+			弹性布局和文档流关系，flex也是脱离了文档流把
 	容器：
 		轴：
 			容器默认存在两根轴：水平的主轴（main axis）和垂直的交叉轴（cross axis）。
-				主轴的开始位置（与边框的交叉点）叫做main start，结束位置叫做main end；交叉轴的开始位置叫做cross start，结束位置叫做cross end。
+				主轴的开始位置（与边框的交叉点）叫做main start，结束位置叫做main end；
+				交叉轴的开始位置叫做cross start，结束位置叫做cross end。
 			项目默认沿主轴排列。单个项目占据的主轴空间叫做main size，占据的交叉轴空间叫做cross size。
 		容器的属性：
 			以下6个属性设置在容器上。
@@ -45,6 +49,9 @@ http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
 					flex-end：右对齐
 					center： 居中
 					space-between：两端对齐，项目之间的间隔都相等。
+						例：实现左右分布：
+							左边一个div,右边一个div,父元素只需要display:flex;justify-content:space-between;
+
 					space-around：每个项目两侧的间隔相等。所以，项目之间的间隔比项目与边框的间隔大一倍。
 			align-items：
 				align-items属性定义项目在交叉轴上如何对齐。
@@ -75,6 +82,11 @@ http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
 			flex-shrink属性定义了项目的缩小比例，默认为1，即如果空间不足，该项目将缩小。
 		flex-basis：
 			flex-basis属性定义了在分配多余空间之前，项目占据的主轴空间（main size）。浏览器根据这个属性，计算主轴是否有多余空间。它的默认值为auto，即项目的本来大小。
+			例：			
+				.item {
+				  flex-basis: <length> | auto; /* default auto */
+				}
+				它可以设为跟width或height属性一样的值（比如350px），则项目将占据固定空间。
 		flex：
 			flex属性是flex-grow, flex-shrink 和 flex-basis的简写，默认值为0 1 auto。后两个属性可选。
 			例：
@@ -86,7 +98,10 @@ http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
 				2.建议优先使用这个属性，而不是单独写三个分离的属性，因为浏览器会推算相关值。
 		align-self：
 			align-self属性允许单个项目有与其他项目不一样的对齐方式，可覆盖align-items属性。默认值为auto，表示继承父元素的align-items属性，如果没有父元素，则等同于stretch。
-
+			例:
+			.item {
+			  align-self: auto | flex-start | flex-end | center | baseline | stretch;
+			}
 	例：
 		.content {
 			display: flex;/*该容器为弹性布局*/  
@@ -94,3 +109,8 @@ http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html
 			justify-content:center; /*justify-content属性定义了项目在主轴上的对齐方式，中心分布*/  
 			margin-top: 140rpx; /*https://www.jianshu.com/p/97dc7c4a5ebf*/
 		}
+附：
+	flex换行：
+		https://ask.csdn.net/questions/804002
+		只要外层容器的 flex-wrap 属性是 warp (默认是 nowarp)，一行被填满就会换行。
+		所以只需要插入 width=100% 的一个空盒子，就能达到 br标签的效果。

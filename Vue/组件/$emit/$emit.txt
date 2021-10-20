@@ -54,3 +54,5 @@ v-on指令：
 	移除事件监听：
 		通过.$off(‘i-got-clicked’)来移除特定事件上的所有监听。
 		也可以通过不带任何参数EventBus.$off()来移除事件总线上的所有监听。
+	判断是否有success事件：
+		this._events.success

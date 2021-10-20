@@ -1,30 +1,34 @@
 https://segmentfault.com/a/1190000003742313
 
+scss：
+	Sass 有两种语法规则(syntaxes),目前新的语法规则（从 Sass 3开始）被称为 “SCSS”( 时髦的css（Sassy CSS）)。
+	它是css3语法的的拓展级，就是说每一个语法正确的CSS3文件也是合法的SCSS文件，SCSS文件使用.scss作为拓展名。
 
+
+变量：
+	https://www.runoob.com/sass/sass-variables.html
+	例：
+	$myFont: 60px;
+	body {
+	  font-family: $myFont;
+	}
+	
+	通用全局变量：
+		所有的全局变量我们一般定义在同一个文件，如：_globals.scss，然后我们使用 @import 来包含该文件。
+		例：
+			<style  lang='scss'>
+				/* */
+				@import "components/eas/_globalVars.scss";
+				.tt{
+					z-index: $classifyZindex;
+				}
+			</style>
 
 sass-loader
 	https://www.webpackjs.com/loaders/sass-loader/
 	安装：npm install sass-loader node-sass webpack --save-dev
 
 
-
-不影响全局样式：
-	写样式之前考虑下会不会影响全局的样式，首选scoped。
-	<style lang="scss" scoped>
-	</style>
-如果要覆盖组件内的样式， 使用/deep/ ：
-	例：
-		<template>
-			<el-scrollbar class="login">
-			</el-scrollbar>
-		</template>
-		<style lang="scss" scoped>
-			.login {
-				/deep/ .el-form-item.is-required .el-form-item__label:before {
-					color: transparent;
-				}
-			}
-		</style>
 待：
 CSS中的&代表的什么
 	就是把上面的扣到下面，少写点代码。

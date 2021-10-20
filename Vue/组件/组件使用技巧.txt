@@ -58,3 +58,30 @@
 附：
 	组件的自调用：
 		https://blog.csdn.net/u013299635/article/details/91475272
+		
+js形式渲染调用组件：
+	https://www.cnblogs.com/hentai-miao/p/10271652.html
+	https://www.jianshu.com/p/b183f93a4aa2
+	Vue.extend( options )
+		https://cn.vuejs.org/v2/api/#Vue-extend
+		使用extend(基础 Vue 构造器)，创建一个“子类”(可当作vue组件类！)。
+		参数是一个包含组件选项的对象。
+		例：
+			<div id="mount-point"></div>
+			// 创建构造器
+			var Profile = Vue.extend({
+			  template: '<p>{{firstName}} {{lastName}} aka {{alias}}</p>',
+			  data: function () {
+				return {
+				  firstName: 'Walter',
+				  lastName: 'White',
+				  alias: 'Heisenberg'
+				}
+			  }
+			})
+			// 创建 Profile 实例，并挂载到一个元素上。(整个过程可单做渲染吧！)
+			new Profile().$mount('#mount-point')
+	vm.$mount( [elementOrSelector] )
+		https://cn.vuejs.org/v2/api/#vm-mount
+	$el?
+		https://forum.vuejs.org/t/el/35688/3

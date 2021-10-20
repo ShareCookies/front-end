@@ -2,11 +2,18 @@
 
 默认slot：
 	https://www.cnblogs.com/weichen913/p/9297399.html
+	介绍：
+		通过slot在组件中留个位置，应用该组件时，在该组件标签中间的html标签将被插入到这个插槽上。
 	例子：
 		slot.html
 具名slot：
-	一个组件可以有多个slot，这是给slot加上name，调用slot时，就可以决定把内容插入到那个slot位置上
-作用域插槽：
+	介绍：
+		一个组件可以有多个slot，给slot加上name，可通过slot属性应用html标签到指定的slot位置上
+	例子：
+		slot.html
+slot作用域：
 	https://blog.csdn.net/willard_cui/article/details/82469114
+	介绍：
+		slot是遍历时，html标签应用到插槽时，通常要获取到当前行的值，通过slot-scope就可实现。
 	例子：
 		slot-scop.html

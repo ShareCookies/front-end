@@ -1,0 +1,7 @@
+https://zhuanlan.zhihu.com/p/86347430
+解决方式：
+2，阻止单击事件继续传播
+
+v-on:click.stop
+
+event.stopPropagation() 。 // 对click和touch都适用，但是防不住touch300ms后引发click

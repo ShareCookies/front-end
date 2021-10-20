@@ -1,4 +1,5 @@
-CSS层叠样式表 (Cascading Style Sheets)
+介绍：
+	CSS层叠样式表 (Cascading Style Sheets)
 CSS三大特征：
 	css继承：
 	css层叠：
@@ -76,7 +77,21 @@ vertical-align：?
 	https://www.zhangxinxu.com/wordpress/2015/08/css-deep-understand-vertical-align-and-line-height/
 CSS常见简写规则整理
 	https://www.cnblogs.com/dear_diary/p/5885961.html
-字体：
-	font-family
-	字体图标：
-		https://uniapp.dcloud.io/frame?id=%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87
+
+自定义字体（字体图标）：
+	https://www.jianshu.com/p/2fb8ef458400
+	https://uniapp.dcloud.io/frame?id=%E5%AD%97%E4%BD%93%E5%9B%BE%E6%A0%87
+	介绍：
+		@font-face 是 CSS3 的一个模块，其主要作用是可将自定义字体嵌入到网页中，让网页字体的运用不只是限定在 Web 安全字体中。
+	语法：
+		@font-face {
+			font-family: <webFontName>;//引入的自定义字体名称
+			src: <source> [<format>][,<source> [<format>]]*;//字体路径
+			[font-weight: <weight>];
+			[font-style: <style>];
+		}
+	例：
+		@font-face {
+			font-family: test1-icon;
+			src: url('~@/static/iconfont.ttf');
+		}
