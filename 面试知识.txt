@@ -1,0 +1,76 @@
+json：
+	https://baike.baidu.com/item/JSON/2462549?fr=aladdin
+	JSON(JavaScript Object Notation) 是一种轻量级的数据交换格式。
+	采用完全独立于编程语言的文本格式来存储和表示数据。
+	它从JavaScript对象中演变出来的，是ECMAScript (欧洲计算机协会制定的js规范)的一个子集。
+	
+	优势：
+		易于人阅读和编写，同时也易于机器解析和生成，并有效地提升网络传输效率。
+JSON 与 JS 对象的关系：
+	JSON 是 JS 对象的字符串表示法，它使用文本表示一个 JS 对象的信息，本质是一个字符串。
+	JSON 和 JS 对象互转：
+		对象转换为 JSON 字符串，使用 JSON.stringify() 方法：
+		var json = JSON.stringify({a: 'Hello', b: 'World'}); //结果是 '{"a": "Hello", "b": "World"}'
+		JSON 转换为对象，使用 JSON.parse() 方法：
+		var obj = JSON.parse('{"a": "Hello", "b": "World"}'); //结果是 {a: 'Hello', b: 'World'}
+	与XML对比：
+	可读性：
+		JSON和XML的可读性可谓不相上下，一边是简易的语法，一边是规范的标签形式，很难分出胜负。
+	可扩展性：
+		XML天生有很好的扩展性，JSON当然也有，没有什么是XML可以扩展而JSON却不能扩展的。
+		不过JSON在Javascript主场作战，可以存储Javascript复合对象，有着xml不可比拟的优势。
+	网络传输效率：
+		JSON和XML还有另外一个很大的区别在于有效数据率。
+		JSON作为数据包格式传输的时候具有更高的效率，这是因为JSON不像XML那样需要有严格的闭合标签，
+		这就让有效数据量与总数据包比大大提升，从而减少同等数据流量的情况下，网络的传输压力。
+AJAX:
+	Ajax(Asynchronous Javascript And XML 异步 JavaScript 和 XML），是指一种创建交互式网页应用的网页开发技术。
+	在无需重新加载整个网页的情况下，能够更新部分网页的技术。
+	例：
+		<!DOCTYPE html>
+		<html>
+		<head>
+		<meta charset="utf-8">
+		<script>
+		function loadXMLDoc(){
+			/**
+				1.XMLHttpRequest 是 AJAX 的基础。
+				所有现代浏览器均支持 XMLHttpRequest 对象（IE5 和 IE6 使用 ActiveXObject）。
+				XMLHttpRequest 用于在后台与服务器交换数据。
+				这意味着可以在不重新加载整个网页的情况下，对网页的某部分进行更新。
+			*/
+			var xmlhttp;
+			if (window.XMLHttpRequest){//  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+				xmlhttp=new XMLHttpRequest();
+			}else{// IE6, IE5 浏览器执行代码
+				xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+			}
+			/**
+				异步下，JavaScript 无需等待服务器的响应，而是：
+					在等待服务器响应时执行其他脚本
+					当响应就绪后对响应进行处理
+
+				3.async=true时,规定在响应，处于onreadystatechange 事件(就绪状态)中的执行函数。
+				注：
+					 当async=false 时，请不要编写 onreadystatechange 函数，把代码放到 send() 语句后面即可。
+			*/
+			xmlhttp.onreadystatechange=function(){
+				if (xmlhttp.readyState==4 && xmlhttp.status==200){//http://www.runoob.com/ajax/ajax-xmlhttprequest-onreadystatechange.html 笔记中有状态码
+					document.getElementById("myDiv").innerHTML=xmlhttp.responseText;//responseText获得字符串形式的响应数据。responseXML获得 XML 形式的响应数据。http://www.runoob.com/ajax/ajax-xmlhttprequest-response.html
+				}
+			}
+			/**
+				2.使用 XMLHttpRequest 对象的 open() 和 send() 方法,向服务器发送请求请求。
+				注：
+					数据还是以get或post发送到后台，所以后台处理代码跟处理表单数据一个原理
+			*/
+			xmlhttp.open("GET","/try/ajax/ajax_info.txt",true);
+			xmlhttp.send();
+		}
+		</script>
+		</head>
+		<body>
+		<div id="myDiv"><h2>使用 AJAX 修改该文本内容</h2></div>
+		<button type="button" onclick="loadXMLDoc()">修改内容</button>
+		</body>
+		</html>

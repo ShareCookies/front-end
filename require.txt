@@ -1,0 +1,17 @@
+require(module)
+
+
+node.js中require如何定位module
+
+	在node.js中，如果使用require(module)来定位一个模块，有以下几种情况：
+	1.若module是一个原生模块，则判断其在内存中是否存在，若存在，则加载，否则，从硬盘加载；
+	2.若module的前缀是./或者..等相对路径，或者/绝对路径，查找该模块，若模块不存在且模块没有后缀名，则添加.js/.node后缀名，继续判断。
+	3.若module既不是原生模块，也无相对路径或绝对路径，则从[node_modules,global_path]中寻找，其中:
+		例：
+			在文件 '/home/ry/projects/foo.js' 中调用 require('bar.js'), 那么node将按照下面的顺序去查找：
+				/home/ry/projects/node_modules/bar.js
+				/home/ry/node_modules/bar.js
+				/home/node_modules/bar.js
+				/node_modules/bar.js
+		  global_path是以下路径:
+			[NODE_PATH，HOME/.node_modules，NODE_PATH，HOME/.node_libraries，execPath/../../lib/node]

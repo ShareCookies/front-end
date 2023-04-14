@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>select</title>
+ </head>
+ <body>
+	<select name="yc" id="yc" >
+		<option value="1">是</option>
+		<option value="0" selected>否</option><!-- 默认选中option -->
+	</select>
+	<script>
+//更多方式（含jq）：https://www.cnblogs.com/qq3245792286/p/6390504.html
+		//1:拿到select对象： 
+		var myselect=document.getElementById("yc");
+		//2：拿到选中项的索引：
+		var index=myselect.selectedIndex ; // selectedIndex代表的是你所选中项的index
+		console.log(index);
+		//3:拿到选中项options的value：
+			console.log(myselect.value);		
+			
+			var optionValue=myselect.options[index].value;
+			console.log(optionValue);
+		//4:拿到选中项options的text： 
+			var optionText=myselect.options[index].text;
+			console.log(optionText);
+		
+		
+		//5.select中值改变事件
+		myselect.onchange=function(){
+			console.log(myselect.value);	
+		}
+	</script>
+ </body>
+</html>

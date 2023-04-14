@@ -1,0 +1,31 @@
+then链：
+	附：
+		Promise 是异步函数
+	使用Promise 的 then链可以实现同步效果。
+	注：
+		1. return Promise的then链返回的是最后一个then 的结果。
+		2. then 返回的也是个promise，且默认是resolve
+	为什么then链可以实现同步效果：
+		1. 
+			Promise执行完会返回resolve或reject，
+			resolve进入then方法1，reject进入then方法2。
+		2.
+			返回的也是个promise，且默认是resolve。
+			所以then执行完，可以接着下一个then，或处异常进入catch
+	例：
+        onSubmit() {
+            return this.$refs.form.validate().then(res => {    
+                return this.$utils.ajax({
+                   ...
+                }).then((res) => {
+                    ...
+					//onSubmit返回的是这个then结果。
+					//而且，onSubmit中函数会validate先执行完，接着ajax，接着这个then。
+                }).finally(() => {
+                    ...
+					//finally 如果执行ajax的then链，则改finally一定会执行
+                });
+            },()=>{
+                ...
+            });
+		}

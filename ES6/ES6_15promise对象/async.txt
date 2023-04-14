@@ -46,4 +46,5 @@ await：
 			附：
 				1. await 命令后面的 Promise 对象，运行结果可能是 rejected，所以最好把 await 命令放在 try...catch 代码块中。
 附：
-	async/await 的优势在于处理 then 链
+	async/await 的优势在于处理 then 链。
+	

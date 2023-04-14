@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+ </head>
+ <body>
+	<script>
+		//js时间操作https://www.cnblogs.com/Jacklovely/p/5888281.html
+		var myDate = new Date();
+		console.log(myDate.toLocaleDateString());     //获取当前日期
+		console.log(myDate.toLocaleTimeString());     //获取当前时间
+		console.log(myDate.getTime());//获取时间戳
+		console.log();
+		
+		/**
+		* des:js日期往后推n天
+		*/
+		var n=15;
+		var nDate=new Date(myDate.getTime()+n* 24 * 60 * 60 * 1000);
+		console.log(nDate);
+		/**
+		* des:js时间比较
+		*/
+		if(myDate<nDate){
+			console.log("myDate小于nDate");
+		}
+		/**
+		* des:js时间格式化
+		*/
+		//1.获取年月日时间在拼接
+				var time=array[i].createTime;
+				var month=time.getMonth()+1;
+				var date=time.getDate();
+				var hour=time.getHours();
+				var minute=time.getMinutes(); 
+				//09-21 19:20
+				var timeFormat1=month+"-"+date+" "+hour+":"+minute;
+				var data={
+			'entity.id':id,
+			test:"111"
+		};
+	</script>
+ </body>
+</html>

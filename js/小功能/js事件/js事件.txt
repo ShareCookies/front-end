@@ -1,0 +1,23 @@
+https://www.quanzhanketang.com/jsref/dom_obj_event.html
+DOM:
+	介绍：DOM定义了访问HTML和XML文档的标准。
+	分类：
+	DOM0：不是W3C规范。
+	DOM1：开始是W3C规范。专注于HTML文档和XML文档。
+	DOM2：对DOM1增加了样式表对象模型
+	DOM3：对DOM2增加了内容模型和文档验证。
+	如何确认浏览器支持DOM几了：
+	1.用与dom版本相关的api
+
+鼠标事件：
+	onclick	单击时，调用。
+	ondblclick 双击时，调用。
+	onmousedown 按下时，调用。
+	onmouseup 抬起时，调用。注：即按下鼠标再松开鼠标调用，没写按下鼠标事件也能单独用。
+	onmouseover 进入元素或元素的子元素，就调用。
+	onmouseout 离开元素或元素的子元素，就调用。
+	onmouseenter 进入元素时，调用。
+	onmouseleave 离开元素时，调用。
+	onmousemove 在元素上移动时，就调用。注：可用来设计html画板
+案例：
+	./JsEvent.html

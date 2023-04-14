@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>能操作同域iframe，而不能操作跨域的iframe</title>
+  <style>
+	div{
+		background-color:black;
+		width:100%;
+		height:100px;
+	}
+	iframe{
+		width:100%;
+	}
+  </style>
+ </head>
+ <body>
+	<div></div>
+	<iframe onload="operate(this.name)" src="http://www.nd.com.cn/" name="crossDomain"></iframe>
+	<iframe onload="operate(this.name)" src="http://127.0.0.1/" name="ipSameDomain"></iframe>
+	<iframe onload="operate(this.name)" src="http://localhost/" name="domainSameDomain"></iframe>
+	<script>
+		function operate(frameName){
+			console.log(window.frames[frameName].document);
+		}
+	</script>
+ </body>
+</html>

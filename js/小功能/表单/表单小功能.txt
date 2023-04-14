@@ -1,0 +1,32 @@
+var form=document.getElementById('');
+
+给表单地址赋值：
+	form.action=url;
+js提交表单：
+	form.submit();//js提交表单。注：test为form的name
+js给input赋值：
+	document.getElementById('currentPage').value="2";
+给input type='date' 赋值：
+	.value="2015-12-09";
+	https://blog.csdn.net/yijiupingfan0914/article/details/80416979?utm_source=blogxgwz1
+获取input type='radio' 值：
+	var radios = document.getElementsByName("blankRadio");
+	var value = 0;
+	for(var i=0;i<radios.length;i++){
+		if(radios[i].checked == true){
+			value = radios[i].value;
+		}
+	}
+	alert(value);
+input type='radio'绑定onchange：
+	var radios = document.getElementsByName("selectedClassify");
+	for(var i=0;i<radios.length;i++){
+		radios[i].onchange=function(){
+			console.log(this);
+		}
+	}
+input type='file' 操作：
+		console.log(this);
+		console.log(this.value);
+		console.log(this.files[0]);//file对象
+		console.log(this.files[0].name);//

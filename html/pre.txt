@@ -1,0 +1,6 @@
+pre的内容自动换行：
+	https://www.cnblogs.com/qq78292959/p/4193142.html
+	pre {
+		white-space: pre-wrap;
+		word-wrap: break-word;
+	}

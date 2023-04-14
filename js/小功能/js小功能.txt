@@ -1,0 +1,66 @@
+获取元素方式：
+	document.getElementById("pwd");//根据id
+	document.getElementsByClassName("submit")[0];//根据class
+	document.getElementsByName("submit")[0];//根据name属性
+	document.getElementsByTagName("submit")[0];//根据标签
+获取父标签：
+	.parentNode(W3C标准)或.parentElement;
+获取所有子元素：
+	var children=this.parentElement.children;
+	for(var i=0;i<children.length;i++){
+		console.log(children[i].tagName);//
+	}
+获取iframe标签：
+	window.ifame['iframe的name']
+	iframe重加载：
+		window.frames["test"].location.reload(true);
+未跨域，获取iframe导入的元素：
+	https://www.cnblogs.com/shaoyu19900421/p/4549901.html
+	window.frames["ifm"].document.
+	document.getElementById("iframe的name").contentWindow;  
+js判断iframe是否加载完毕：
+	https://www.cnblogs.com/Marydon20170307/p/9640921.html
+自定义标签属性：
+	setAttribute("属性名",属性值“”);这个是用来设置标签属性的；
+	removeAttribute("属性名");这是用来删除标签属性的。
+	getAttribute("属性名");获取标签该属性的值；
+	注：
+		即可用来获取标签自身属性，还可用来自定义属性。
+设置标签行内样式：
+	例：
+	var li=docum...
+	li.style.height = "200px";
+	li.style.backgroundColor = "red";
+	注:
+	js中，css的属性名用连接符的地方，改为将后面的第一个字母大写，
+	如：background-color ==> backgroundColor ;
+	定时处理：
+		setTimeout(sub,1000);//1000毫秒后执行
+		//var t=setInterval('sub()',1000); //每个1000毫秒执行一次
+	//clearInterval(t);关闭
+模拟点击事件：
+	var e = document.createEvent("MouseEvents");
+	e.initEvent("click", true, true);
+	document.getElementsByClassName("submit")[0].dispatchEvent(e); 
+	例：
+		// 两秒后模拟点击
+		setTimeout(function() {
+			// IE
+			if(document.all) {
+				document.getElementById("clickMe").click();
+			}
+			// 其它浏览器
+			else {
+				var e = document.createEvent("MouseEvents");
+				e.initEvent("click", true, true);
+				document.getElementById("clickMe").dispatchEvent(e);
+			}
+		}, 2000);
+为元素绑定事件的3种方法:
+	1.直接在HTML中添加
+	如：<input type=”button” id=”btn” onclick=”func A()”>
+	 2.在JS中添加,
+	如:btn.onclick=func A;
+	 3.定义监听函数,如：btn.addEventListener(‘click’,function(){});
+
+

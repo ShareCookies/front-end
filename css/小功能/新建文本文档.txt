@@ -1,0 +1,30 @@
+div等元素height:100%高度为什么不生效：
+	https://blog.csdn.net/ann295258232/article/details/54408431
+	介绍:
+		所有基于百分比的尺寸必须从父块元素继承，并且如果任一父项未能指定尺寸，则它们的尺寸假定为0 x 0像素
+		
+元素不可见：
+	https://blog.csdn.net/qq_28506819/article/details/72846781
+	display
+		隐藏元素，不占用空间
+				display:none
+				http://www.w3school.com.cn/cssref/pr_class_display.asp
+	visibility
+		隐藏元素，仍占用空间
+		visibility:hidden
+		visibility：visible
+	url()路径：
+		https://blog.csdn.net/shangquan2012/article/details/53587159
+		相对路径:
+			当前位置就是CSS文件所在目录
+		绝对路径:
+			可以绝对路径吗？
+
+圆角：
+	border-radius:50%;
+height100%无效：
+	https://blog.csdn.net/yanchenxi313761/article/details/79437541
+	%是一个相对父元素计算得来的高度，要想使他有效，我们需要设置父元素的height;
+	html,body{
+		height:100%;
+	}

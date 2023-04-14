@@ -1,0 +1,139 @@
+json格式：
+{"status" : 0 , "data"   :[{"id"    : 1 ,"name"  : "xiaohong"},{"id"    : 2}]}
+jsJSON操作：
+	JSON.parse(str);//json字符串转对象
+	JSON.stringify(obj);//对象转json字符串
+ajax：
+	历史：
+		传统向后台提交并请求数据，是浏览器的主线程去处理，导致整个页面的响应无人操作界面就卡死了。
+		现在是用一个XMLHttpRequest对象开辟一个子线程来发送数据？
+		便于用户在请求网页新的内容时，还可继续浏览网页的其余部分，不会导致页面的卡死。
+	ajax返回的三种数据类型:
+		html代码
+		js代码
+		json字符串
+Js实现Ajax:
+	ajax实现流程:
+		1.获取xmlhttprequest对象。
+		2.监听xmlhttprequest对象状态。
+		如果该对象状态是完成状态就获取该对象携带的http请求响应码，如果响应码是成功，就把返回信息显示在网页上。
+		3.调用xmlhttprequest对象的方法来向服务器发送信息
+	代码案例：
+		注：代码写在.js文件里
+		//XHR的状态
+	   var XHR_STATE_UNINITIALIZED=0;  //XHR.open()还没被调用
+	   var XHR_STATE_LOADING=1;        //XHR.open()已经被执行
+	   var XHR_STATE_LOADED=2;         //XHR.send()已经被执行
+	   var XHR_STATE_INTERACTIVE=3;    //XHR发觉server的数据已经返回了一部分
+	   var XHR_STATE_COMPLETE=4;       //XHR发现server已经对请求作出响应,并返回了所有内容,操作结束.
+		//1.获取xmlhttprequest对象。
+	   function getXMLHttpRequest(){
+			var xhr=null;
+			if(window.XMLHttpRequest){
+				xhr=new XMLHttpRequest(); // for firefox/IE7
+				//alert("firefox/IE7");
+			}else {
+				xhr=new ActiveXObject("Microsoft.XMLHTTP"); // for IE.  ActiveX是一种IE插件标准，最早XHR是以插件的形式在IE中存在的。
+				//alert("IE 6");
+			}
+			return xhr;
+	   }
+	   
+	   function sendRequest(url){
+			var xhr=getXMLHttpRequest();
+			//2.监听xmlhttprequest对象状态。即给监听器赋值一个方法，当xhr状态改变时就会调用该方法。
+			xhr.onreadystatechange=function(){
+	                               var state=xhr.readyState;//获取xhr对象当前状态码
+	                               if(state==XHR_STATE_COMPLETE){//xhr未接收到服务器响应
+	                                  var status=xhr.status; //获得HTTP STATUS，就是获取后台返回的状态。例：后台接收到信息并成功处理就会返回200
+	                                  if(status>=200 && status<=299){
+										 //后台接收到信息并成功处理
+	                                     alert(xhr.responseText);
+	                                  }else
+	                                     alert("xhr request error!"+status);
+	                               }else{
+										//xhr未接收到服务器响应，提示用户等待
+	                                    alert("please wait...stateid:"+state);
+	                               }
+	                             }; 
+  
+		//3.调用xmlhttprequest对象的方法来向服务器发送信息
+	    xhr.open('GET',url,true);//打开链接
+	    xhr.send(null);//发送
+			 /*或则使用该方式向服务器发送信息
+				 xhr.open(methodtype,url,isAsynchronous); 
+					 methodType: GET/POST/...
+					 url:
+					 isAsynchronous: 如果为true,则为异步.
+				 xhr.setRequestHeader(
+					  'Content-type',
+					  'application/x-www-form-urlencoded'
+				  );
+				 xhr.send()    
+			*/
+	}
+Jq实现Ajax:
+	准备：
+		导入jq框架<script type="text/javascript"src="http://libs.baidu.com/jquery/1.8.3/jquery.min.js"></script>
+	代码案例：
+		//$是 jQuery窗口对象的属性也是方法,通过它我们可以调用jquery的方法和属性。
+		/*
+			Note: The jQuery library exposes its methods and properties via two properties of the window object called jQuery and $. 
+			$ is simply an alias for jQuery and it's often employed because it's shorter and faster to write.
+			注意：jQuery库通过窗口对象的两个属性（jQuery和$）公开其方法和属性。$只是jQuery的别名，它经常被使用，因为它写的更短和更快。
+		*/
+		//ajax实现方式1：
+			$(document).ready(function(){	//$(document).ready()，你能让你的事件在window加载之前加载或触发。
+				$("#load_more").click(function(){	//给id控件绑定点击事件
+					var page=$("#load_more").attr("value")	//获取控件的值
+					//调用jq的异步请求函数发起异步请求。注：该函数帮我们实现了xmlhttprequest对象获取，我们只需指定目的地址和成功后调用的函数。
+					$.ajax({
+						 url: "load_more.php",  
+						 type: "POST",
+						 data:{"test":page},
+						 /*
+							 类型：String发送到服务器的数据。将自动转换为请求字符串格式。
+							 GET 请求中将附加在 URL 后。
+							 必须为 Key/Value 格式。
+							 如果为数组，jQuery 将自动为不同值对应同一个名称。如 {foo:["bar1", "bar2"]} 转换为 '&foo=bar1&foo=bar2'。
+							 ???
+							 与struts2 交互时data传对象就行，要是传json不行就会以json字符串形式传给后台。
+						 */
+						 dataType: "html",//设置需要返回的数据类型
+						 error: function(jqXHR, textStatus, errorThrown){  
+							 /*弹出jqXHR对象携带的信息*/
+							alert(jqXHR.responseText);
+							alert(jqXHR.status);
+							alert(jqXHR.readyState);
+							alert(jqXHR.statusText);
+						 },  
+						 success: function(data)
+						 {
+							//后台成功处理后调用的函数 
+							var back = data;
+							//alert(back);
+							$("#load_more_content").append(back); 
+							page=page=$("#load_more").attr("value")*1+1*1;//这样避免了jq误认为字符串相加,更快的进行值的转换
+							$("#load_more").attr("value",page);
+						 } 
+					 });
+				})
+			});
+		//ajax实现方式2：
+			//.getJSON()函数，只是设置了JSON参数的 ajax()函数的一个简化版本。
+			成功后返回的参数只能是json，不然无法解析
+			$(document).ready(function () {
+				/*
+					$.getJSON(url,data,success(data,status,xhr))
+					url	必需。规定将请求发送的哪个 URL。
+					data	可选。规定连同请求发送到服务器的数据。
+					success(data,status,xhr)	可选。规定当请求成功时运行的函数。
+				*/
+				$.getJSON("./advBS",function (json) {
+					advInfoItems = json.advInfos;
+					console.log(advInfoItems);
+					refreshInterval = json.refreshInterval;
+					runAdv();
+				});
+			});
+		

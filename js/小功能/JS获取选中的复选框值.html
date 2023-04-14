@@ -1,0 +1,39 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <title>js获取选中的复选框值</title>
+    </head>
+
+    <body>
+        <table>   
+			<tr>
+                <th>复选框</th>
+            </tr>
+            <tr>
+                <td ><input type="checkbox" name="checkBox" value="1" checked="checked"></td>
+            </tr>
+            <tr>
+                <td ><input type="checkbox" name="checkBox" value="2"/></td>
+            </tr>
+        </table>
+	<script>
+		//js获取选中的复选框值
+		function getCheckBox() {
+			var bb = ""; 
+			var temp = ""; 
+			var a = document.getElementsByName("checkBox"); 
+			for ( var i = 0; i < a.length; i++) {
+					if (a[i].checked) { 
+						temp = a[i].value;
+						bb = bb + "," +temp; 
+					} 
+			}
+			alert(bb);
+			//document.getElementById("tempString").value = bb .substring(1, bb.length); 
+		}
+		getCheckBox();
+	</script>   
+   </body>
+	
+</html>

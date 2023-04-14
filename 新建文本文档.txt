@@ -1,0 +1,8 @@
+scss变量定义
+
+DataURL
+	canvas.toDataURL();
+	https://segmentfault.com/a/1190000022448189
+	
+canvas转img，blob相互转换
+	https://blog.csdn.net/weixin_41266588/article/details/89281640

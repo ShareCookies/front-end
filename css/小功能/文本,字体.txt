@@ -1,0 +1,7 @@
+段落首行文字缩进：
+	 text-indent:35px
+	 display:block;
+字体颜色：
+	color:#CCCCCC;
+a标签下划线：
+	text-decoration:none;

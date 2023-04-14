@@ -1,0 +1,59 @@
+主流框架:
+	js原生开发–jq–angular
+	vue.js、react
+JQ
+
+JQ导入：
+	<script type="text/javascript"src=""></script>
+	注：
+		只是学习src可填http://libs.baidu.com/jquery/1.8.3/jquery.min.js
+JQ小功能：
+	获取某DIV的元素两种方法：
+		子元素选择器（>），例如 $("div>img") 获取div下的img子元素；
+		遍历函数children()，例如 $("div").children("img") 同样是获取div下的img子元素。
+		如果想要获取DIV下的不仅是子元素，而且还包括其他后代元素（孙辈、曾孙辈元素...），相应的两种方法是：
+			后代元素选择器（空格），例如 $("div img")  获取div下的所有级别的img后代元素；
+			遍历函数find()，例如 $("div").find("img")  获取div下的所有级别的ing后代子元素。
+	获取或设置某个标签的内容：
+		https://blog.csdn.net/yaopan1989/article/details/51882438
+			$("#test").html()
+		介绍:
+		得到的就是<span class="_target">specification </span>
+		//.html()读取或者设置某个元素中的HTML
+			$("#test").text()
+		介绍：
+		//.text()读取或者设置某个元素中的HTML内容。注：类似JS的innerText属性
+			获取input输入框中的值:!!!
+				$("#test").val()
+				$("input[name='test']").val()
+				$("input[type='text']").val()
+				$("input[type='text']").attr("value")
+	设置css属性：
+		http://www.w3school.com.cn/jquery/jquery_css.asp
+		函数：
+			.css();
+		例子：
+			//设置p元素的css属性
+			$("p").css({"font-size":"200%"});
+	jq修改css样式：
+		$(".btn1").click(function(){
+			$("p").css("color","red");
+		});
+jq事件：
+	on() 方法：
+		on() 方法在被选元素上添加一个或多个事件处理程序。
+	查看html标签绑定了事件:
+		console.log($(obj).data("events"));
+		注:
+		1.$(obj).data("events")返回一个数组 
+		2.能查看绑定了哪些方法吗？
+	jq点击事件：
+		//为指定的所有标签添加点击事件
+		$('.img-thumbnail').on('click', function (e) {
+			console.log(e);console.log(this);
+			console.log($('#imgInModalID')[0].src);
+				e.stopPropagation();
+		});
+		//
+		$(".btn1").click(function(){
+		});

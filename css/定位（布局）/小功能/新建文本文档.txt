@@ -1,0 +1,31 @@
+定位:
+	绝对或固定元素会生成一个块级框，。相对定位元素会相对于它在正常流中的默认位置偏移。
+	positon:relative;
+		相对于元素本身在文档中应该出现的位置来移动这个元素
+	positon:absolute;
+		相对父元素定位的是position：absolute;
+		absolute会根据最相近的已定位的祖先元素定位？？？
+					一开始相对与屏幕来定位，然后固定下来不会一直随着屏幕改变而改变？？？
+		会相对与父元素来定位，如父元素100px；子元素{positon:absolute;bottom:0px;}子元素会出现在100px底部。错！
+	positon:fixed;
+		fixed(固定):相对于浏览器窗口固定，会一直随着屏幕改变而改变！！！
+	float:
+		https://www.cnblogs.com/cc156676/p/5682439.html
+		https://blog.csdn.net/helllochun/article/details/51615136
+		设计初衷:为了实现文本环绕效果
+		浮动部分特点:
+			1.浮动元素脱离文档流
+				只要浮动，自带display:inline-block声明。
+			2.浮动规则:
+				1.浮动元素的参照物是其最近的块级祖先元素。?
+				2.
+			3.作用：
+				可以使多个行集元素同行显示
+			4.去除浮动：
+				overflow：hidde；（用在父元素上！）
+				clear：both；
+轴：
+	z轴索引要都有定位才能生效。
+方案：
+	子元素相对父元素定位：
+		父元素是relative，子元素就可用absolute来与父元素进行相对定位。

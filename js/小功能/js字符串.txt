@@ -1,0 +1,23 @@
+字符串切割：
+	stringObject.split(separator,howmany);
+	separator	必需。字符串或正则表达式，在stringObject遇到该参数则切割字符串,最后返回子字符串数组。
+	howmany	可选。该参数可指定返回的数组的个数，未指定则返回全部切割结果。
+	例子：
+	var str = "How are you toing today?";
+	var res = str.split("to");
+	console.log(res);
+	var res = str.split("to",2);
+	console.log(res);
+字符串截取：
+	1.string.slice(start,end)
+	start	Required. The position where to begin the extraction. First character is at position 0
+	end	Optional. The position (up to, but not including) where to end the extraction。如果缺失则到最后
+	例：
+		var str = "Hello world!";
+		var res = str.slice(1);
+		console.log(res);
+	2.substr()
+		介绍：方法返回从指定位置开始的字符串中指定字符数的字符
+		例：
+			var str = 'abcdefghij';
+			str.substring(1, 2));   // bc

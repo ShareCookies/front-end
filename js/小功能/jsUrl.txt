@@ -1,0 +1,38 @@
+window.location对象：
+	window.location.pathname
+		返回当前 URL 的路径名，
+		/EduAsistSys/english/article.jsp
+	location.hostname 
+		返回 web 主机的域名，
+		localhost
+	location.port 
+		返回 web 主机的端口 （80 或 443）
+	location.protocol 
+		返回所使用的 web 协议（http:// 或 https://）
+	重载：
+		window.location.reload();
+网页跳转：
+	原有窗口打开：
+		window.location.href = "http://www.baidu.com";
+	打开新的窗口：
+		window.open("http://www.baidu.com");
+js获取url后参数：
+	/**
+	 * 获取url后参数
+	 * variable 字符串
+	 */
+	getQueryVariable : function(variable){
+       var query = window.location.search.substring(1);//设置或获取 href 属性中跟在问号后面的部分。
+       var vars = query.split("&");
+       for (var i=0;i<vars.length;i++) {
+               var pair = vars[i].split("=");
+               if(pair[0] == variable){return pair[1];}
+       }
+       return undefined;
+	}
+	getInitUrl : function($window){
+		var hostname=window.location.hostname;
+		var port=window.location.port;
+		var path=window.location.pathname;
+		return ...
+	}

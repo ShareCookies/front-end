@@ -1,0 +1,194 @@
+js导入|书写：
+	介绍：
+		在HTML中插入JavaScript,使用 <script> 标签，脚本可放<head>或<body>中。
+		导入外部的 JavaScript：
+		<script  src=""></script>
+	html中写js：
+		<script type="text/javascript"> </script>
+	注：
+		type="text/javascript"，现在已经不必这样做了，JS 是所有现代浏览器以及 HTML5 中的默认脚本语言。
+JSON：
+	函数：
+		JSON.parse();	//用于将一个JSON字符串转换为 JS对象或数组。
+		JSON.stringify();	//用于将 JS对象或数组转换为 JSON 字符串。
+	例子：
+		获取数组值：
+			arrvalue=arr[i];
+			...
+		获取对象值：
+			var obj = {abc:"ss",nn:90};
+			var v1 = obj.abc;//使用点的方式
+			var v2 = obj["abc"];//使用中括号的方式
+			注：
+				在实际项目中一般使用点，会方便许多，但是如果key是变量的话就不能使用点了，js会理解变量为对象的key值，造成混淆
+				var v3 = obj[key];//key是一个变量,获取值方法
+HTML DOM：
+	介绍：
+		DOM 中，Element 对象表示 HTML 元素
+	事件之鼠标事件：
+		onclick 当用户点击鼠标时
+		当网页已加载时
+		当图像已加载时
+		onmouseover 当鼠标移动到元素上时
+		onmouseout   当鼠标移开时
+		当输入字段被改变时
+		当提交 HTML 表单时
+		当用户触发按键时
+	事件挂载到html:
+		1.html属性挂事件
+		在html标签中使用事件属性。
+		例:onclick="js方法"
+		2.js属性挂事件:
+		1.通过js获取html标签对象。
+		2.给对象添加事件。
+	js弹窗：
+		alert()	
+		警示对话框。只有确认按钮。
+		confirm()	
+		确认对话框。有确认和取消按钮。
+		点击"确认"，confirm()返回true，单击"取消"，返回false.
+		prompt()	
+		输入提示框。有输入框，确认和取消按钮。
+		点击"确认"，prompt()返回用户在文本框中输入的内容（是字符串类型)或者初始值(如果用户没有输入信息);如果用户单击“取消”按钮，则prompt()方法返回null
+基础语法：
+js函数|关键字：
+	函数定义：
+		function myFunction(parameter){
+		var x=parameter;
+		return x;//可不写返回值
+		}
+	函数：
+		函数没有重载，只有覆盖:
+			function aa(){
+				alert("无参的方法");
+			}
+			//没有方法的重载，后面声明的函数会覆盖之前的函数
+			function aa(name){
+				alert("有参的方法\t"+name);
+			}
+			<input type="button" value="测试重载" name="aa" onclick="aa();"/>
+		输出结果：有参的方法undefined
+	typeof：
+		介绍：
+			typeof运算符把类型信息当作字符串返回，
+			typeof返回值有6种：
+			"number","string","boolean","object","function","undefined"
+			注：
+			1.typeof 语法中的圆括号是可选项
+			2.对于Array,Null等特殊对象typeof一律返回object
+		例：
+			if(typeof a!="undefined"){}
+		注：
+			不要去使用if(a)因为如果a未声明会出错
+	instance：
+		介绍：
+			instanceof用于判断一个变量是否某个对象的实例
+		例：
+			var a=new Array();
+			console.log(a instanceof Array);//会返回true
+js类：
+	https://blog.csdn.net/wzp6010625/article/details/78470153
+	https://www.cnblogs.com/libin-1/p/5911190.html
+介绍：
+	JavaScript 是面向对象的语言，但 JavaScript 不使用类。
+	JavaScript 基于 prototype，而不是基于类的。
+	在 JavaScript 中，不会创建类，也不会通过类来创建对象。
+	模拟类，和通过模拟类创建对象。
+对象创建:
+	1、对象直接量 / 字面量（推荐使用）
+		介绍:
+		自我理解定义类并实例化对象！！！
+			   var obj = {
+				   name: 'lyl',
+				   age: 18
+			   }
+	2、函数：
+		介绍:
+		通过函数定义类，在用new实例化类。
+		　　　　1.系统自带的类：
+		eg： new Object(), Array(), Number(),Boolean(), Date()...
+		var obj = new Object();
+		obj.name = 'lyl';
+		console.log(obj.name); //lyl
+		 　　　　2.自定义的类：
+		注:
+		为了和普通函数区分，首字母大写，采用大驼峰式写法（普通函数采用小驼峰式写法。
+		介绍:
+		先自定义构造函数，再用new关键字操作函数来创建对象。
+		公有属性和私有属性:
+		用var可以定义类的private属性，而用this能定义类的public属性。
+		例:
+			  function Obj (name) {
+				  this.name = name;//公有属性
+				  var  age = 18;//私有属性
+			  }
+			  var obj = new Obj('lyl');
+			  console.log(obj.name); 
+		注：
+		funtion 的定义可以放在后面
+		公有方法和私有方法:
+		介绍:
+		可以将一个函数赋给类的一个属性变量，那么，这个属性变量就可以称为方法。属性变量用var声明就是私有方法，this就是公有方法。
+		例:
+		var draw = function (){}//私有方法
+			this .draw = function (){}//公有方法
+		类方法中访问属性:
+		x = ax; // 访问私有属性，直接写变量名即可。
+		this .gx = ax; // 访问公有属性，需要在变量名前加上this.   
+		模拟构造函数:
+		静态属性与函数:
+		注：静态属性和方法都是公有的。
+		实例化类:
+		var user =new User('22');//实例化类
+			user.account;//调用类的公有属性
+			user.draw();//调用类的公有方法
+		自定义函数的部分原理：
+		用new和不用new的区别:
+		不用new，则Obj('lyl')就是一个函数的正常执行，没有返回值，默认返回undefined。而用new操作符后js引擎就会将该函数看作构造函数看待，经过内部的一系列隐士操作，返回值就是一个对象了。
+this:
+	介绍:this代表当前对象。
+	this指错对象：
+	在一个对象中进行多次this的调用，但某个时候this可能指向的已经不是我们本身的对象了，
+	这时再在成员函数中调用this当然会出错了。
+	解决方式:把this保存下来，以后用_this代替this，这样就不会出错了
+对象的增、删、改、查:
+	介绍:
+	该处增、删、改三种操作都只是针对当前对象的属性进行操作，而不会影响到当前对象的原型的属性。
+	增：
+	介绍：增添一个对象的属性，就是直接对该其进行赋值操作即可。
+	例：
+	var obj = {};
+	console.log(obj.name); //undefined （不会报错）
+	obj.name = 'lyl';//或obj['name']='lyl';
+	console.log(obj.name); // lyl
+	注：
+	1.打印未添加的属性，浏览器不会报错，而是会打印出undefined
+	2.为所有对象添加clone属性：
+	介绍：即给内置原型增加原型属性
+	Object.prototype.clone = function(){};
+JS系统对象：
+Window：
+	介绍：
+	Window对象表示浏览器中打开的窗口或一个框架。
+	如果文档包含框架（frame 或 iframe 标签），
+	浏览器会为 HTML 文档创建一个 window 对象，并为每个框架创建一个额外的 window 对象。
+	注：
+	1.没有应用于 window 对象的公开标准。
+	2.JS中,所有的表达式都在当前的环境中计算。
+	要引用当前窗口无需要特殊的语法，
+	例：可以只写 document，而不必写 window.document。
+	同样可以把当前窗口对象的方法当作函数来使用，
+	如只写 alert()，而不必写 Window.alert()。
+	http://www.w3school.com.cn/jsref/dom_obj_window.asp
+Document：
+	全称：HTML DOM Document 对象
+	介绍：
+	每个载入浏览器的 HTML 文档都会成为 Document 对象。
+	Document 对象使我们可以从脚本中对 HTML 页面中的所有元素进行访问。
+	提示：Document 对象是 Window 对象的一部分，可通过 window.document 属性对其进行访问。
+	http://www.w3school.com.cn/jsref/dom_obj_document.asp
+注：
+对象属性的访问：
+	方式1：obj.name
+	方式2：obj['name']
+	js浏览器对象模型bom()包含了文档对象模型dom(document)。			

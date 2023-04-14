@@ -1,0 +1,13 @@
+scss-声明变量与引用
+	https://www.cnblogs.com/ibabyli/p/9849811.html
+CSS var() 函数
+	https://www.runoob.com/cssref/func-var.html
+	
+Sass @mixin 与 @include
+	@mixin 指令允许我们定义一个可以在整个样式表中重复使用的样式。
+	@include 指令可以将混入（mixin）引入到文档中。
+	https://www.runoob.com/sass/sass-mixin-include.html
+
+导入css文件：
+	@import "./theme.scss";   
+	@import "~@rongji/zjsgy-common/src/theme.scss"

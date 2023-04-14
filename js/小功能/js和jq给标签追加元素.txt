@@ -1,0 +1,35 @@
+js创建标签
+		var item=document.createElement("div");
+		属性赋值操作：
+			item.className+="itemRight";//赋class
+			.innerHTML="测试样式";//给标签赋..
+			.innerText="测试样式";//给标签赋..
+			解析：
+				就是直接 
+				(元素对象.对应元素名称="")
+				操作就好
+		js给动态添加的标签添加事件：
+			1.
+			.onclick=function(){//该写法才会在点击时生效
+				//console.log(this);//这里的this指的是有点击事件的标签
+				leafOperator(this);
+			}
+			2.
+			.onclick=leafOperator(this);//该写法会在加载完标签后，就调用，且后面点击无法调用
+js追加标签到最后：
+	var chatContent=document.getElementsByClassName("chatContent")[0];
+	chatContent.appendChild(hr);
+js追加标签在指定标签前：
+	var chatContent=document.getElementsByClassName("chatContent")[0];
+	var firstItem=chatContent.firstChild;//得到第一个元素。    
+	chatContent.insertBefore(item,firstItem);//在得到的第一个元素之前插入。
+js移除标签：
+	var icondiv = document.getElementById("more");
+	document.getElementById("div").removeChild(icondiv);
+ jQuery添加新元素/内容：
+	append() - 在被选元素的结尾插入内容
+	prepend() - 在被选元素的开头插入内容
+	after() - 在被选元素之后插入内容
+	before() - 在被选元素之前插入内容
+	例子：
+		$('#div').prepend(dat);

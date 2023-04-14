@@ -1,0 +1,15 @@
+s:property无法换行：
+	<p ><s:property value="chinese"/></p>
+		内容中有<br/>无法换行因为被转义了
+		innerHTML: "发生&lt;br/&gt;的粉色的\n防守反击\nureoiurowu1"
+​		innerText: "发生<br/>的粉色的\n防守反击\nureoiurowu1"
+	解决方案：
+		<s:property escape="false"/>
+		加上escape，在<pre>中有/n和<br/>均能换行
+		加上escape，在<p>中有<br/>能换行
+属性值中换行：
+	如title、alt属性等，使用&#10;转义字符
+js换行：
+	.innerHtml = "中际<br />工程";		
+CSS自动换行:
+	...

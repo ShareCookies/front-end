@@ -1,0 +1,28 @@
+解决IE下URL传参中文乱码的问题	
+	https://www.cnblogs.com/lxboy2009/p/6557049.html1
+	encodeURI() 函数，只需在带有中文的链接用该函数即可，其他地址无需解码即可使用：
+	注：
+		encodeURI() 函数和encodeURIComponent()函数的区别：前者只对中文部分转码，后者对特殊字符也会转码。
+		解码：decodeURIComponent
+附：
+	base64编码解码
+		https://blog.csdn.net/wxl1555/article/details/82762641?utm_medium=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-12.control&dist_request_id=&depth_1-utm_source=distribute.pc_relevant.none-task-blog-2%7Edefault%7EBlogCommendFromMachineLearnPai2%7Edefault-12.control
+		https://blog.csdn.net/qq_25243451/article/details/88658864
+		https://blog.csdn.net/weixin_30918633/article/details/101847602?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-1&spm=1001.2101.3001.4242
+		
+		
+	encodeURI
+		...
+	encodeURIComponent
+		...
+		
+附：
+	http://www.voidcn.com/article/p-dkkozwgz-bpz.html
+	
+JAVA代码中的URLEncoder.encode方法和JS的encodeURIComponent功能差不多，它会将处字母和数字，以及*字符外的都编码成%xx形式。
+
+JS的unescape和decodeURI都不能用来解码JAVA中URLEncoder.encode编码的字符串。
+
+在JAVA代码中的URLEncoder.encode的字符串可以在JS中用decodeURIComponent还原成字符串。
+
+在JAVA代码中可以用URLDecoder.decode(request.getParameter("param"),"UTF-8")来将在JS中用encodeURIComponent的参数还原成字符串。

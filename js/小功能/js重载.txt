@@ -1,0 +1,21 @@
+Js模仿重载机制：
+	Js后面的函数会覆盖前面的同名函数，且可往函数中传递任意个数参数。
+	因此Js不支持函数的重载。
+arguments：
+	含义：全局变量。该对象代表当前函数和传入函数的参数。
+	介绍：
+		它的属性是按照传入参数的序列来的，第1个参数的属性名是’0’，第2个参数的属性名是’1’，以此类推。
+		固定的length属性，存储的是当前传入函数参数的个数。
+		固定的callee的属性，表示的是当前函数的一个引用，arguments对象常叫做类数组对象。
+	例：
+		function myMethod(para1){
+			 console.log(para1);//可往函数中传递任意个数参数。遗漏的参数都会用undefined 代替，多余的参数只能通过arguments调用。
+			 console.log(arguments);//指向myMethod函数
+		}
+		function method1(){
+		    myMethod(12,11);
+			console.log(arguments);//指向method1函数
+		}
+		method1(1);
+Js模仿重载机制：
+https://www.cnblogs.com/yugege/p/5539020.html
